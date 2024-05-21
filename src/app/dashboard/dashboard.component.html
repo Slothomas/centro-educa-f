@@ -1,0 +1,15 @@
+<div *ngIf="user">
+  <p>
+    Este es el rut: {{ user.rut_str }}
+    <br>
+    Este es la clave: {{ user.contrasena_str }}
+    <br>
+    Este es el rol: {{ user.idtiporol_str }}
+    <br>
+    Este es la fecha de creacion: {{ user.fechaCreacion_dat }}
+    <br>
+  </p>
+
+  <button (click)="logout()">Logout</button>
+  <button (click)="refreshToken()">Refresh Token</button>
+</div>
