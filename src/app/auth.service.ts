@@ -26,7 +26,9 @@ export class AuthService {
         )
       );
   }
-
+  getCurrentAuthUser() {
+    return this.http.get('https://api.escuelajs.co/api/v1/auth/profile');
+  }
   private doLoginUser(rut_str: string, token: any) {
     this.loggedUser = rut_str;
     this.storeJwtToken(token);
@@ -43,9 +45,7 @@ export class AuthService {
     this.router.navigate(['/home']);
   }
 
-  //getCurrentAuthUser() {
-   // return this.http.get('https://api.escuelajs.co/api/v1/auth/profile');
-  //}
+
 
   isLoggedIn() {
     return !!localStorage.getItem(this.JWT_TOKEN);
