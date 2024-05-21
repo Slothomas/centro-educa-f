@@ -17,8 +17,9 @@ export class AuthService {
   constructor() {}
 
   login(user: { rut_str: string; contrasena_str: string, idtiporol_int: number }): Observable<any> {
+    console.log('Datos enviados al backend:', user); // Agregar este console.log
     return this.http
-      .post('http://127.0.0.1:8000/login/', user)
+      .post('https://centro-educa-b.azurewebsites.net/login/', user)
       .pipe(
         tap((tokens: any) =>
           this.doLoginUser(user.rut_str, JSON.stringify(tokens))
