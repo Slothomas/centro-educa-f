@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ProfesoresService {
-  private apiUrl = 'http://localhost:8000/profesor/getAllTeachers'; // Cambia esta URL si es necesario
+  private apiUrl = 'https://centro-educa-b.azurewebsites.net/profesor/getAllTeachers'; // Cambia esta URL si es necesario
 
   constructor(private http: HttpClient) {}
 
