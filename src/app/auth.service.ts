@@ -1,5 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
@@ -9,69 +9,72 @@ import { BehaviorSubject, Observable, tap } from 'rxjs';
 })
 export class AuthService {
   private readonly JWT_TOKEN = 'JWT_TOKEN';
-  private loggedUser?: string;
-  private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
+  private readonly USER_RUT = 'USER_RUT';
+  private isAuthenticatedSubject = new BehaviorSubject<boolean>(this.hasToken());
   private router = inject(Router);
   private http = inject(HttpClient);
 
   constructor() {}
 
-  login(user: { rut_str: string; contrasena_str: string, idtiporol_int: number }): Observable<any> {
-    console.log('Datos enviados al backend:', user); // Agregar este console.log
-    return this.http
-      .post('https://centro-educa-b.azurewebsites.net/login/', user)
-      .pipe(
-        tap((tokens: any) =>
-          this.doLoginUser(user.rut_str, JSON.stringify(tokens))
-        )
-      );
+  login(user: { rut_str: string; contrasena_str: string; idtiporol_int: number }): Observable<any> {
+    return this.http.post('http://localhost:8000/login/', user).pipe(
+      tap((response: any) => {
+        this.doLoginUser(response.access_token, user.rut_str);
+      })
+    );
   }
-  getCurrentAuthUser() {
-    return this.http.get('https://api.escuelajs.co/api/v1/auth/profile');
-  }
-  private doLoginUser(rut_str: string, token: any) {
-    this.loggedUser = rut_str;
+
+  private doLoginUser(token: string, rut: string) {
     this.storeJwtToken(token);
+    this.storeUserRut(rut);
     this.isAuthenticatedSubject.next(true);
   }
 
-  private storeJwtToken(jwt: string) {
-    localStorage.setItem(this.JWT_TOKEN, jwt);
+  private storeJwtToken(token: string) {
+    localStorage.setItem(this.JWT_TOKEN, token);
+  }
+
+  private storeUserRut(rut: string) {
+    localStorage.setItem(this.USER_RUT, rut);
   }
 
   logout() {
     localStorage.removeItem(this.JWT_TOKEN);
+    localStorage.removeItem(this.USER_RUT);
     this.isAuthenticatedSubject.next(false);
-    this.router.navigate(['/home']);
+    this.router.navigate(['/login']);
   }
-
-
 
   isLoggedIn() {
     return !!localStorage.getItem(this.JWT_TOKEN);
   }
 
   isTokenExpired() {
-    const tokens = localStorage.getItem(this.JWT_TOKEN);
-    if (!tokens) return true;
-    const token = JSON.parse(tokens).access_token;
-    const decoded = jwtDecode(token);
+    const token = localStorage.getItem(this.JWT_TOKEN);
+    if (!token) return true;
+    const decoded: any = jwtDecode(token);
     if (!decoded.exp) return true;
     const expirationDate = decoded.exp * 1000;
     const now = new Date().getTime();
-
     return expirationDate < now;
   }
 
+  getUserRut(): string | null {
+    return localStorage.getItem(this.USER_RUT);
+  }
+
+  private hasToken(): boolean {
+    return !!localStorage.getItem(this.JWT_TOKEN);
+  }
+
+  getCurrentAuthUser() {
+    return this.http.get('https://api.escuelajs.co/api/v1/auth/profile');
+  }
   refreshToken() {
-    let tokens: any = localStorage.getItem(this.JWT_TOKEN);
-    if (!tokens) return;
-    tokens = JSON.parse(tokens);
-    let refreshToken = tokens.refresh_token;
-    return this.http
-      .post<any>('https://api.escuelajs.co/api/v1/auth/refresh-token', {
-        refreshToken,
-      })
-      .pipe(tap((tokens: any) => this.storeJwtToken(JSON.stringify(tokens))));
+    const token = localStorage.getItem(this.JWT_TOKEN);
+    if (!token) return;
+    return this.http.post<any>('https://api.escuelajs.co/api/v1/auth/refresh-token', { token }).pipe(
+      tap((response: any) => this.storeJwtToken(response.access_token))
+    );
   }
 }

@@ -1,10 +1,9 @@
 
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../auth.service';
-import { inject } from '@angular/core';
 import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 
@@ -46,7 +45,7 @@ export class LoginComponent {
   .subscribe((response) => {
     if (response) {
       alert('Login success!');
-      this.router.navigate(['/dashboard']);
+      this.router.navigate(['/dashboardstudents']);
     }
   });
   }
