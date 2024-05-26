@@ -14,7 +14,7 @@ export class AuthService {
   private http = inject(HttpClient);
 
   login(user: { rut_str: string; contrasena_str: string; idtiporol_int: number }): Observable<any> {
-    return this.http.post('https://centro-educa-b.azurewebsites.net/login/', user).pipe(
+    return this.http.post('https://centro-educa-back.azurewebsites.net/login/', user).pipe(
       tap((response: any) => {
         this.doLoginUser(response.access_token, user.rut_str);
       })

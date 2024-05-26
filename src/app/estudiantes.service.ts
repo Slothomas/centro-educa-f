@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class EstudianteService {
 
-  private apiUrl = 'https://centro-educa-b.azurewebsites.net/estudiante';
+  private apiUrl = 'https://centro-educa-back.azurewebsites.net/estudiante';
 
   constructor(private http: HttpClient) { }
 

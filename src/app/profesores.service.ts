@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ProfesoresService {
-  private apiUrl = 'https://centro-educa-b.azurewebsites.net/profesor/getAllTeachers'; // Cambia esta URL si es necesario
+  private apiUrl = 'https://centro-educa-back.azurewebsites.net/profesor/getAllTeachers'; // Cambia esta URL si es necesario
     //https://centro-educa-b.azurewebsites.net/profesor/getAllTeachers
   constructor(private http: HttpClient) {}
 
