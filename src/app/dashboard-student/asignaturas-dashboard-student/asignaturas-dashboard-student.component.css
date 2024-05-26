@@ -1,0 +1,44 @@
+.card {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+  width: 90%; /* Ajustamos el tamaño de las tarjetas */
+  margin: 0 auto; /* Centramos las tarjetas */
+  height: 150px; /* Altura fija para las tarjetas */
+  overflow: hidden; /* Oculta el contenido que exceda la altura */
+}
+
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card-title {
+  font-size: 1.5rem; /* Tamaño de fuente del título */
+  font-weight: bold;
+  overflow: hidden; /* Oculta el texto que exceda la altura */
+  text-overflow: ellipsis; /* Muestra puntos suspensivos (...) para indicar que el texto fue recortado */
+  white-space: nowrap; /* Evita el salto de línea */
+}
+
+.card-text {
+  font-size: 1.2rem; /* Tamaño de fuente del contenido */
+  overflow: hidden; /* Oculta el texto que exceda la altura */
+  text-overflow: ellipsis; /* Muestra puntos suspensivos (...) para indicar que el texto fue recortado */
+  white-space: nowrap; /* Evita el salto de línea */
+}
+
+.card-text-2 {
+  font-size: 1.2rem; /* Tamaño de fuente del contenido */
+  overflow: hidden; /* Oculta el texto que exceda la altura */
+  text-overflow: ellipsis; /* Muestra puntos suspensivos (...) para indicar que el texto fue recortado */
+  white-space: nowrap; /* Evita el salto de línea */
+}
+
+.card-body {
+  display: flex; /* Utilizamos flexbox para alinear el contenido */
+  flex-direction: column; /* Alineamos el contenido en columnas */
+  justify-content: center; /* Centramos el contenido verticalmente */
+  align-items: center; /* Centramos el contenido horizontalmente */
+  height: 100%; /* Ocupa toda la altura del contenedor */
+}

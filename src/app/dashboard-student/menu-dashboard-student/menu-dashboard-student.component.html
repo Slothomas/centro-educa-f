@@ -1,45 +1,24 @@
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+  <mat-toolbar class="example-toolbar">
+    <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+    <span class="example-app-name">Bienvenido {{ username }}</span>
+    <span class="example-logout-button" *ngIf="username">
+      <button mat-icon-button (click)="logout()"><mat-icon>exit_to_app</mat-icon></button>
+    </span>
+  </mat-toolbar>
 
-<nav class="side-menu">
-  <ul>
-    <li class="hidden active">
-      <a class="page-scroll" href="#page-top"></a>
-    </li>
-    <li>
-      <a href="#header" class="page-scroll" >
-        <span class="menu-title">Inicio</span>
-        <span class="dot"></span>
-      </a>
-    </li>
-    <li>
-      <a href="#establecimiento" class="page-scroll">
-        <span class="menu-title">Establecimiento</span>
-        <span class="dot"></span>
-      </a>
-    </li>
-    <li>
-      <a href="#personas" class="page-scroll" >
-        <span class="menu-title">Docentes</span>
-        <span class="dot"></span>
-      </a>
-    </li>
-    <li>
-      <a href="#news" class="page-scroll">
-        <span class="menu-title">Noticias</span>
-        <span class="dot"></span>
-      </a>
-    </li>
-    <li>
-      <a href="#eventos" class="page-scroll">
-        <span class="menu-title">Eventos</span>
-        <span class="dot"></span>
-      </a>
-    </li>
-    <li>
-      <a href="#about" class="page-scroll">
-        <span class="menu-title">Contactanos !</span>
-        <span class="dot"></span>
-      </a>
-    </li>
-  </ul>
-</nav>
-<app-navbar-dashboard-student></app-navbar-dashboard-student>
+  <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    <div class="sidenav-overlay" *ngIf="snav.opened && mobileQuery.matches" (click)="snav.close()"></div>
+
+    <mat-sidenav #snav class="example-sidenav" [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+      <mat-nav-list>
+        <a mat-list-item *ngFor="let nav of fillerNav">{{nav}}</a>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <br>
+      <app-asignaturas-dashboard-student></app-asignaturas-dashboard-student>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

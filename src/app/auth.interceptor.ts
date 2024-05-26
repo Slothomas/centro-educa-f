@@ -10,13 +10,9 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
     });
     return next(cloned);
   }
-  // Si el token no está presente, simplemente pasamos la solicitud sin modificarla
   return next(req);
 };
-
-
 
 function getJwtToken(): string | null {
   return localStorage.getItem('JWT_TOKEN');
 }
-

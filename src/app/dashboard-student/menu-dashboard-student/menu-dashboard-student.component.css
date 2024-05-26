@@ -1,0 +1,47 @@
+.example-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.example-toolbar {
+  background: linear-gradient(to right, #333, #000);
+  color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.example-toolbar:hover {
+  background: linear-gradient(to right, #000, #333);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.9);
+}
+
+.example-sidenav-container {
+  flex: 1;
+  position: relative;
+}
+
+.example-is-mobile .example-toolbar {
+  position: fixed;
+  z-index: 2;
+}
+
+.sidenav-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  pointer-events: auto;
+}
+
+.example-sidenav {
+  width: 250px; /* Cambia este valor al ancho deseado */
+}
+
