@@ -21,7 +21,7 @@ jobs:
       - name: Install Angular CLI 16
         run: npm install -g @angular/cli@16.2.14
       - name: Install Apexcharts
-        run: npm install apexcharts --force
+        run: npm install apexcharts ng-apexcharts --force
       - name: Install Primeng
         run: npm install primeng --force
 
