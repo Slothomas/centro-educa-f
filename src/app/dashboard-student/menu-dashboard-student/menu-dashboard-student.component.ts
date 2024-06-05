@@ -1,7 +1,6 @@
 import { Component, OnDestroy, ChangeDetectorRef, OnInit } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { AuthService } from 'src/app/auth.service';
-import { NavbarDashboardStudentComponent } from '../navbar-dashboard-student/navbar-dashboard-student.component';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
@@ -11,19 +10,24 @@ import { CommonModule } from '@angular/common';
 import { AsignaturasDashboardStudentComponent } from '../asignaturas-dashboard-student/asignaturas-dashboard-student.component';
 import { SharedService } from 'src/app/shared.service';
 import { EstudiantesService } from 'src/app/estudiantes.service';
-
+import { NotasDashboardStudentComponent } from '../notas-dashboard-student/notas-dashboard-student.component';
+import { ProximosDashboardStudentComponent } from '../proximos-dashboard-student/proximos-dashboard-student.component';
+import { HorarioDashboardStudentComponent } from '../horario-dashboard-student/horario-dashboard-student.component';
 
 @Component({
   selector: 'app-menu-dashboard-student',
   standalone: true,
   imports: [
     CommonModule,
-    NavbarDashboardStudentComponent,
     MatListModule,
     MatSidenavModule,
     MatIconModule,
     MatButtonModule,
-    MatToolbarModule
+    MatToolbarModule,
+    AsignaturasDashboardStudentComponent,
+    NotasDashboardStudentComponent,
+    ProximosDashboardStudentComponent,
+    HorarioDashboardStudentComponent,
   ],
   templateUrl: './menu-dashboard-student.component.html',
   styleUrls: ['./menu-dashboard-student.component.css']

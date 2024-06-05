@@ -18,6 +18,28 @@
 
     <mat-sidenav-content>
       <br>
+      <div class="asignaturas-wrapper">
+        <app-asignaturas-dashboard-student></app-asignaturas-dashboard-student>
+      </div>
+      <div class="notas-proximos-wrapper">
+        <div class="notas-wrapper">
+          <div class="card">
+            <div class="card-body">
+              <app-notas-dashboard-student></app-notas-dashboard-student>
+            </div>
+          </div>
+        </div>
+
+        <div class="eventos-wrapper">
+          <div class="card">
+            <div class="card-body">
+              <app-proximos-dashboard-student></app-proximos-dashboard-student>
+            </div>
+          </div>
+        </div>
+      </div>
+      <app-horario-dashboard-student></app-horario-dashboard-student>
+
     </mat-sidenav-content>
   </mat-sidenav-container>
 </div>

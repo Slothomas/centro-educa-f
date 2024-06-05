@@ -1,0 +1,52 @@
+
+.card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  flex: 1; /* Para que los componentes ocupen el mismo espacio */
+}
+
+.card:first-child {
+  margin-left: 10px; /* Agrega un margen izquierdo al primer componente */
+}
+
+.card:last-child {
+  margin-right: 10px; /* Agrega un margen derecho solo al último componente */
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.card-text {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.card-chart {
+  max-width: 650px;
+  margin: 35px auto;
+}
+
+.card-divider {
+  height: 2px; /* Altura de la línea divisoria */
+  width: 90%; /* Anchura de la línea divisoria */
+  background: linear-gradient(to right, transparent 0%, #333 50%, transparent 100%); /* Degradado */
+  margin: 5px auto 20px; /* Margen superior más pequeño para acercarla al título y margen inferior del título */
+}
+
+.card-title {
+  font-size: 2rem; /* Tamaño de fuente del título */
+  font-weight: bold;
+  text-align: center; /* Centra el texto */
+  margin-bottom: 5px; /* Margen inferior más pequeño */
+}
