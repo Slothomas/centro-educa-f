@@ -1,4 +1,4 @@
-import { Component, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnDestroy, ChangeDetectorRef, OnInit } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { AuthService } from 'src/app/auth.service';
 import { NavbarDashboardStudentComponent } from '../navbar-dashboard-student/navbar-dashboard-student.component';
@@ -9,6 +9,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { CommonModule } from '@angular/common';
 import { AsignaturasDashboardStudentComponent } from '../asignaturas-dashboard-student/asignaturas-dashboard-student.component';
+import { SharedService } from 'src/app/shared.service';
+import { EstudiantesService } from 'src/app/estudiantes.service';
+
 
 @Component({
   selector: 'app-menu-dashboard-student',
@@ -20,13 +23,12 @@ import { AsignaturasDashboardStudentComponent } from '../asignaturas-dashboard-s
     MatSidenavModule,
     MatIconModule,
     MatButtonModule,
-    MatToolbarModule,
-    AsignaturasDashboardStudentComponent,
+    MatToolbarModule
   ],
   templateUrl: './menu-dashboard-student.component.html',
   styleUrls: ['./menu-dashboard-student.component.css']
 })
-export class MenuDashboardStudentComponent implements OnDestroy {
+export class MenuDashboardStudentComponent implements OnInit, OnDestroy {
   username: string | null = null;
   mobileQuery: MediaQueryList;
 
@@ -34,12 +36,41 @@ export class MenuDashboardStudentComponent implements OnDestroy {
 
   private _mobileQueryListener: () => void;
 
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private authService: AuthService) {
+  constructor(
+    changeDetectorRef: ChangeDetectorRef,
+    media: MediaMatcher,
+    private authService: AuthService,
+    private sharedService: SharedService,
+    private estudiantesService: EstudiantesService
+  ) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
+  }
 
-    this.username = this.authService.getUserRut(); // Obtener el nombre de usuario al inicializar el componente
+  ngOnInit(): void {
+    console.log('MenuDashboardStudentComponent.ngOnInit');
+    const loginData = this.sharedService.getLoginData();
+    console.log('MenuDashboardStudentComponent.ngOnInit - loginData:', loginData);
+
+    const rutEstudiante = loginData.rut;
+    if (rutEstudiante) {
+      console.log('MenuDashboardStudentComponent.ngOnInit - calling getDatosEstudiante with RUT:', rutEstudiante);
+      this.estudiantesService.getDatosEstudiante(rutEstudiante).subscribe(
+        (data) => {
+          console.log('MenuDashboardStudentComponent.ngOnInit - datos del estudiante:', data);
+          if (data && data.length > 0) {
+            this.username = data[0].nombres_str;
+            console.log('MenuDashboardStudentComponent.ngOnInit - username set to:', this.username);
+          }
+        },
+        (error) => {
+          console.error('MenuDashboardStudentComponent.ngOnInit - error al obtener datos del estudiante:', error);
+        }
+      );
+    } else {
+      console.error('MenuDashboardStudentComponent.ngOnInit - RUT del estudiante no disponible');
+    }
   }
 
   ngOnDestroy(): void {
@@ -47,6 +78,7 @@ export class MenuDashboardStudentComponent implements OnDestroy {
   }
 
   logout(): void {
+    console.log('MenuDashboardStudentComponent.logout');
     this.authService.logout(); // Lógica para cerrar sesión
   }
 }

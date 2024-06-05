@@ -1,20 +1,17 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class EstudianteService {
+export class EstudiantesService {
+  private apiUrl = 'http://127.0.0.1:8000/estudiante/datosEstudiante'; // Cambia esto por tu URL
+  private http = inject(HttpClient);
 
-  private apiUrl = 'https://centro-educa-back.azurewebsites.net/estudiante';
-
-  constructor(private http: HttpClient) { }
-
-  obtenerAsignaturas(rutEstudiante: string): Observable<any> {
-    const url = `${this.apiUrl}/resumeAsignaturas`;
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    const body = { rutEstudiante_str: rutEstudiante };
-    return this.http.post(url, body, { headers });
+  getDatosEstudiante(rutEstudiante: string): Observable<any> {
+    console.log('EstudiantesService.getDatosEstudiante - fetching data for RUT:', rutEstudiante);
+    // Cambiar de GET a POST y enviar el parámetro en el cuerpo de la solicitud
+    return this.http.post<any>(this.apiUrl, { rutEstudiante_str: rutEstudiante });
   }
 }

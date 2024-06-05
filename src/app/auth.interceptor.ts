@@ -2,6 +2,7 @@ import { HttpInterceptorFn } from '@angular/common/http';
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
   const jwtToken = getJwtToken();
+  console.log('authInterceptor - jwtToken:', jwtToken);
   if (jwtToken) {
     const cloned = req.clone({
       setHeaders: {

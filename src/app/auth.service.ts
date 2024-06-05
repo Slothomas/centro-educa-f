@@ -2,64 +2,69 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { SharedService } from './shared.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   private readonly JWT_TOKEN = 'JWT_TOKEN';
-  private readonly RUT_ESTUDIANTE = 'rutEstudiante_str';
   private isAuthenticatedSubject = new BehaviorSubject<boolean>(this.hasToken());
   private router = inject(Router);
   private http = inject(HttpClient);
+  private sharedService = inject(SharedService);
 
   login(user: { rut_str: string; contrasena_str: string; idtiporol_int: number }): Observable<any> {
-    return this.http.post('https://centro-educa-back.azurewebsites.net/login/', user).pipe(
+    console.log('AuthService.login - user:', user);
+    return this.http.post('http://127.0.0.1:8000/login/', user).pipe(
       tap((response: any) => {
-        this.doLoginUser(response.access_token, user.rut_str);
+        console.log('AuthService.login - response:', response);
+        this.doLoginUser(response.access_token, user.rut_str, user.idtiporol_int);
       })
     );
   }
 
-  private doLoginUser(token: string, rut: string) {
+  private doLoginUser(token: string, rut: string, idtiporol: number) {
+    console.log('AuthService.doLoginUser - token:', token, 'rut:', rut, 'idtiporol:', idtiporol);
     this.storeJwtToken(token);
-    this.storeUserRut(rut);
+    this.sharedService.setLoginData(rut, idtiporol);
     this.isAuthenticatedSubject.next(true);
   }
 
   private storeJwtToken(token: string) {
+    console.log('AuthService.storeJwtToken - token:', token);
     localStorage.setItem(this.JWT_TOKEN, token);
   }
 
-  private storeUserRut(rut: string) {
-    localStorage.setItem(this.RUT_ESTUDIANTE, rut);
-  }
-
   logout() {
+    console.log('AuthService.logout');
     localStorage.removeItem(this.JWT_TOKEN);
-    localStorage.removeItem(this.RUT_ESTUDIANTE);
+    this.sharedService.clearLoginData();
     this.isAuthenticatedSubject.next(false);
     this.router.navigate(['/login']);
   }
 
   isLoggedIn() {
-    return !!localStorage.getItem(this.JWT_TOKEN);
-  }
-
-  getUserRut(): string | null {
-    return localStorage.getItem(this.RUT_ESTUDIANTE);
+    const tokenExists = !!localStorage.getItem(this.JWT_TOKEN);
+    console.log('AuthService.isLoggedIn - tokenExists:', tokenExists);
+    return tokenExists;
   }
 
   private hasToken(): boolean {
-    return !!localStorage.getItem(this.JWT_TOKEN);
+    const tokenExists = !!localStorage.getItem(this.JWT_TOKEN);
+    console.log('AuthService.hasToken - tokenExists:', tokenExists);
+    return tokenExists;
   }
-
 
   refreshToken() {
     const token = localStorage.getItem(this.JWT_TOKEN);
+    console.log('AuthService.refreshToken - token:', token);
     if (!token) return;
     return this.http.post<any>('https://api.escuelajs.co/api/v1/auth/refresh-token', { token }).pipe(
-      tap((response: any) => this.storeJwtToken(response.access_token))
+      tap((response: any) => {
+        console.log('AuthService.refreshToken - response:', response);
+        this.storeJwtToken(response.access_token);
+      })
     );
   }
 }
