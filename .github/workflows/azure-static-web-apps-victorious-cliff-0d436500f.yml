@@ -20,6 +20,8 @@ jobs:
           lfs: false
       - name: Install Primeng
         run: npm install primeng@17.17.0 --force
+      - name: Install NgApexcharts
+        run: npm install ng-apexcharts@1.10.0 --force
 
   build_and_deploy_job:
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
