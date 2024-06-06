@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class EstudiantesService {
-  private apiUrl = 'http://127.0.0.1:8000/estudiante'; // URL base
+  private apiUrl = 'https://centro-educa-b.azurewebsites.net/estudiante'; // URL base
   private http = inject(HttpClient);
 
   // Método para obtener los datos del estudiante en base al rut ingresado en el login.
