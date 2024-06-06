@@ -20,10 +20,33 @@ jobs:
           lfs: false
       - name: Install Angular CLI 16
         run: npm install -g @angular/cli@16.2.14
-      - name: Install Apexcharts
-        run: npm install apexcharts ng-apexcharts --force
-      - name: Install Primeng
-        run: npm install primeng --force
+      - name: Install Dependencies
+        run: 
+          npm install @angular/animations@16.2.0 --legacy-peer-deps
+          npm install @angular/cdk@16.2.14 --legacy-peer-deps
+          npm install @angular/common@16.2.0 --legacy-peer-deps
+          npm install @angular/compiler@16.2.0 --legacy-peer-deps
+          npm install @angular/core@16.2.0 --legacy-peer-deps
+          npm install @angular/forms@16.2.0 --legacy-peer-deps
+          npm install @angular/material@16.2.14 --legacy-peer-deps
+          npm install @angular/platform-browser@16.2.0 --legacy-peer-deps
+          npm install @angular/platform-browser-dynamic@16.2.0 --legacy-peer-deps
+          npm install @angular/router@16.2.0 --legacy-peer-deps
+          npm install @fullcalendar/angular@6.1.14 --legacy-peer-deps
+          npm install @fullcalendar/core@6.1.14 --legacy-peer-deps
+          npm install @fullcalendar/daygrid@6.1.14 --legacy-peer-deps
+          npm install @fullcalendar/timegrid@6.1.14 --legacy-peer-deps
+          npm install angular-calendar-scheduler@16.0.0 --legacy-peer-deps
+          npm install angular-scheduler@0.0.1 --legacy-peer-deps
+          npm install apexcharts@3.49.1 --legacy-peer-deps
+          npm install bootstrap@5.3.3 --legacy-peer-deps
+          npm install date-fns@3.6.0 --legacy-peer-deps
+          npm install jwt-decode@4.0.0 --legacy-peer-deps
+          npm install ng-apexcharts@1.10.0 --legacy-peer-deps
+          npm install primeng@16.0.1 --legacy-peer-deps
+          npm install rxjs@7.8.0 --legacy-peer-deps
+          npm install tslib@2.3.0 --legacy-peer-deps
+          npm install zone.js@0.13.0 --legacy-peer-deps
 
   build_and_deploy_job:
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
