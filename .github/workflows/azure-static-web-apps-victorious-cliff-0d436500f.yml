@@ -18,10 +18,8 @@ jobs:
         with:
           submodules: true
           lfs: false
-      - name: Install Angular CLI 17
-        run: npm install -g @angular/cli@17.x.x
-      - name: Install Dependencies
-        run: npm install --legacy-peer-deps
+      - name: Install Primeng
+        run: npm install primeng@17.17.0 --force
 
   build_and_deploy_job:
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
