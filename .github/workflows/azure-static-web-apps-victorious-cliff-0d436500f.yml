@@ -18,12 +18,10 @@ jobs:
         with:
           submodules: true
           lfs: false
-      - name: Install Angular CLI 16
-        run: npm install -g @angular/cli@16.2.14
-      - name: Install Apexcharts
-        run: npm install apexcharts ng-apexcharts --force
-      - name: Install Primeng
-        run: npm install primeng --force
+      - name: Install Angular CLI 17
+        run: npm install -g @angular/cli@17.x.x
+      - name: Install Dependencies
+        run: npm install --legacy-peer-deps
 
   build_and_deploy_job:
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
