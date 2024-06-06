@@ -1,18 +1,17 @@
-
 .card {
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
-  flex: 1; /* Para que los componentes ocupen el mismo espacio */
+  flex: 1;
 }
 
 .card:first-child {
-  margin-left: 10px; /* Agrega un margen izquierdo al primer componente */
+  margin-left: 10px;
 }
 
 .card:last-child {
-  margin-right: 10px; /* Agrega un margen derecho solo al último componente */
+  margin-right: 10px;
 }
 
 .card-body {
@@ -33,20 +32,31 @@
 }
 
 .card-chart {
-  max-width: 650px;
+  max-width: 800px; /* Aumenta el ancho máximo del contenedor del gráfico */
   margin: 35px auto;
 }
 
 .card-divider {
-  height: 2px; /* Altura de la línea divisoria */
-  width: 90%; /* Anchura de la línea divisoria */
-  background: linear-gradient(to right, transparent 0%, #333 50%, transparent 100%); /* Degradado */
-  margin: 5px auto 20px; /* Margen superior más pequeño para acercarla al título y margen inferior del título */
+  height: 2px;
+  width: 90%;
+  background: linear-gradient(to right, transparent 0%, #333 50%, transparent 100%);
+  margin: 5px auto 20px;
 }
 
 .card-title {
-  font-size: 2rem; /* Tamaño de fuente del título */
+  font-size: 2rem;
   font-weight: bold;
-  text-align: center; /* Centra el texto */
-  margin-bottom: 5px; /* Margen inferior más pequeño */
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.card-chart {
+  max-width: 100%; /* Cambia el ancho máximo a 100% */
+  height: auto; /* Elimina la altura fija para que se ajuste automáticamente al contenido */
+  margin: 35px auto;
+}
+
+#chart {
+  width: 100%;
+  max-width: none; /* Elimina el ancho máximo del gráfico para que se expanda según el contenedor */
 }

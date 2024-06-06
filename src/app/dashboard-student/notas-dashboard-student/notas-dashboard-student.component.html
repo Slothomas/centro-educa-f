@@ -1,25 +1,16 @@
 <div class="card">
   <div class="card-body">
-    <h2 class="card-title">Resumen de tus notas</h2> <!-- Título adicional -->
-    <hr class="card-divider"> <!-- Línea divisoria -->
+    <h2 class="card-title">Resumen de tus notas</h2>
+    <hr class="card-divider">
     <label for="asignatura" class="card-text">Selecciona una Asignatura:</label>
-    <select id="asignatura" (change)="onAsignaturaChange($event)" class="form-control">
+    <select id="asignatura" [(ngModel)]="selectedAsignatura" (change)="updateChart()" class="form-control">
       <option *ngFor="let asignatura of asignaturas" [value]="asignatura.id">
         {{ asignatura.nombre }}
       </option>
     </select>
 
     <div id="chart" class="card-chart">
-      <apx-chart
-        [series]="chartOptions.series"
-        [chart]="chartOptions.chart"
-        [legend]="chartOptions.legend"
-        [dataLabels]="chartOptions.dataLabels"
-        [colors]="chartOptions.colors"
-        [plotOptions]="chartOptions.plotOptions"
-        [xaxis]="chartOptions.xaxis"
-        [yaxis]="chartOptions.yaxis"
-      ></apx-chart>
+      <p-chart type="bar" [data]="data" [options]="options"></p-chart>
     </div>
   </div>
 </div>
