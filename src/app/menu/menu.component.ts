@@ -6,6 +6,7 @@ import { PersonasComponent } from '../personas/personas.component';
 import { EstablecimientoComponent } from '../establecimiento/establecimiento.component';
 import { HeaderComponent } from '../header/header.component';
 
+
 @Component({
   selector: 'app-menu',
   standalone: true,

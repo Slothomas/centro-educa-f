@@ -1,0 +1,28 @@
+<div class="back-to-dashboard">
+  <a routerLink="/dashboardstudents">
+    <mat-icon mat-list-icon>home</mat-icon>
+  </a>
+</div>
+
+<div class="grid-container">
+  <!-- Componente de Detalle Asignatura -->
+  <div class="grid-item detalle-asignatura">
+    <app-detalle-asignatura
+      [rutEstudiante]="rutEstudiante"
+      [idCurso]="idCurso"
+      [idAsignatura]="idAsignatura">
+    </app-detalle-asignatura>
+  </div>
+
+  <!-- Componente de Promedios Asignatura -->
+  <div class="grid-item promedios">
+    <app-promedios-asignatura
+      [rutEstudiante]="rutEstudiante"
+      [idCurso]="idCurso"
+      [idAsignatura]="idAsignatura">
+    </app-promedios-asignatura>
+  </div>
+
+  <!-- Placeholder para el nuevo componente -->
+
+</div>

@@ -1,7 +1,7 @@
 import { Component, OnDestroy, ChangeDetectorRef, OnInit } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { AuthService } from 'src/app/auth.service';
-import { MatListModule } from '@angular/material/list';
+import { MatListModule, MatNavList } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -13,6 +13,7 @@ import { EstudiantesService } from 'src/app/estudiantes.service';
 import { NotasDashboardStudentComponent } from '../notas-dashboard-student/notas-dashboard-student.component';
 import { ProximosDashboardStudentComponent } from '../proximos-dashboard-student/proximos-dashboard-student.component';
 import { HorarioDashboardStudentComponent } from '../horario-dashboard-student/horario-dashboard-student.component';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-menu-dashboard-student',
@@ -28,15 +29,18 @@ import { HorarioDashboardStudentComponent } from '../horario-dashboard-student/h
     NotasDashboardStudentComponent,
     ProximosDashboardStudentComponent,
     HorarioDashboardStudentComponent,
+    RouterLink,
+    RouterOutlet
   ],
   templateUrl: './menu-dashboard-student.component.html',
   styleUrls: ['./menu-dashboard-student.component.css']
 })
-export class MenuDashboardStudentComponent implements OnInit, OnDestroy {
-  username: string | null = null;
-  mobileQuery: MediaQueryList;
 
-  fillerNav = Array.from({ length: 5 }, (_, i) => `Nav Item ${i + 1}`);
+export class MenuDashboardStudentComponent implements OnInit, OnDestroy {
+  username: string | null = null; // Nombre del estudiante
+  mobileQuery: MediaQueryList; // Media query para detectar dispositivos móviles
+  asignaturas: any[] = []; // Lista de asignaturas
+  asignaturasMenuOpened = false; // Estado del menú de asignaturas (abierto/cerrado)
 
   private _mobileQueryListener: () => void;
 
@@ -45,44 +49,75 @@ export class MenuDashboardStudentComponent implements OnInit, OnDestroy {
     media: MediaMatcher,
     private authService: AuthService,
     private sharedService: SharedService,
-    private estudiantesService: EstudiantesService
+    private estudiantesService: EstudiantesService,
+    private router: Router
   ) {
+    // Inicialización de media query
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
   }
 
   ngOnInit(): void {
+    // Al iniciar el componente
     console.log('MenuDashboardStudentComponent.ngOnInit');
+    // Obtener datos de inicio de sesión
     const loginData = this.sharedService.getLoginData();
     console.log('MenuDashboardStudentComponent.ngOnInit - loginData:', loginData);
 
-    const rutEstudiante = loginData.rut;
+    const rutEstudiante = loginData.rut; // Rut del estudiante
     if (rutEstudiante) {
-      console.log('MenuDashboardStudentComponent.ngOnInit - calling getDatosEstudiante with RUT:', rutEstudiante);
+      // Obtener datos del estudiante
       this.estudiantesService.getDatosEstudiante(rutEstudiante).subscribe(
         (data) => {
-          console.log('MenuDashboardStudentComponent.ngOnInit - datos del estudiante:', data);
+          // Si hay datos
           if (data && data.length > 0) {
-            this.username = data[0].nombres_str;
-            console.log('MenuDashboardStudentComponent.ngOnInit - username set to:', this.username);
+            this.username = data[0].nombres_str; // Mostrar nombre del estudiante
+            const idCurso = data[0].idCurso_int; // Obtener ID del curso
+            // Llamar a obtenerAsignaturas con rut y idCurso
+            this.obtenerAsignaturas(rutEstudiante, idCurso);
           }
         },
         (error) => {
-          console.error('MenuDashboardStudentComponent.ngOnInit - error al obtener datos del estudiante:', error);
+          console.error('Error al obtener datos del estudiante:', error);
         }
       );
     } else {
-      console.error('MenuDashboardStudentComponent.ngOnInit - RUT del estudiante no disponible');
+      console.error('RUT del estudiante no disponible');
     }
   }
 
   ngOnDestroy(): void {
+    // Al destruir el componente, remover el listener de la media query
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
 
   logout(): void {
-    console.log('MenuDashboardStudentComponent.logout');
+    // Método para cerrar sesión
+    console.log('Logout');
     this.authService.logout(); // Lógica para cerrar sesión
+  }
+
+  obtenerAsignaturas(rut: string, idCurso: number): void {
+    // Método para obtener las asignaturas del estudiante
+    this.estudiantesService.obtenerAsignaturas(rut, idCurso).subscribe(
+      (asignaturas) => {
+        // Actualizar las asignaturas en la variable local
+        this.asignaturas = asignaturas;
+      },
+      (error) => {
+        console.error('Error al obtener asignaturas:', error);
+      }
+    );
+  }
+
+  toggleAsignaturasMenu(): void {
+    // Método para alternar el estado del menú de asignaturas (abierto/cerrado)
+    this.asignaturasMenuOpened = !this.asignaturasMenuOpened;
+  }
+
+  isAsignaturaSelected(): boolean {
+    // Método para verificar si la página actual corresponde a una asignatura seleccionada
+    return this.router.url.includes('/dashboardstudents/asignatura/');
   }
 }

@@ -1,0 +1,57 @@
+.card-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Espacio entre las tarjetas */
+}
+
+.detalle-card {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  width: 90%; /* Reducir el ancho */
+  max-width: 300px; /* Ancho máximo */
+  height: 160px; /* Altura fija */
+  display: flex; /* Usar flexbox para centrar verticalmente */
+  flex-direction: column; /* Alinear contenido en columnas */
+  margin-left: 5px; /* Margen derecho para separar del siguiente componente */
+  margin-right: 5px; /* Margen derecho para separar del siguiente componente */
+
+}
+
+.detalle-card:hover {
+  box-shadow: 0 4px 10px #51a5ff;
+}
+
+.card-header {
+  padding: 1.35rem;
+  background-color: #007bff;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  color: #fff;
+  text-align: center;
+  flex: 0 0 auto; /* No crecer ni encoger */
+}
+
+.card-content {
+  flex: 1; /* Ocupa el espacio restante */
+  display: flex; /* Usar flexbox para centrar verticalmente */
+  justify-content: center; /* Centrar contenido horizontalmente */
+  align-items: center; /* Centrar contenido verticalmente */
+}
+
+.card-content p {
+  margin: 0; /* Eliminar el margen por defecto del párrafo */
+  font-size: 4rem; /* Tamaño de fuente del número */
+  color: #007bff; /* Color del número */
+  font-weight: bold; /* Texto del número en negrita */
+}
+
+.percent-symbol {
+  font-size: 1.8rem; /* Tamaño del símbolo % */
+  font-weight: normal; /* Texto del símbolo % sin negrita */
+  color: #007bff; /* Color del símbolo % */
+}

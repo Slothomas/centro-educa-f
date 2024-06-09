@@ -1,0 +1,10 @@
+<div *ngIf="datos && datos.length === 2" class="card-container">
+  <ng-container *ngFor="let dato of datos">
+    <div class="detalle-card">
+      <div class="card-header">{{ dato.Tipo }}</div>
+      <div class="card-content">
+        <p>{{ dato.Registro }} <span class="percent-symbol" *ngIf="dato.Tipo === 'Promedio Asistencia'">%</span></p>
+      </div>
+    </div>
+  </ng-container>
+</div>

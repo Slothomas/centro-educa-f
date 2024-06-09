@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { EstudiantesService } from '../../estudiantes.service';
+import { SharedService } from 'src/app/shared.service';
 import { CommonModule } from '@angular/common';
 import { CarouselModule } from 'primeng/carousel';
-import { SharedService } from 'src/app/shared.service';
 
 @Component({
   selector: 'app-asignaturas-dashboard-student',
@@ -13,7 +13,9 @@ import { SharedService } from 'src/app/shared.service';
   styleUrls: ['./asignaturas-dashboard-student.component.css']
 })
 export class AsignaturasDashboardStudentComponent implements OnInit {
-  asignaturas: any[] = [];
+  asignaturas: any[] = []; // Definir el tipo de las asignaturas
+  rutEstudiante: any = null;
+  idCurso: any = null;
   responsiveOptions: any[] = [
     {
       breakpoint: '1600px',
@@ -38,45 +40,41 @@ export class AsignaturasDashboardStudentComponent implements OnInit {
   ];
 
   constructor(
-    private estudianteService: EstudiantesService,
-    private sharedService: SharedService
+    private sharedService: SharedService,
+    private estudiantesService: EstudiantesService
   ) {}
 
   ngOnInit(): void {
-    console.log('AsignaturasDashboardStudentComponent.ngOnInit');
-    const loginData = this.sharedService.getLoginData();
-    console.log('AsignaturasDashboardStudentComponent.ngOnInit - loginData:', loginData);
+    this.obtenerDatosEstudiante();
+  }
 
-    const rutEstudiante = loginData.rut;
+  obtenerDatosEstudiante(): void {
+    this.sharedService.getEstudianteData().subscribe(estudiante => {
+      if (estudiante) {
+        this.rutEstudiante = estudiante.rut_str;
+        this.idCurso = estudiante.idCurso_int;
+        this.obtenerAsignaturas(this.rutEstudiante, this.idCurso);
+      } else {
+        console.error('El rut del estudiante no está disponible.');
+      }
+    });
+  }
+
+  obtenerAsignaturas(rutEstudiante: string, idCurso_int: number): void {
     if (rutEstudiante) {
-      console.log('AsignaturasDashboardStudentComponent.ngOnInit - calling getDatosEstudiante with RUT:', rutEstudiante);
-      this.estudianteService.getDatosEstudiante(rutEstudiante).subscribe(
+      this.estudiantesService.obtenerAsignaturas(rutEstudiante, idCurso_int).subscribe(
         (data) => {
-          console.log('AsignaturasDashboardStudentComponent.ngOnInit - datos del estudiante:', data);
-          if (data && data.length > 0) {
-            const idCurso_int = data[0].idCurso_int;
-            this.obtenerAsignaturas(rutEstudiante, idCurso_int);
-          }
+          // Almacena todos los datos de las asignaturas
+          this.asignaturas = data;
+          // Envía los datos de las asignaturas al servicio SharedService
+          this.sharedService.setAsignaturasData(this.asignaturas);
         },
         (error) => {
-          console.error('Error al obtener datos del estudiante:', error);
+          console.error('Error al obtener las asignaturas:', error);
         }
       );
     } else {
       console.error('El rut del estudiante no está disponible.');
     }
-  }
-
-  obtenerAsignaturas(rutEstudiante: string, idCurso_int: number): void {
-    console.log('AsignaturasDashboardStudentComponent.obtenerAsignaturas - calling service for RUT:', rutEstudiante, 'and IDCurso:', idCurso_int);
-    this.estudianteService.obtenerAsignaturas(rutEstudiante, idCurso_int).subscribe(
-      (data) => {
-        this.asignaturas = data;
-        console.log('AsignaturasDashboardStudentComponent.obtenerAsignaturas - obtained subjects:', data);
-      },
-      (error) => {
-        console.error('Error al obtener las asignaturas:', error);
-      }
-    );
   }
 }

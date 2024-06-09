@@ -1,0 +1,46 @@
+.card-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Espacio entre las tarjetas */
+}
+
+.detalle-card {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  height: 340px; /* Altura fija */
+  display: flex; /* Usar flexbox para centrar verticalmente */
+  flex-direction: column; /* Alinear contenido en columnas */
+  margin-right: 5px; /* Margen derecho para separar del siguiente componente */
+  margin-left: 5px; /* Margen derecho para separar del siguiente componente */
+
+}
+
+.detalle-card:hover {
+  box-shadow: 0 4px 10px #51a5ff;
+}
+
+.card-header {
+  padding: 1rem;
+  background-color: #007bff; /* Color de fondo del encabezado */
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  color: #fff; /* Color del texto del encabezado */
+}
+
+.card-header .card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.card-content {
+  padding: 1rem;
+}
+
+.card-content p {
+  font-size: 1.2rem;
+}
