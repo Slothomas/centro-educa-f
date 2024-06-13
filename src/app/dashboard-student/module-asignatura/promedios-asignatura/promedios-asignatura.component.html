@@ -3,7 +3,7 @@
     <div class="detalle-card">
       <div class="card-header">{{ dato.Tipo }}</div>
       <div class="card-content">
-        <p>{{ dato.Registro }} <span class="percent-symbol" *ngIf="dato.Tipo === 'Promedio Asistencia'">%</span></p>
+        <p>{{ dato.Registro }}<span class="percent-symbol" *ngIf="dato.Tipo==='Asistencia'">%</span></p>
       </div>
     </div>
   </ng-container>

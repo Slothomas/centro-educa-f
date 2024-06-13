@@ -1,19 +1,20 @@
 import { Component, OnDestroy, ChangeDetectorRef, OnInit } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { AuthService } from 'src/app/auth.service';
-import { MatListModule, MatNavList } from '@angular/material/list';
+import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { CommonModule } from '@angular/common';
-import { AsignaturasDashboardStudentComponent } from '../asignaturas-dashboard-student/asignaturas-dashboard-student.component';
 import { SharedService } from 'src/app/shared.service';
 import { EstudiantesService } from 'src/app/estudiantes.service';
 import { NotasDashboardStudentComponent } from '../notas-dashboard-student/notas-dashboard-student.component';
 import { ProximosDashboardStudentComponent } from '../proximos-dashboard-student/proximos-dashboard-student.component';
-import { HorarioDashboardStudentComponent } from '../horario-dashboard-student/horario-dashboard-student.component';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import { AsignaturasDashboardStudentComponent } from '../asignaturas-dashboard-student/asignaturas-dashboard-student.component';
+import { HorarioDashboardStudentComponent } from '../horario-dashboard-student/horario-dashboard-student.component';
+
 
 @Component({
   selector: 'app-menu-dashboard-student',
@@ -25,12 +26,12 @@ import { Router, RouterLink, RouterOutlet } from '@angular/router';
     MatIconModule,
     MatButtonModule,
     MatToolbarModule,
-    AsignaturasDashboardStudentComponent,
     NotasDashboardStudentComponent,
     ProximosDashboardStudentComponent,
-    HorarioDashboardStudentComponent,
     RouterLink,
-    RouterOutlet
+    RouterOutlet,
+    AsignaturasDashboardStudentComponent,
+    HorarioDashboardStudentComponent
   ],
   templateUrl: './menu-dashboard-student.component.html',
   styleUrls: ['./menu-dashboard-student.component.css']
@@ -116,8 +117,9 @@ export class MenuDashboardStudentComponent implements OnInit, OnDestroy {
     this.asignaturasMenuOpened = !this.asignaturasMenuOpened;
   }
 
-  isAsignaturaSelected(): boolean {
-    // Método para verificar si la página actual corresponde a una asignatura seleccionada
-    return this.router.url.includes('/dashboardstudents/asignatura/');
+  isModuleSelected(): boolean {
+    const routes = ['/dashboardstudents/asignatura/', '/dashboardstudents/eventos', '/dashboardstudents/observaciones', '/dashboardstudents/perfil'];
+    return routes.some(route => this.router.url.includes(route));
   }
+
 }

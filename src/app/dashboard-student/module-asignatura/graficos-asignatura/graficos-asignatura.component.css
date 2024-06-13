@@ -1,0 +1,46 @@
+.grafico-card:hover {
+  box-shadow: 0 4px 10px #51a5ff;
+}
+
+.card-content {
+  padding: 1rem;
+}
+
+.card-content p {
+  font-size: 1.2rem;
+}
+
+/* Ajustes para los gráficos */
+.graficos {
+  display: flex; /* Usar flexbox */
+  flex-wrap: wrap; /* Permitir que los elementos se envuelvan en una nueva línea cuando no haya suficiente espacio */
+}
+
+.grafico-card {
+  flex: 1 1 calc(35% - 0.5rem); /* Cada tarjeta de gráfico ocupa inicialmente el 50% del ancho disponible menos el espacio entre tarjetas */
+  margin-bottom: 1rem; /* Espacio entre las tarjetas */
+  padding: 0.5rem; /* Reducir el relleno */
+  border-radius: 8px; /* Radio de borde */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Efecto de sombra más suave */
+  background-color: #f9f9f9; /* Color de fondo */
+  overflow: hidden; /* Ocultar contenido que se desborde */
+  margin-right: 5px; /* Margen derecho para separar del siguiente componente */
+  margin-left: 5px; /* Margen derecho para separar del siguiente componente */
+}
+
+/* Media query para hacer las tarjetas responsivas */
+@media (max-width: 1150px) {
+  .grafico-card {
+    flex-basis: calc(100% - 1rem); /* En pantallas más pequeñas, cada tarjeta ocupa el 100% del ancho menos el espacio entre tarjetas */
+  }
+}
+
+/* Estilo para centrar el contenido del gráfico */
+.grafico-card .card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%; /* Ajustar altura */
+}
+

@@ -1,18 +1,18 @@
-import { CommonModule } from '@angular/common';
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { CardModule } from 'primeng/card';
 import { EstudiantesService } from 'src/app/estudiantes.service';
+import { TableModule } from 'primeng/table';
+import { CommonModule } from '@angular/common';
+import { CardModule } from 'primeng/card';
 
 
 @Component({
-  selector: 'app-promedios-asignatura',
-  standalone: true,
-  imports: [CommonModule, CardModule],
-  templateUrl: './promedios-asignatura.component.html',
-  styleUrls: ['./promedios-asignatura.component.css']
+  selector: 'app-companeros-asignatura',
+  standalone  : true,
+  imports: [TableModule, CommonModule, CardModule],
+  templateUrl: './companeros-asignatura.component.html',
+  styleUrls: ['./companeros-asignatura.component.css']
 })
-
-export class PromediosAsignaturaComponent implements OnInit, OnChanges {
+export class CompanerosAsignaturaComponent implements OnInit, OnChanges {
 
   @Input() rutEstudiante!: string; // Rut del estudiante
   @Input() idCurso!: number; // ID del curso
@@ -20,13 +20,15 @@ export class PromediosAsignaturaComponent implements OnInit, OnChanges {
 
   datos: any[] = []; // Datos de la asignatura, inicializado como array vacío
 
-  constructor(private estudiantesService: EstudiantesService) {}
+  constructor(private estudianteService: EstudiantesService) { }
 
   ngOnInit(): void {
     this.obtenerDatos(); // Llamar al método para obtener los datos al inicializar el componente
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    //Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.
+    //Add '${implements OnChanges}' to the class.
     // Detectar cambios en las entradas y volver a obtener los datos si hay cambios
     if (changes['rutEstudiante'] || changes['idCurso'] || changes['idAsignatura']) {
       this.obtenerDatos();
@@ -38,10 +40,10 @@ export class PromediosAsignaturaComponent implements OnInit, OnChanges {
     if (this.rutEstudiante && this.idCurso && this.idAsignatura) {
       console.log('Fetching data with:', this.rutEstudiante, this.idCurso, this.idAsignatura);
       // Llamar al servicio para obtener los detalles de la asignatura
-      this.estudiantesService.obtenerDetallePromedioNotaAsistencia(this.rutEstudiante, this.idCurso, this.idAsignatura).subscribe(
+      this.estudianteService.obtenerDetalleCompaneros(this.rutEstudiante, this.idCurso, this.idAsignatura).subscribe(
         (data) => {
-          console.log('Data received:', data);
-          this.datos = data; // Asignar todos los datos recibidos
+          console.log('Data received obtenerDtos Compañeros componente :', data);
+          this.datos = data; // Asignar los datos recibidos
         },
         (error) => {
           console.error('Error al obtener los datos:', error);

@@ -6,8 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class EstudiantesService {
-  private apiUrl = //'http://127.0.0.1:8000//estudiante'; // URL base
-  'https://centro-educa-back.azurewebsites.net/estudiante';
+  private apiUrl = 'https://centro-educa-back.azurewebsites.net/estudiante'; // URL base
+  //'https://centro-educa-back.azurewebsites.net/estudiante';
   // Inyectamos el HttpClient en el constructor
   constructor(private http: HttpClient) {}
 
@@ -56,9 +56,52 @@ export class EstudiantesService {
   }
 
     // Método para obtener los detalles de los promedios de la asignaruta (promedio general ponderado y porcxentaje de asistencia
-    obtenerDetalldPromedioNotaAsistencia(rutEstudiante: string, idCurso_int: number, idAsignatura_int: number): Observable<any> {
+    obtenerDetallePromedioNotaAsistencia(rutEstudiante: string, idCurso_int: number, idAsignatura_int: number): Observable<any> {
       const endpoint = `${this.apiUrl}/detallePromedioNotaAsistencia`; // Resto de la URL
       console.log('EstudiantesService.obtenerDetalldPromedioNotaAsistencia - fetching details for RUT:', rutEstudiante, 'IDCurso:', idCurso_int, 'IDAsignatura:', idAsignatura_int);
       return this.http.post<any>(endpoint, { rutEstudiante_str: rutEstudiante, idCurso_int: idCurso_int, idAsignatura_int: idAsignatura_int });
     }
+
+    // Método para obtener los detalles de los registros de notas de la asignatura.
+    obtenerDetalleRegistrosNotasAsignaturas(rutEstudiante: string, idCurso_int: number, idAsignatura_int: number): Observable<any> {
+      const endpoint = `${this.apiUrl}/detalleRegistrosNotasAsignaturas`; // Resto de la URL
+      console.log('EstudiantesService.detalleRegistrosNotasAsignaturas - fetching details for RUT:', rutEstudiante, 'IDCurso:', idCurso_int, 'IDAsignatura:', idAsignatura_int);
+      return this.http.post<any>(endpoint, { rutEstudiante_str: rutEstudiante, idCurso_int: idCurso_int, idAsignatura_int: idAsignatura_int });
+    }
+
+    obtenerDetallePromedioAsignaturas(rutEstudiante: string, idCurso_int: number): Observable<any> {
+      const endpoint = `${this.apiUrl}/detallePromedioAsignaturas`; // Resto de la URL
+      console.log('EstudiantesService.detallePromedioAsignaturas - fetching details for RUT:', rutEstudiante, 'IDCurso:', idCurso_int);
+      return this.http.post<any>(endpoint, { rutEstudiante_str: rutEstudiante, idCurso_int: idCurso_int });
+    }
+
+    obtenerDetalleNota(rutEstudiante: string, idCurso_int: number, idAsignatura_int: number): Observable<any> {
+      const endpoint = `${this.apiUrl}/detalleNotas`; // Resto de la URL
+      console.log('EstudiantesService.detalleNota - fetching details for RUT:', rutEstudiante, 'IDCurso:', idCurso_int, 'IDAsignatura:', idAsignatura_int);
+      return this.http.post<any>(endpoint, { rutEstudiante_str: rutEstudiante, idCurso_int: idCurso_int, idAsignatura_int: idAsignatura_int });
+    }
+
+    obtenerDetalleCompaneros(rutEstudiante: string, idCurso_int: number, idAsignatura_int: number): Observable<any> {
+      const endpoint = `${this.apiUrl}/detalleCompaneros`; // Resto de la URL
+      console.log('EstudiantesService.detalleCompaneros - fetching details for RUT:', rutEstudiante, 'IDCurso:', idCurso_int, 'IDAsignatura:', idAsignatura_int);
+      return this.http.post<any>(endpoint, { rutEstudiante_str: rutEstudiante, idCurso_int: idCurso_int, idAsignatura_int: idAsignatura_int });
+    }
+
+    //METODOS PARA EL MODULO EVENTOS.
+
+    obtenerDetalleEventos(rutEstudiante: string): Observable<any> {
+      const endpoint = `${this.apiUrl}/detalleEventos`; // Resto de la URL
+      console.log('EstudiantesService.detalleEvento - fetching details for RUT:', rutEstudiante);
+      return this.http.post<any>(endpoint, { rutEstudiante_str: rutEstudiante });
+    }
+
+
+    //METODOS PARA EL MODULO OBSERVACIONES.
+    obtenerDetalleObservaciones(rutEstudiante: string): Observable<any> {
+      const endpoint = `${this.apiUrl}/detalleObservaciones`; // Resto de la URL
+      console.log('EstudiantesService.detalleObservaciones - fetching details for RUT:', rutEstudiante);
+      return this.http.post<any>(endpoint, { rutEstudiante_str: rutEstudiante });
+    }
+
+
 }

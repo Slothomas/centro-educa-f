@@ -5,13 +5,22 @@ import { RouterLink, ActivatedRoute } from '@angular/router';
 import { SharedService } from 'src/app/shared.service';
 import { DetalleAsignaturaComponent } from '../detalle-asignatura/detalle-asignatura.component';
 import { PromediosAsignaturaComponent } from '../promedios-asignatura/promedios-asignatura.component';
+import { RegistrosAsignaturaComponent } from '../registros-asignatura/registros-asignatura.component';
+import { CompanerosAsignaturaComponent } from '../companeros-asignatura/companeros-asignatura.component';
+import { GraficosAsignaturaComponent } from '../graficos-asignatura/graficos-asignatura.component';
+
 
 @Component({
   selector: 'app-moduleasignatura-dashboard-student',
   standalone: true,
   imports: [CommonModule, RouterLink, MatIconModule,
     DetalleAsignaturaComponent,
-    PromediosAsignaturaComponent],
+    PromediosAsignaturaComponent,
+    RegistrosAsignaturaComponent,
+    CompanerosAsignaturaComponent,
+    GraficosAsignaturaComponent,
+    CompanerosAsignaturaComponent
+    ],
   templateUrl: './moduleasignatura-dashboard-student.component.html',
   styleUrls: ['./moduleasignatura-dashboard-student.component.css']
 })

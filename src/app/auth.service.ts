@@ -13,8 +13,8 @@ export class AuthService {
   private router = inject(Router);
   private http = inject(HttpClient);
   private sharedService = inject(SharedService);
-
   //'http://127.0.0.1:8000/login/'
+
   login(user: { rut_str: string; contrasena_str: string; idtiporol_int: number }): Observable<any> {
     console.log('AuthService.login - user:', user);
     return this.http.post('https://centro-educa-back.azurewebsites.net/login/', user).pipe(

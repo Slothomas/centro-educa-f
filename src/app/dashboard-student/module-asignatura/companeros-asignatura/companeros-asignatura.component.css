@@ -1,0 +1,48 @@
+/* Estilos personalizados para la tabla */
+.custom-table {
+  background-color: #ffffff; /* Color de fondo blanco */
+  color: #000; /* Color del texto negro */
+  border-radius: 10px; /* Bordes redondeados */
+  text-align: center; /* Centramos el contenido de la tabla */
+  width: 100%; /* Aseguramos que la tabla ocupe todo el ancho de su contenedor */
+}
+
+.custom-table th {
+  font-size: 1.5rem; /* Aumentamos el tamaño de fuente de los títulos de columna */
+  font-weight: bold; /* Hacemos los títulos de columna negrita */
+}
+
+.custom-table .header-cell {
+  background-color: #007bff; /* Color de fondo de los encabezados */
+  color: #fff; /* Color del texto de los encabezados */
+  font-size: 1.3rem; /* Aumentamos el tamaño de fuente de los encabezados */
+  font-weight: bold; /* Hacemos los títulos de columna negrita */
+}
+
+.custom-table td {
+  vertical-align: middle; /* Centramos verticalmente el contenido de las celdas */
+  padding: 0.5rem; /* Espaciado dentro de las celdas */
+}
+
+/* Estilos para la tarjeta */
+.detalle-card {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+  overflow: hidden;
+  margin-bottom: 20px; /* Aumenta el espacio entre las tarjetas */
+  width: calc(100% - 10px); /* Ajusta el ancho de la tarjeta */
+  max-width: 100%; /* Garantiza que la tarjeta no exceda el 100% del ancho disponible */
+}
+
+.detalle-card:hover {
+  box-shadow: 0 4px 10px #51a5ff;
+}
+
+.card-body {
+  padding: 1rem; /* Ajustamos el padding del cuerpo de la tarjeta */
+  display: flex; /* Usamos flexbox para centrar el contenido */
+  justify-content: center; /* Centramos horizontalmente el contenido */
+  align-items: center; /* Centramos verticalmente el contenido */
+}

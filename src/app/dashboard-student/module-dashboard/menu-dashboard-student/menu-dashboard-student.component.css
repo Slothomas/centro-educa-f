@@ -74,3 +74,12 @@
     max-width: 35%;
   }
 }
+
+.active-link {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+
+.example-sidenav .mat-list-item:last-child {
+  order: 999; /* Coloca el último elemento al final */
+}

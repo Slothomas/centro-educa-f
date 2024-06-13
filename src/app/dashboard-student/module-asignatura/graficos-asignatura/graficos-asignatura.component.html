@@ -1,0 +1,16 @@
+<!-- Componente de los gráficos -->
+<div class="grid-item graficos">
+  <!-- Card para el primer gráfico -->
+  <div class="card grafico-card">
+    <div class="card-content">
+      <p-chart type="bar" [data]="barChartData" [options]="barChartOptions"></p-chart>
+    </div>
+  </div>
+
+  <!-- Card para el segundo gráfico -->
+  <div class="card grafico-card">
+    <div class="card-content">
+      <p-chart type="polarArea" [data]="polarAreaChartData" [options]="polarAreaChartOptions"></p-chart>
+    </div>
+  </div>
+</div>

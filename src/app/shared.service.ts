@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ReplaySubject, Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { EstudiantesService } from './estudiantes.service';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +16,7 @@ export class SharedService {
 
   private datosCargados = false; // Bandera para controlar si los datos del estudiante ya se cargaron
 
-  constructor(private estudiantesService: EstudiantesService) {}
+  constructor(private estudiantesService: EstudiantesService, private http:HttpClient) {}
 
   // Método para establecer los datos de inicio de sesión
   setLoginData(rut: string, idtiporol: number): void {
@@ -93,4 +94,24 @@ export class SharedService {
   private removeFromSessionStorage(key: string): void {
     sessionStorage.removeItem(key);
   }
+
+  obtenerPerfil(rut: string, idtiporol: any): Observable<any[]> {
+    const endpoint = `https://centro-educa-back.azurewebsites.net/login/perfil`;
+    console.log('sharedService.obtenerPerfil - fetching details for RUT:', rut, 'and Role ID:', idtiporol);
+    return this.http.post<any>(endpoint, { rut_str: rut, idTipoRol_int: idtiporol });
+  }
+
+  actualizarClave(rut: string, clave: string): Observable<any> {
+    const endpoint = `https://centro-educa-back.azurewebsites.net/login/actualizarClave`;
+    console.log('sharedService.actualizarClave - updating password for RUT:', rut, 'and new password:', clave);
+    return this.http.put<any>(endpoint, { rut_str: rut, contrasena_str: clave });
+  }
+
+
+  actualizarDatos(rut: string, idtiporol: number, nuevoCorreo: string, nuevoTelefono: string): Observable<any> {
+    const endpoint = `https://centro-educa-back.azurewebsites.net/login/actualizarDatos`;
+    console.log('sharedService.actualizarDatos - updating details for RUT:', rut, 'and Role ID:', idtiporol, 'with new email:', nuevoCorreo, 'and new phone:', nuevoTelefono);
+    return this.http.put<any>(endpoint, { rut_str: rut, idTipoRol_int: idtiporol, nuevo_correo: nuevoCorreo, nuevo_telefono: nuevoTelefono });
+  }
+
 }

@@ -15,7 +15,7 @@
         <!-- Enlace Asignaturas con submenú dinámico -->
         <mat-list-item (click)="toggleAsignaturasMenu()">
           <mat-icon mat-list-icon>folder</mat-icon>
-          <span mat-line>Asignaturas</span>
+          <span mat-line> Asignaturas</span>
           <mat-icon mat-list-icon [class.rotate-icon]="asignaturasMenuOpened">expand_more</mat-icon>
         </mat-list-item>
         <!-- Submenú de Asignaturas -->
@@ -27,13 +27,30 @@
             </a>
           </mat-nav-list>
         </div>
+
+        <!-- Enlace a Eventos -->
+        <a mat-list-item [routerLink]="['/dashboardstudents/eventos']" routerLinkActive="active-link">
+          <mat-icon mat-list-icon>event</mat-icon>
+          <span mat-line> Eventos</span>
+        </a>
+
+        <!-- Enlace a Observaciones -->
+        <a mat-list-item [routerLink]="['/dashboardstudents/observaciones']" routerLinkActive="active-link">
+          <mat-icon mat-list-icon>notes</mat-icon>
+          <span mat-line> Observaciones</span>
+        </a>
+        <!-- Enlace al perfil -->
+        <a mat-list-item [routerLink]="['/dashboardstudents/perfil']">
+          <mat-icon mat-list-icon>person</mat-icon>
+          <span mat-line> Perfil</span>
+        </a>
       </mat-nav-list>
     </mat-sidenav>
 
     <mat-sidenav-content>
       <br>
       <!-- Usamos una condición para mostrar u ocultar las otras componentes -->
-      <ng-container *ngIf="!isAsignaturaSelected()">
+      <ng-container *ngIf="!isModuleSelected()">
         <div class="asignaturas-wrapper">
           <app-asignaturas-dashboard-student></app-asignaturas-dashboard-student>
         </div>

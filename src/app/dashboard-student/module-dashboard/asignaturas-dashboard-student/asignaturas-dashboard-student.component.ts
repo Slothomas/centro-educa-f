@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { EstudiantesService } from '../../estudiantes.service';
 import { SharedService } from 'src/app/shared.service';
 import { CommonModule } from '@angular/common';
 import { CarouselModule } from 'primeng/carousel';
+import { EstudiantesService } from 'src/app/estudiantes.service';
 
 @Component({
   selector: 'app-asignaturas-dashboard-student',

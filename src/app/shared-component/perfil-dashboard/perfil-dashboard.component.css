@@ -1,0 +1,68 @@
+.perfil-container {
+  width: 80%;
+  margin: auto;
+}
+
+.perfil-body {
+  padding: 20px;
+  font-size: 1.3em; /* Tamaño del texto */
+}
+
+.perfil-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.perfil-col {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.perfil-col:last-child {
+  margin-right: 0;
+}
+
+.perfil-col-right {
+  flex: 2; /* Hace esta columna más ancha */
+}
+
+input, p-password input, p-fileUpload, button {
+  width: 100%;
+  font-size: 1em; /* Tamaño de los inputs, passwords, file uploads y botones */
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 5px; /* Redondear los bordes de los inputs */
+}
+
+
+p-password {
+  width: 100%;
+}
+
+button.perfil-button {
+  width: 20%; /* Ajusta el tamaño de los botones */
+  margin-left: 10px; /* Añade espacio entre los botones */
+}
+
+.profile-image {
+  width: 100%;
+  max-width: 150px;
+  height: auto;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.card {
+  margin-bottom: 0;
+}
+
+.error-message {
+  color: red;
+  font-size: 1em;
+  margin-top: 5px;
+}

@@ -1,4 +1,4 @@
-import { SharedService } from './../../shared.service';
+import { SharedService } from 'src/app/shared.service';
 import { Component, OnInit } from '@angular/core';
 import { EstudiantesService } from 'src/app/estudiantes.service';
 import { TimelineModule } from 'primeng/timeline';

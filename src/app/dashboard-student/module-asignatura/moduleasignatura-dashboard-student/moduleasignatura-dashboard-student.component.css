@@ -1,62 +1,26 @@
-/* Agrega estos estilos en tu hoja de estilos CSS */
 
-/* Estilos para el botón "Volver al tablero" */
-.back-to-dashboard {
-  position: fixed;
-  top: 64px; /* Altura del toolbar */
-  right: 16px;
-  background-color: rgba(255, 255, 255, 0.8);
-  padding: 8px;
-  border-radius: 50%;
-  z-index: 1000; /* Asegura que esté por encima del contenido */
-}
-
-.back-to-dashboard a {
-  text-decoration: none;
-  color: #333;
-}
-
-.back-to-dashboard a:hover {
-  color: #000;
-}
-
-/* Estilos de la rejilla */
 .grid-container {
-  display: grid;
-  grid-template-columns: 35% 15% 50%; /* Mantener la misma proporción */
-  gap: 1rem; /* Espacio entre columnas */
-  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .grid-item {
-  padding: 1rem;
+  box-sizing: border-box;
+  padding: 10px;
 }
 
 .detalle-asignatura {
-  grid-row: span 2; /* Ocupa dos filas */
+  flex: 0 0 35%; /* 35% de ancho */
 }
 
 .promedios {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  flex: 0 0 15%; /* 15% de ancho */
 }
 
-.promedios app-promedios-asignatura {
-  margin-bottom: 1rem; /* Espacio entre las dos cards */
+.registros {
+  flex: 0 0 50%; /* 50% de ancho */
 }
 
-/* Estilos para pantallas pequeñas */
-@media (max-width: 850px) {
-  .grid-container {
-    grid-template-columns: 1fr; /* Cambiar a una sola columna en pantallas pequeñas */
-  }
-
-  .promedios {
-    flex-direction: row; /* Cambiar a una fila en pantallas pequeñas */
-  }
-
-  .promedios app-promedios-asignatura {
-    margin-bottom: 0; /* Eliminar el margen inferior en pantallas pequeñas */
-  }
+.graficos {
+  flex: 0 0 100%; /* 100% de ancho */
 }

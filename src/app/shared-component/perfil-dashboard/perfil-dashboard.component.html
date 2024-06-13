@@ -1,0 +1,79 @@
+<div class="perfil-container">
+  <div class="back-to-dashboard">
+    <a routerLink="/dashboardstudents">
+      <mat-icon mat-list-icon>home</mat-icon>
+    </a>
+  </div>
+
+  <p-toast></p-toast>
+  <!-- Utiliza appendTo="'body'" en lugar de [appendTo]="'body'" -->
+  <p-confirmDialog header="Confirmación" icon="pi pi-exclamation-triangle" [closable]="false" appendTo="body"></p-confirmDialog>
+
+  <p-panel header="Perfil">
+    <div class="perfil-body">
+      <div class="perfil-row">
+        <div class="perfil-col">
+          <p-fileUpload name="demo[]" url="./upload" accept="image/*" [maxFileSize]="100000000"></p-fileUpload>
+          <img [src]="datos.FotoPerfil" alt="Foto de perfil" *ngIf="datos.FotoPerfil" class="profile-image">
+        </div>
+        <div class="perfil-col-right">
+          <div class="perfil-row">
+            <div class="perfil-col">
+              <label for="nombre">Nombre</label>
+              <input id="nombre" pInputText [(ngModel)]="datos.Nombre" placeholder="Nombre" [disabled]="true">
+            </div>
+            <div class="perfil-col">
+              <label for="correo">Correo</label>
+              <input id="correo" pInputText [(ngModel)]="datos.Correo" placeholder="correo@correo.com" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" required (input)="checkFormChanges()" #correo="ngModel">
+              <div *ngIf="correo.invalid && (correo.dirty || correo.touched)" class="error-message">
+                Por favor ingrese un correo válido.
+              </div>
+            </div>
+          </div>
+          <div class="perfil-row">
+            <div class="perfil-col">
+              <label for="telefono">Teléfono</label>
+              <input id="telefono" pInputText [(ngModel)]="datos.Telefono" placeholder="+56912345678" pattern="^\+569\d{4}\d{4}$" required (input)="checkFormChanges()" #telefono="ngModel">
+              <div *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)" class="error-message">
+                Por favor ingrese un teléfono válido.
+              </div>
+            </div>
+            <div class="perfil-col">
+              <label for="info">Beca Activa</label>
+              <input id="info" pInputText [(ngModel)]="datos.Info" placeholder="Info" [disabled]="true">
+            </div>
+          </div>
+          <div class="perfil-row">
+            <div class="perfil-col">
+              <label for="fecha-cumpleanos">Fecha de Cumpleaños</label>
+              <input id="fecha-cumpleanos" pInputText [(ngModel)]="datos.Fecha_Cumpleanos" placeholder="Fecha de Cumpleaños" [disabled]="true">
+            </div>
+          </div>
+          <div class="perfil-row">
+            <div class="perfil-col">
+              <label for="nueva-contrasena">Nueva Contraseña</label>
+              <div class="card flex justify-content-center">
+                <p-password id="nueva-contrasena" [(ngModel)]="nuevaContrasena" placeholder="Nueva Contraseña" [toggleMask]="true" (input)="checkFormChanges()"></p-password>
+              </div>
+            </div>
+            <div class="perfil-col">
+              <label for="confirmar-contrasena">Confirmar Contraseña</label>
+              <div class="card flex justify-content-center">
+                <p-password id="confirmar-contrasena" [(ngModel)]="confirmarContrasena" placeholder="Confirmar Contraseña" [toggleMask]="true" (input)="checkFormChanges()"></p-password>
+              </div>
+              <div *ngIf="nuevaContrasena && confirmarContrasena && nuevaContrasena !== confirmarContrasena" class="error-message">
+                Las contraseñas no coinciden.
+              </div>
+            </div>
+          </div>
+          <div class="perfil-row justify-end">
+            <button pButton type="button" label="Guardar Perfil" (click)="confirmDatos($event)" class="perfil-button" [disabled]="!isProfileChanged"></button>
+            <!-- Llama a confirm1 al hacer clic en el botón de actualizar contraseña -->
+            <button pButton type="button" label="Actualizar Clave" (click)="confirmClave($event)" class="perfil-button" [disabled]="!isPasswordChanged"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </p-panel>
+</div>
+

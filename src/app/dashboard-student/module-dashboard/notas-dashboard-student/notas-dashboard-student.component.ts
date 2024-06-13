@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EstudiantesService } from 'src/app/estudiantes.service';
 import { ChartModule } from 'primeng/chart';
 import { CommonModule } from '@angular/common';
-import { SharedService } from './../../shared.service';
+import { SharedService } from '../../../shared.service';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -69,7 +69,6 @@ export class NotasDashboardStudentComponent implements OnInit {
     const notasData = selectedNotas.map(nota => nota.Nota);
     const promedioData = selectedNotas.map(nota => nota.Promedio_Evaluacion);
     const documentStyle = getComputedStyle(document.documentElement);
-    const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
 
 
     this.data = {
@@ -123,9 +122,8 @@ export class NotasDashboardStudentComponent implements OnInit {
           }
         },
         y: {
-          min: 1,
-          max: 7,
-          stepSize: 0.5,
+          min: 1.0,
+          max: 7.0,
           ticks: {
             color: '#495057',
             font: {
@@ -148,3 +146,4 @@ export class NotasDashboardStudentComponent implements OnInit {
     };
   }
 }
+

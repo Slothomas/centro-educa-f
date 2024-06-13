@@ -1,0 +1,28 @@
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-lg-8"> <!-- Colocar el tamaño deseado -->
+      <div class="card">
+        <p-card header="Detalles de la tabla">
+          <div class="card-body">
+            <p-table [value]="datos" [scrollable]="true" scrollHeight="280px" [tableStyle]="{'min-width': '100%'}" class="custom-table">
+              <!-- Encabezados de la tabla -->
+              <ng-template pTemplate="header">
+                <tr>
+                  <th class="header-cell">Nombre Compañero</th>
+                  <th class="header-cell">Correo</th>
+                </tr>
+              </ng-template>
+              <!-- Cuerpo de la tabla -->
+              <ng-template pTemplate="body" let-row>
+                <tr>
+                  <td>{{ row.Nombre_Companero }}</td>
+                  <td>{{ row.Correo }}</td>
+                </tr>
+              </ng-template>
+            </p-table>
+          </div>
+        </p-card>
+      </div>
+    </div>
+  </div>
+</div>
