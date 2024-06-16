@@ -8,7 +8,7 @@ import { CardModule } from 'primeng/card';
   standalone: true,
   imports: [CommonModule, CardModule],
   templateUrl: './detalle-asignatura.component.html',
-  styleUrls: ['./detalle-asignatura.component.css']
+  styleUrls: ['../moduleasignatura-dashboard-student/moduleasignatura-dashboard-student.component.css', './detalle-asignatura.component.css',]
 })
 export class DetalleAsignaturaComponent implements OnInit, OnChanges {
 

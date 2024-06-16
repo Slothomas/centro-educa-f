@@ -1,25 +1,3 @@
-.custom-table {
-  background-color: #ffffff; /* Cambiamos el color de fondo a negro */
-  color: #fff; /* Cambiamos el color del texto a blanco */
-  border-radius: 10px; /* Bordes redondeados */
-  text-align: center; /* Centramos el contenido de la tabla */
-}
-
-.custom-table th {
-  font-size: 1.5rem; /* Aumentamos el tamaño de fuente de los títulos de columna */
-  font-weight: bold; /* Hacemos los títulos de columna negrita */
-}
-
-.custom-table .header-cell {
-  background-color: #007bff; /* Color de fondo de los encabezados */
-  color: #fff; /* Color del texto de los encabezados */
-  font-size: 1.3rem; /* Aumentamos el tamaño de fuente de los encabezados */
-  font-weight: bold; /* Hacemos los títulos de columna negrita */
-}
-
-.custom-table td {
-  vertical-align: middle; /* Centramos verticalmente el contenido de las celdas */
-}
 
 .custom-table .presente {
   color: green; /* Color verde para el estado presente */
@@ -30,9 +8,8 @@
 }
 
 .custom-table .proxima {
-  color: #ccc; /* Color gris para el estado próxima */
+  color: lightgrey; /* Color gris para el estado próxima */
 }
-
 
 .custom-table .nota-roja {
   color: red; /* Color rojo para notas menores a 4 */
@@ -42,23 +19,18 @@
   color: rgb(0, 26, 255); /* Color azul para notas mayores o iguales a 4 */
 }
 
+
+/* Ocultar el scrollbar */
+.card::-webkit-scrollbar {
+  width: 0; /* Oculta el scrollbar en Chrome, Safari, y Edge */
+}
+
 .card {
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Efecto de sombra */
-  transition: box-shadow 0.3s ease;
-  overflow: hidden;
-  height: 340px; /* Altura fija */
+  scrollbar-width: none; /* Oculta el scrollbar en Firefox */
   background-color: #ffffff;
+  margin-top: -20px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
 }
 
-.card:hover {
-  box-shadow: 0 4px 10px #51a5ff;
-}
-
-.card-content {
-  padding: 1rem;
-}
-
-.card-content p {
-  font-size: 1.2rem;
-}

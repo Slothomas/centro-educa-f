@@ -46,10 +46,13 @@
         </a>
       </mat-nav-list>
     </mat-sidenav>
-
     <mat-sidenav-content>
       <br>
       <!-- Usamos una condición para mostrar u ocultar las otras componentes -->
+      <p-card>
+        <p-divider align="right" class="custom-divider" *ngIf="isDashboardRoute()">
+          <b>Mi Dashboard</b>
+        </p-divider>
       <ng-container *ngIf="!isModuleSelected()">
         <div class="asignaturas-wrapper">
           <app-asignaturas-dashboard-student></app-asignaturas-dashboard-student>
@@ -72,10 +75,15 @@
           </div>
         </div>
         <app-horario-dashboard-student></app-horario-dashboard-student>
+        <br>
       </ng-container>
+      <br>
+
 
       <!-- Aquí es donde cargaremos el contenido dinámico de las asignaturas -->
       <router-outlet></router-outlet>
+    </p-card>
     </mat-sidenav-content>
+
   </mat-sidenav-container>
 </div>

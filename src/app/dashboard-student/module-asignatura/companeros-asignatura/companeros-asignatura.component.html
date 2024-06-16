@@ -1,8 +1,7 @@
-<div class="container-fluid">
-  <div class="row justify-content-center">
-    <div class="col-lg-8"> <!-- Colocar el tamaño deseado -->
-      <div class="card">
-        <p-card header="Detalles de la tabla">
+<div class="card">
+        <div class="card-header">
+          <div class="card-title">Detalle Registros Asistencia/Notas</div>
+        </div>
           <div class="card-body">
             <p-table [value]="datos" [scrollable]="true" scrollHeight="280px" [tableStyle]="{'min-width': '100%'}" class="custom-table">
               <!-- Encabezados de la tabla -->
@@ -21,8 +20,4 @@
               </ng-template>
             </p-table>
           </div>
-        </p-card>
       </div>
-    </div>
-  </div>
-</div>

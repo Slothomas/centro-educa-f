@@ -1,15 +1,17 @@
+<div class="back-to-dashboard">
+  <a routerLink="/dashboardstudents">
+    <mat-icon mat-list-icon>home</mat-icon>
+  </a>
+</div>
+<p-divider align="right" class="custom-divider">
+  <b>Mi Perfil</b>
+</p-divider>
+<br>
 <div class="perfil-container">
-  <div class="back-to-dashboard">
-    <a routerLink="/dashboardstudents">
-      <mat-icon mat-list-icon>home</mat-icon>
-    </a>
-  </div>
-
   <p-toast></p-toast>
   <!-- Utiliza appendTo="'body'" en lugar de [appendTo]="'body'" -->
   <p-confirmDialog header="Confirmación" icon="pi pi-exclamation-triangle" [closable]="false" appendTo="body"></p-confirmDialog>
 
-  <p-panel header="Perfil">
     <div class="perfil-body">
       <div class="perfil-row">
         <div class="perfil-col">
@@ -74,6 +76,5 @@
         </div>
       </div>
     </div>
-  </p-panel>
 </div>
 

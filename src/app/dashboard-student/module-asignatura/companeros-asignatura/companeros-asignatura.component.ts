@@ -10,7 +10,7 @@ import { CardModule } from 'primeng/card';
   standalone  : true,
   imports: [TableModule, CommonModule, CardModule],
   templateUrl: './companeros-asignatura.component.html',
-  styleUrls: ['./companeros-asignatura.component.css']
+  styleUrls: ['./companeros-asignatura.component.css', '../moduleasignatura-dashboard-student/moduleasignatura-dashboard-student.component.css']
 })
 export class CompanerosAsignaturaComponent implements OnInit, OnChanges {
 

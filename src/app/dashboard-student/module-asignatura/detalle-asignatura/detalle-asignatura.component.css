@@ -1,37 +1,22 @@
-.detalle-card {
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px; /* Aumenta el espacio entre las tarjetas */
-}
-
-.detalle-card:hover {
-  box-shadow: 0 4px 10px #51a5ff;
-}
-
-.card-header {
-  padding: 1rem;
-  background-color: #007bff;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  color: #fff;
-}
-
-.card-header .card-title {
-  font-size: 1.5rem;
-  font-weight: bold;
-}
 
 .card-content {
   padding: 1rem;
-  flex-grow: 1;
-  overflow-y: auto;
 }
 
 .card-content p {
-  font-size: 1.2rem;
+  margin-bottom: 0.5rem; /* Espaciado inferior */
+  font-size: 1.2rem; /* Tamaño del texto */
+  line-height: 1.5; /* Altura de línea */
+  color: #000000; /* Color del texto */
+}
+
+.card-content p strong {
+  color: #007bff; /* Color del texto fuerte */
+}
+
+.card {
+  height: 360px;
+  margin-top: -20px; /* Ajusta este valor según sea necesario */
+  margin-bottom: 20px;
+
 }

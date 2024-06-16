@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, ActivatedRoute, Router } from '@angular/router';
 import { SharedService } from 'src/app/shared.service';
-import { PanelModule } from 'primeng/panel';
 import { FormsModule } from '@angular/forms';
 import { PasswordModule } from 'primeng/password';
 import { FileUploadModule } from 'primeng/fileupload';
@@ -11,13 +10,14 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ToastModule } from 'primeng/toast';
 import { timer } from 'rxjs';
+import { DividerModule } from 'primeng/divider';
 
 
 @Component({
   selector: 'app-perfil-dashboard',
   standalone: true,
-  imports: [CommonModule, RouterLink, FormsModule, PanelModule, PasswordModule, FileUploadModule, MatIconModule,
-    ToastModule, ConfirmDialogModule],
+  imports: [CommonModule, RouterLink, FormsModule, PasswordModule, FileUploadModule, MatIconModule,
+    ToastModule, ConfirmDialogModule, RouterLink,DividerModule],
   providers: [ConfirmationService, MessageService],
   templateUrl: './perfil-dashboard.component.html',
   styleUrls: ['./perfil-dashboard.component.css']

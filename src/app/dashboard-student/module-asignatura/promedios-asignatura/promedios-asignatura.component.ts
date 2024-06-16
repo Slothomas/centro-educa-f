@@ -9,7 +9,7 @@ import { EstudiantesService } from 'src/app/estudiantes.service';
   standalone: true,
   imports: [CommonModule, CardModule],
   templateUrl: './promedios-asignatura.component.html',
-  styleUrls: ['./promedios-asignatura.component.css']
+  styleUrls: ['../moduleasignatura-dashboard-student/moduleasignatura-dashboard-student.component.css','./promedios-asignatura.component.css']
 })
 
 export class PromediosAsignaturaComponent implements OnInit, OnChanges {

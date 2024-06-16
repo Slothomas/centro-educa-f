@@ -22,3 +22,15 @@
 .back-to-dashboard a:hover {
   color: #000;
 }
+
+
+
+html, body {
+  overflow: -moz-scrollbars-none; /* Oculta barras de desplazamiento en Firefox */
+  -ms-overflow-style: none; /* Oculta barras de desplazamiento en IE y Edge */
+  scrollbar-width: none; /* Oculta barras de desplazamiento en Firefox */
+}
+
+body::-webkit-scrollbar {
+  display: none; /* Oculta barras de desplazamiento en Chrome, Safari y Opera */
+}

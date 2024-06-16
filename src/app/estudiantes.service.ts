@@ -95,6 +95,13 @@ export class EstudiantesService {
       return this.http.post<any>(endpoint, { rutEstudiante_str: rutEstudiante });
     }
 
+    //Metodo para inscribirse en eventos
+    inscripcionEvento(rut: string, idEvento: number): Observable<any> {
+      const endpoint = `${this.apiUrl}/inscripcionEvento`;
+      console.log('estudianteServices.inscripcionEvento - updating details for RUT:', rut, 'and Event ID:', idEvento);
+      return this.http.put<any>(endpoint, { rutEstudiante_str: rut, idEvento_int: idEvento });
+    }
+
 
     //METODOS PARA EL MODULO OBSERVACIONES.
     obtenerDetalleObservaciones(rutEstudiante: string): Observable<any> {

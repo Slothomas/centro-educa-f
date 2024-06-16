@@ -7,7 +7,10 @@
   margin: 0 auto; /* Centramos las tarjetas */
   height: 150px; /* Altura fija para las tarjetas */
   overflow: hidden; /* Oculta el contenido que exceda la altura */
+  margin-top: 20px; /* Ajusta este valor según sea necesario */
+
 }
+
 
 .card:hover {
   box-shadow: 0 4px 12px rgba(218, 0, 0, 0.2);

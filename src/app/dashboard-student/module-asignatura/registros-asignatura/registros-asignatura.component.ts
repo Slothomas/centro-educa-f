@@ -10,7 +10,7 @@ import { TableModule } from 'primeng/table';
   standalone: true,
   imports: [CommonModule, TabViewModule, TableModule],
   templateUrl: './registros-asignatura.component.html',
-  styleUrls: ['./registros-asignatura.component.css']
+  styleUrls: ['./registros-asignatura.component.css', '../moduleasignatura-dashboard-student/moduleasignatura-dashboard-student.component.css']
 })
 
 export class RegistrosAsignaturaComponent implements OnChanges {

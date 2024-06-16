@@ -6,7 +6,7 @@ import { ChartModule } from 'primeng/chart';
   selector: 'app-graficos-asignatura',
   standalone: true,
   templateUrl: './graficos-asignatura.component.html',
-  styleUrls: ['./graficos-asignatura.component.css'],
+  styleUrls: ['../moduleasignatura-dashboard-student/moduleasignatura-dashboard-student.component.css','./graficos-asignatura.component.css'],
   imports: [ChartModule]
 })
 export class GraficosAsignaturaComponent implements OnChanges {

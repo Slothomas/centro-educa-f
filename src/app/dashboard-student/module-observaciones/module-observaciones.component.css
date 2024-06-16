@@ -1,0 +1,57 @@
+/* Estilos para el contenedor de filtros */
+.filters {
+  display: flex;
+  justify-content: space-between; /* Espacio entre los elementos */
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+/* Estilos para los elementos del filtro */
+.filters .filter-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.filters .filter {
+  margin-right: 1rem;
+}
+
+.clear-filter {
+  margin-right: 1rem; /* Espacio entre el filtro y el botón de limpiar */
+}
+
+.search-input {
+  display: flex;
+  align-items: center;
+}
+
+/* Estilos para el botón "Volver al tablero" */
+.back-to-dashboard {
+  position: fixed;
+  top: 685px; /* Altura del toolbar */
+  right: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 7px;
+  border-radius: 40%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.3s ease;
+  z-index: 1000;
+}
+
+.back-to-dashboard a:hover {
+  color: #ff0000;
+}
+
+
+.custom-divider b {
+  font-size: 36px; /* Tamaño de la letra */
+  font-weight: bold; /* Negrita */
+  color: #333; /* Color del texto */
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3); /* Sombra de texto */
+}
+
+.custom-divider::before {
+  content: ""; /* Agregamos un contenido vacío para el pseudo-elemento */
+  display: block;
+  margin-top: -30px; /* Movemos la línea hacia arriba */
+}

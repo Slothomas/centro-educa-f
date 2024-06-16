@@ -4,9 +4,56 @@
   </a>
 </div>
 
-<!-- Contenido del perfil de usuario -->
-<div class="grid-container">
-  <!-- Agrega aquí los componentes del perfil de usuario -->
-  <h1>Modulo de Observaciones</h1>
-  <p>{{rutEstudiante}}  </p>
-</div>
+  <p-divider align="right" class="custom-divider">
+    <b>Mis Observaciones</b>
+  </p-divider>
+  <br>
+
+  <div class="filters">
+    <div class="filter-wrapper">
+      <div class="filter">
+        <p-dropdown [options]="tipoObservaciones" placeholder="Filtrar por Tipo" [(ngModel)]="busqueda"></p-dropdown>
+      </div>
+      <div class="clear-filter">
+        <button pButton type="button" class="p-button-danger" (click)="limpiarFiltros()">
+          <i class="pi pi-times"><strong>X</strong></i> <!-- Icono X -->
+        </button>
+      </div>
+    </div>
+    <div class="search-input">
+      <span class="p-input-icon-left">
+        <i class="pi pi-search"></i>
+        <input pInputText type="text" [(ngModel)]="busqueda" placeholder="Buscar..." />
+      </span>
+    </div>
+  </div>
+
+  <p-scrollPanel [style]="{ 'height.px': '300', 'width.%': '100' }">
+    <p-tabView>
+      <p-tabPanel *ngFor="let asignatura of asignaturas" [header]="asignatura">
+        <p-table [value]="filtrarObservaciones(asignatura)" [paginator]="true" [rows]="10" [rowsPerPageOptions]="[10, 25, 50]" [globalFilterFields]="['Descripcion_Observacion', 'Nombre_Profesor']">
+          <ng-template pTemplate="header">
+            <tr>
+              <th pSortableColumn="Tipo_Observacion">Tipo Observación <p-sortIcon field="Tipo_Observacion"></p-sortIcon></th>
+              <th pSortableColumn="Descripcion_Observacion">Descripción <p-sortIcon field="Descripcion_Observacion"></p-sortIcon></th>
+              <th pSortableColumn="Fecha_Registro">Fecha <p-sortIcon field="Fecha_Registro"></p-sortIcon></th>
+              <th pSortableColumn="Nombre_Profesor">Profesor <p-sortIcon field="Nombre_Profesor"></p-sortIcon></th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-observacion>
+            <tr>
+              <td>{{ observacion.Tipo_Observacion }}</td>
+              <td>{{ observacion.Descripcion_Observacion }}</td>
+              <td>{{ observacion.Fecha_Registro | date }}</td>
+              <td>{{ observacion.Nombre_Profesor }}</td>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="emptymessage">
+            <tr>
+              <td colspan="4">No hay observaciones encontradas.</td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </p-tabPanel>
+    </p-tabView>
+  </p-scrollPanel>

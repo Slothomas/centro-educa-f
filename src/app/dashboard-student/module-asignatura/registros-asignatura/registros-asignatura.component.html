@@ -1,46 +1,46 @@
-<div class="card shadow"> <!-- Agregamos la clase "shadow" para el efecto de sombra -->
+<div class="card">
   <p-tabView>
-    <ng-container *ngFor="let tab of tabs">
-      <p-tabPanel [header]="tab.title">
-        <div class="card-content">
-          <p-table [value]="tab.content" [scrollable]="true" scrollHeight="280px" [tableStyle]="{'min-width': '50rem'}" class="custom-table"> <!-- Agregamos la clase "custom-table" para estilos adicionales -->
-            <ng-template pTemplate="header">
-              <tr *ngIf="tab.title === 'Asistencia'">
-                <th class="header-cell">Tipo</th> <!-- Agregamos la clase "header-cell" para los encabezados -->
-                <th class="header-cell">Registro</th>
-                <th class="header-cell">Fecha Registro</th>
-              </tr>
-              <tr *ngIf="tab.title.startsWith('Nota')">
-                <th class="header-cell">Tipo</th>
-                <th class="header-cell">Tu Nota</th>
-                <th class="header-cell">Promedio Curso</th>
-                <th class="header-cell">Ponderación</th>
-                <th class="header-cell">Fecha Evaluacion</th>
-              </tr>
-            </ng-template>
-            <ng-template pTemplate="body" let-dato>
-              <tr *ngIf="tab.title === 'Asistencia'">
-                <td><b>{{ dato.Tipo }}</b></td>
-                <td [ngClass]="{'presente': dato.Registro === 5, 'ausente': dato.Registro === 6, 'proxima': dato.Registro === 7}">
-                  <b>{{ getRegistroTexto(dato.Registro, dato.Fecha) }}</b> <!-- Aplicamos negrita -->
-                </td>
-                <td><b>{{ dato.Fecha }}</b></td> <!-- Aplicamos negrita -->
-              </tr>
-              <tr *ngIf="tab.title.startsWith('Nota')">
-                <td><b>{{ dato.Tipo }}</b></td>
-                <td [ngClass]="{'nota-roja': dato.Registro < 4, 'nota-azul': dato.Registro >= 4}">
-                  <b>{{ dato.Registro }}</b> <!-- Aplicamos negrita -->
-                </td>
-                <td [ngClass]="{'nota-roja': dato.Promedio < 4, 'nota-azul': dato.Promedio >= 4}">
-                  <b>{{ dato.Promedio }}</b> <!-- Aplicamos negrita -->
-                </td>
-                <td><b>{{ dato.Ponderacion }}</b></td> <!-- Aplicamos negrita -->
-                <td><b>{{ dato.Fecha }}</b></td> <!-- Aplicamos negrita -->
-              </tr>
-            </ng-template>
-          </p-table>
-        </div>
-      </p-tabPanel>
-    </ng-container>
+      <ng-container *ngFor="let tab of tabs">
+          <p-tabPanel [header]="tab.title">
+              <div class="table-container">
+                  <p-table [value]="tab.content" [scrollable]="true" scrollHeight="290px" [tableStyle]="{'min-width': '20rem'}" class="custom-table"> <!-- Agregamos la clase "custom-table" para estilos adicionales -->
+                      <ng-template pTemplate="header">
+                          <tr *ngIf="tab.title === 'Asistencia'">
+                              <th class="header-cell">Tipo</th> <!-- Agregamos la clase "header-cell" para los encabezados -->
+                              <th class="header-cell">Registro</th>
+                              <th class="header-cell">Fecha</th>
+                          </tr>
+                          <tr *ngIf="tab.title.startsWith('Nota')">
+                              <th class="header-cell">Tipo</th>
+                              <th class="header-cell">Tu Nota</th>
+                              <th class="header-cell">Prom Curso</th>
+                              <th class="header-cell">Ponderación</th>
+                              <th class="header-cell">Fecha</th>
+                          </tr>
+                      </ng-template>
+                      <ng-template pTemplate="body" let-dato>
+                          <tr *ngIf="tab.title === 'Asistencia'">
+                              <td><b>{{ dato.Tipo }}</b></td>
+                              <td [ngClass]="{'presente': dato.Registro === 5, 'ausente': dato.Registro === 6, 'proxima': dato.Registro === null}">
+                                  <b>{{ getRegistroTexto(dato.Registro, dato.Fecha) }}</b> <!-- Aplicamos negrita -->
+                              </td>
+                              <td><b>{{ dato.Fecha }}</b></td> <!-- Aplicamos negrita -->
+                          </tr>
+                          <tr *ngIf="tab.title.startsWith('Nota')">
+                              <td><b>{{ dato.Tipo }}</b></td>
+                              <td [ngClass]="{'nota-roja': dato.Registro < 4, 'nota-azul': dato.Registro >= 4}">
+                                  <b>{{ dato.Registro }}</b> <!-- Aplicamos negrita -->
+                              </td>
+                              <td [ngClass]="{'nota-roja': dato.Promedio < 4, 'nota-azul': dato.Promedio >= 4}">
+                                  <b>{{ dato.Promedio }}</b> <!-- Aplicamos negrita -->
+                              </td>
+                              <td><b>{{ dato.Ponderacion }}</b></td> <!-- Aplicamos negrita -->
+                              <td><b>{{ dato.Fecha }}</b></td> <!-- Aplicamos negrita -->
+                          </tr>
+                      </ng-template>
+                  </p-table>
+              </div>
+          </p-tabPanel>
+      </ng-container>
   </p-tabView>
 </div>

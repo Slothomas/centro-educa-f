@@ -8,6 +8,7 @@ import { PromediosAsignaturaComponent } from '../promedios-asignatura/promedios-
 import { RegistrosAsignaturaComponent } from '../registros-asignatura/registros-asignatura.component';
 import { CompanerosAsignaturaComponent } from '../companeros-asignatura/companeros-asignatura.component';
 import { GraficosAsignaturaComponent } from '../graficos-asignatura/graficos-asignatura.component';
+import { DividerModule } from 'primeng/divider';
 
 
 @Component({
@@ -19,7 +20,8 @@ import { GraficosAsignaturaComponent } from '../graficos-asignatura/graficos-asi
     RegistrosAsignaturaComponent,
     CompanerosAsignaturaComponent,
     GraficosAsignaturaComponent,
-    CompanerosAsignaturaComponent
+    CompanerosAsignaturaComponent,
+    DividerModule
     ],
   templateUrl: './moduleasignatura-dashboard-student.component.html',
   styleUrls: ['./moduleasignatura-dashboard-student.component.css']

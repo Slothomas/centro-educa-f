@@ -1,16 +1,26 @@
 <!-- Componente de los gráficos -->
-<div class="grid-item graficos">
+<div class="graphic-grid-container">
   <!-- Card para el primer gráfico -->
-  <div class="card grafico-card">
-    <div class="card-content">
-      <p-chart type="bar" [data]="barChartData" [options]="barChartOptions"></p-chart>
+  <div class="graphic-grid-item">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">Comparativo Nota vs Promedio Curso</div>
+      </div>
+      <div class="card-content">
+        <p-chart type="bar" [data]="barChartData" [options]="barChartOptions"></p-chart>
+      </div>
     </div>
   </div>
 
   <!-- Card para el segundo gráfico -->
-  <div class="card grafico-card">
-    <div class="card-content">
-      <p-chart type="polarArea" [data]="polarAreaChartData" [options]="polarAreaChartOptions"></p-chart>
+  <div class="graphic-grid-item">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">Comparativo Promedio Asignaturas</div>
+      </div>
+      <div class="card-content">
+        <p-chart type="polarArea" [data]="polarAreaChartData" [options]="polarAreaChartOptions"></p-chart>
+      </div>
     </div>
   </div>
 </div>

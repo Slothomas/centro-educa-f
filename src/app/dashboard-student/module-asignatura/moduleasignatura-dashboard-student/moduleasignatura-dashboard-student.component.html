@@ -4,8 +4,15 @@
   </a>
 </div>
 
+<p-divider align="right" class="custom-divider">
+  <b>Mi Asignatura</b>
+</p-divider>
+<br>
+<br>
+<br>
+
 <div class="grid-container">
-  <!-- Componente de Detalle Asignatura -->
+  <!-- Primera línea: Detalle, Promedios, Registros -->
   <div class="grid-item detalle-asignatura">
     <app-detalle-asignatura
       [rutEstudiante]="rutEstudiante"
@@ -14,7 +21,6 @@
     </app-detalle-asignatura>
   </div>
 
-  <!-- Componente de Promedios Asignatura -->
   <div class="grid-item promedios">
     <app-promedios-asignatura
       [rutEstudiante]="rutEstudiante"
@@ -23,7 +29,6 @@
     </app-promedios-asignatura>
   </div>
 
-  <!-- Placeholder para el componente de los registros -->
   <div class="grid-item registros">
     <app-registros-asignatura
       [rutEstudiante]="rutEstudiante"
@@ -32,7 +37,7 @@
     </app-registros-asignatura>
   </div>
 
-  <!-- Placeholder para el componente de los gráficos -->
+  <!-- Segunda línea: Gráficos -->
   <div class="grid-item graficos">
     <app-graficos-asignatura
       [rutEstudiante]="rutEstudiante"
@@ -41,7 +46,8 @@
     </app-graficos-asignatura>
   </div>
 
-  <div>
+  <!-- Tercera línea: Compañeros -->
+  <div class="grid-item companeros">
     <app-companeros-asignatura
       [rutEstudiante]="rutEstudiante"
       [idCurso]="idCurso"

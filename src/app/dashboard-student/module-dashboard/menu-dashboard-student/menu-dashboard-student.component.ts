@@ -14,7 +14,8 @@ import { ProximosDashboardStudentComponent } from '../proximos-dashboard-student
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { AsignaturasDashboardStudentComponent } from '../asignaturas-dashboard-student/asignaturas-dashboard-student.component';
 import { HorarioDashboardStudentComponent } from '../horario-dashboard-student/horario-dashboard-student.component';
-
+import { CardModule } from 'primeng/card';
+import { DividerModule } from 'primeng/divider';
 
 @Component({
   selector: 'app-menu-dashboard-student',
@@ -31,7 +32,9 @@ import { HorarioDashboardStudentComponent } from '../horario-dashboard-student/h
     RouterLink,
     RouterOutlet,
     AsignaturasDashboardStudentComponent,
-    HorarioDashboardStudentComponent
+    HorarioDashboardStudentComponent,
+    CardModule,
+    DividerModule
   ],
   templateUrl: './menu-dashboard-student.component.html',
   styleUrls: ['./menu-dashboard-student.component.css']
@@ -120,6 +123,13 @@ export class MenuDashboardStudentComponent implements OnInit, OnDestroy {
   isModuleSelected(): boolean {
     const routes = ['/dashboardstudents/asignatura/', '/dashboardstudents/eventos', '/dashboardstudents/observaciones', '/dashboardstudents/perfil'];
     return routes.some(route => this.router.url.includes(route));
+  }
+
+  isDashboardRoute(): boolean {
+    // Obtenemos la ruta actual
+    const currentRoute = this.router.url;
+    // Verificamos si la ruta termina en "dashboardstudents"
+    return currentRoute.endsWith('dashboardstudents');
   }
 
 }

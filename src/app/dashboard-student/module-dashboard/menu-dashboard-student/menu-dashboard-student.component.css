@@ -1,3 +1,4 @@
+/* Contenedor principal */
 .example-container {
   display: flex;
   flex-direction: column;
@@ -6,8 +7,26 @@
   bottom: 0;
   left: 0;
   right: 0;
+  overflow: hidden; /* Oculta las barras de desplazamiento */
 }
 
+/* Contenedor del sidenav */
+.example-sidenav-container {
+  flex: 1;
+  position: relative;
+  overflow: hidden; /* Oculta las barras de desplazamiento */
+}
+
+.example-sidenav-container::-webkit-scrollbar {
+  display: none; /* Oculta barras de desplazamiento en Chrome, Safari y Opera */
+}
+
+.example-sidenav-container {
+  -ms-overflow-style: none; /* Oculta barras de desplazamiento en IE y Edge */
+  scrollbar-width: none; /* Oculta barras de desplazamiento en Firefox */
+}
+
+/* Estilos para el toolbar */
 .example-toolbar {
   background: linear-gradient(to right, #333, #000);
   color: white;
@@ -20,16 +39,13 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.9);
 }
 
-.example-sidenav-container {
-  flex: 1;
-  position: relative;
-}
-
+/* Estilos para el sidenav en modo móvil */
 .example-is-mobile .example-toolbar {
   position: fixed;
   z-index: 2;
 }
 
+/* Estilos para la superposición del sidenav */
 .sidenav-overlay {
   position: fixed;
   top: 0;
@@ -41,15 +57,18 @@
   pointer-events: auto;
 }
 
+/* Ancho del sidenav */
 .example-sidenav {
   width: 250px; /* Cambia este valor al ancho deseado */
 }
 
+/* Contenedor de asignaturas */
 .asignaturas-wrapper {
   width: 100%;
   margin-bottom: 20px;
 }
 
+/* Contenedor de notas y eventos */
 .notas-proximos-wrapper {
   display: flex;
   flex-wrap: wrap;
@@ -59,27 +78,68 @@
   flex: 1 0 100%;
 }
 
+/* Estilos para las cards */
 .card {
   margin-bottom: 20px; /* Espacio entre las cards */
+  overflow: hidden; /* Oculta las barras de desplazamiento */
 }
 
-@media (min-width: 600px) {
+.card::-webkit-scrollbar {
+  display: none; /* Oculta barras de desplazamiento en Chrome, Safari y Opera */
+}
+
+.card {
+  -ms-overflow-style: none; /* Oculta barras de desplazamiento en IE y Edge */
+  scrollbar-width: none; /* Oculta barras de desplazamiento en Firefox */
+}
+
+/* Estilos personalizados */
+.custom-divider b {
+  font-size: 36px; /* Tamaño de la letra */
+  font-weight: bold; /* Negrita */
+  color: #333; /* Color del texto */
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3); /* Sombra de texto */
+}
+
+.custom-divider::before {
+  content: ""; /* Agregamos un contenido vacío para el pseudo-elemento */
+  display: block;
+  margin-top: -10px; /* Movemos la línea hacia arriba */
+}
+
+/* Estilos para el componente p-card */
+:host ::ng-deep .p-card {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 20px; /* Espacio entre las tarjetas */
+}
+
+/* Media queries para disposición responsiva */
+@media (min-width: 850px) {
   .notas-wrapper {
-    flex: 0 0 65%;
-    max-width: 65%;
+    flex: 0 0 65%; /* Cambia el porcentaje según tus necesidades */
+    max-width: 65%; /* Igual que arriba */
   }
 
   .eventos-wrapper {
-    flex: 0 0 35%;
-    max-width: 35%;
+    flex: 0 0 35%; /* Cambia el porcentaje según tus necesidades */
+    max-width: 35%; /* Igual que arriba */
   }
 }
 
+@media (max-width: 850px) {
+  .notas-wrapper, .eventos-wrapper {
+    flex: 1 0 100%; /* Ambos componentes ocupan el 100% del ancho en dispositivos pequeños */
+    max-width: 100%;
+  }
+}
+
+/* Estilo para el enlace activo en el sidenav */
 .active-link {
   background-color: rgba(0, 0, 0, 0.04);
 }
 
-
+/* Orden para el último elemento en el sidenav */
 .example-sidenav .mat-list-item:last-child {
   order: 999; /* Coloca el último elemento al final */
 }

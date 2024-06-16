@@ -1,6 +1,27 @@
+/* Estilos para el botón "Volver al tablero" */
+.back-to-dashboard {
+  position: fixed;
+  top: 685px; /* Altura del toolbar */
+  right: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 7px;
+  border-radius: 40%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.3s ease;
+  z-index: 1000;
+}
+
+.back-to-dashboard a:hover {
+  color: #ff0000;
+}
+
+
 .perfil-container {
   width: 80%;
   margin: auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  background-color: #fff;
+  border-radius: 10px;
 }
 
 .perfil-body {
@@ -12,11 +33,14 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
+  flex-wrap: wrap; /* Permitir que las columnas se envuelvan en pantallas más pequeñas */
 }
 
 .perfil-col {
   flex: 1;
   margin-right: 10px;
+  min-width: 200px; /* Asegurarse de que las columnas tengan un ancho mínimo */
+
 }
 
 .perfil-col:last-child {
@@ -24,25 +48,28 @@
 }
 
 .perfil-col-right {
-  flex: 2; /* Hace esta columna más ancha */
+  flex: 2;
+
+  justify-content: space-between;
+
 }
 
-input, p-password input, p-fileUpload, button {
+input, button {
   width: 100%;
   font-size: 1em; /* Tamaño de los inputs, passwords, file uploads y botones */
   padding: 10px;
-  box-sizing: border-box;
+  border: 1px solid #ddd; /* Añadir borde a los inputs */
   border-radius: 5px; /* Redondear los bordes de los inputs */
 }
 
 
-p-password {
-  width: 100%;
-}
-
 button.perfil-button {
-  width: 20%; /* Ajusta el tamaño de los botones */
+  width: auto;
+  min-width: 80px; /* Asegurarse de que los botones tengan un ancho mínimo */
   margin-left: 10px; /* Añade espacio entre los botones */
+  margin-top: 10px; /* Añadir margen superior para que no se toquen los botones */
+  justify-content: space-between;
+  display: flex;
 }
 
 .profile-image {
@@ -51,6 +78,8 @@ button.perfil-button {
   height: auto;
   display: block;
   margin-bottom: 20px;
+  border-radius: 50%; /* Hacer la imagen circular */
+  border: 2px solid #ddd; /* Añadir borde a la imagen */
 }
 
 .justify-end {
@@ -66,3 +95,48 @@ button.perfil-button {
   font-size: 1em;
   margin-top: 5px;
 }
+
+
+
+.custom-divider b {
+  font-size: 36px; /* Tamaño de la letra */
+  font-weight: bold; /* Negrita */
+  color: #333; /* Color del texto */
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3); /* Sombra de texto */
+}
+
+.custom-divider::before {
+  content: ""; /* Agregamos un contenido vacío para el pseudo-elemento */
+  display: block;
+  margin-top: -30px; /* Movemos la línea hacia arriba */
+}
+
+/* Estilos responsivos */
+@media (max-width: 1150px) {
+  .perfil-container {
+    width: 100%; /* Ajustar el ancho para pantallas pequeñas */
+    padding: 10px;
+  }
+
+  .perfil-row {
+    flex-direction: column; /* Apilar las columnas verticalmente */
+  }
+
+  .perfil-col {
+    margin-right: 0;
+    margin-bottom: 10px; /* Añadir margen inferior para separar las columnas */
+  }
+
+  .perfil-col-right {
+    flex: 1; /* Hacer que la columna derecha ocupe todo el ancho */
+  }
+
+  button.perfil-button {
+    width: 100%; /* Hacer que los botones ocupen todo el ancho */
+    margin-left: 0; /* Eliminar margen izquierdo */
+    margin-top: 10px; /* Añadir margen superior */
+  }
+
+}
+
+

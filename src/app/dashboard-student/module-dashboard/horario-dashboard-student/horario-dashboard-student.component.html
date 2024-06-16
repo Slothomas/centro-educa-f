@@ -1,6 +1,19 @@
-<div *ngFor="let clase of horario">
-  <p>{{ clase.Nombre_Asignatura }} - {{ clase.Lugar }}</p>
-  <p>Día: {{ clase.Dia_Semana }}</p>
-  <p>Inicio: {{ clase.Hora_Inicio }}</p>
-  <p>Fin: {{ clase.Hora_Fin }}</p>
+<div class="card">
+  <div class="card-body">
+    <h2 class="card-title">Horario de la Semana</h2>
+    <hr class="card-divider">
+    <div class="calendar-container">
+      <!-- Calendario -->
+      <div class="calendar">
+        <full-calendar [options]="calendarOptions"></full-calendar>
+      </div>
+    </div>
+    <!-- Leyenda de colores -->
+    <div class="legend">
+      <div *ngFor="let color of legendColors | keyvalue" class="legend-item">
+        <span class="legend-color" [style.background-color]="color.key"></span>
+        <span class="legend-text">{{ color.value }}</span>
+      </div>
+    </div>
+  </div>
 </div>
