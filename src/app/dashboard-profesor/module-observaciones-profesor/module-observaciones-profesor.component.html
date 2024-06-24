@@ -1,0 +1,90 @@
+<div class="card">
+  <!-- Botón flotante -->
+  <div class="back-to-dashboard">
+    <a routerLink="/dashboardteachers">
+      <mat-icon mat-list-icon>home</mat-icon>
+    </a>
+  </div>
+  <div class="floating-button" (click)="abrirPopup()">
+    <mat-icon mat-list-icon>add</mat-icon>
+  </div>
+  <p-divider align="right" class="custom-divider">
+    <b>Mis Observaciones</b>
+  </p-divider>
+  <br>
+  <p-tabView>
+      <ng-container *ngFor="let curso of cursos">
+          <p-tabPanel [header]="curso">
+              <p-accordion [multiple]="true">
+                  <ng-container *ngFor="let estudiante of obtenerEstudiantesCurso(curso)">
+                      <p-accordionTab [header]="estudiante">
+                          <p-tabView>
+                              <ng-container *ngFor="let asignatura of obtenerAsignaturasPorEstudiante(curso, estudiante)">
+                                  <p-tabPanel [header]="asignatura">
+                                      <div class="observacion-container">
+                                          <p-table [value]="obtenerObservaciones(curso, estudiante, asignatura)" [scrollable]="true"
+                                                   scrollHeight="200px" [paginator]="true" [rows]="10" class="custom-table">
+                                              <ng-template pTemplate="header">
+                                                  <tr>
+                                                      <th class="header-cell">Tipo de Observación</th>
+                                                      <th class="header-cell">Descripción</th>
+                                                      <th class="header-cell">Fecha de Registro</th>
+                                                  </tr>
+                                              </ng-template>
+                                              <ng-template pTemplate="body" let-observacion>
+                                                  <tr>
+                                                      <td>{{ observacion.Tipo_Observacion }}</td>
+                                                      <td>{{ observacion.Descripcion_Observacion }}</td>
+                                                      <td>{{ observacion.Fecha_Registro | date }}</td>
+                                                  </tr>
+                                              </ng-template>
+                                          </p-table>
+                                      </div>
+                                  </p-tabPanel>
+                              </ng-container>
+                          </p-tabView>
+                      </p-accordionTab>
+                  </ng-container>
+              </p-accordion>
+          </p-tabPanel>
+      </ng-container>
+  </p-tabView>
+
+  <p-dialog header="Crear Observación" [(visible)]="displayPopup" [modal]="true" [responsive]="true" [style]="{width: '500px'}">
+    <div class="p-fluid">
+      <div class="p-field">
+        <label for="curso">Curso</label>
+        <p-dropdown id="curso" [(ngModel)]="selectedCurso" [options]="getCursosDropdownOptions()" placeholder="Selecciona un curso"></p-dropdown>
+        <br>
+      </div>
+      <div class="p-field">
+        <label for="asignatura">Asignatura</label>
+        <p-dropdown id="asignatura" [(ngModel)]="selectedAsignatura" [options]="getAsignaturasDropdownOptions()" placeholder="Selecciona una asignatura"></p-dropdown>
+        <br>
+      </div>
+      <div class="p-field">
+        <label for="estudiante">Estudiante</label>
+        <p-dropdown id="estudiante" [(ngModel)]="selectedEstudiante" [options]="getEstudiantesDropdownOptions()" placeholder="Selecciona un estudiante"></p-dropdown>
+        <br>
+      </div>
+      <div class="p-field">
+        <label for="tipo">Tipo de Observación</label>
+        <p-dropdown id="tipo" [(ngModel)]="selectedTipo" [options]="tipoObservaciones" placeholder="Selecciona un tipo"></p-dropdown>
+        <br>
+      </div>
+      <div class="p-field">
+        <label for="descripcion">Descripción</label>
+        <br>
+        <textarea id="descripcion" [(ngModel)]="observacionDescripcion" rows="5" placeholder="Descripción de la observación"></textarea>
+        <br>
+      </div>
+    </div>
+    <p-footer>
+      <button pButton type="button" label="Cancelar" icon="pi pi-times" class="p-button-text" (click)="cerrarPopup()"></button>
+      <button pButton type="button" label="Crear" icon="pi pi-check" class="p-button-success" (click)="guardarObservacion()"></button>
+    </p-footer>
+  </p-dialog>
+
+
+  <p-toast></p-toast>
+</div>

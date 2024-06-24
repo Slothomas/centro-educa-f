@@ -16,14 +16,14 @@
 
 
 /* Pantallas grandes */
-@media (min-width: 768px) {
+@media (min-width: 800px) {
   .graphic-grid-item {
     flex: 0 0 49.4%; /* Cada gráfico ocupa el 50% del ancho en pantallas grandes */
   }
 }
 
 /* Pantallas pequeñas */
-@media (max-width: 768px) {
+@media (max-width: 800px) {
   .graphic-grid-item {
     flex: 0 0 100%; /* Cada gráfico ocupa el 100% del ancho en pantallas pequeñas */
     margin-bottom: 20px;

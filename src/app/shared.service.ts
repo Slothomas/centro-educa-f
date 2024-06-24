@@ -3,26 +3,27 @@ import { ReplaySubject, Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { EstudiantesService } from './estudiantes.service';
 import { HttpClient } from '@angular/common/http';
+import { ProfesoresService } from './profesores.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SharedService {
-  private static readonly RUT_KEY = 'rutEstudiante';
+  private static readonly RUT_KEY = 'rut';
   private static readonly ROLE_KEY = 'idtiporol';
 
-  private estudianteSubject = new ReplaySubject<any>(1); // ReplaySubject para emitir el último valor
+  private personaSubject = new ReplaySubject<any>(1); // ReplaySubject para emitir el último valor
   private asignaturasSubject = new ReplaySubject<any[]>(1); // ReplaySubject para emitir el último array de asignaturas
 
   private datosCargados = false; // Bandera para controlar si los datos del estudiante ya se cargaron
 
-  constructor(private estudiantesService: EstudiantesService, private http:HttpClient) {}
+  constructor(private profesoresService: ProfesoresService,private estudiantesService: EstudiantesService, private http:HttpClient) {}
 
   // Método para establecer los datos de inicio de sesión
   setLoginData(rut: string, idtiporol: number): void {
     this.saveToSessionStorage(SharedService.RUT_KEY, rut);
     this.saveToSessionStorage(SharedService.ROLE_KEY, idtiporol.toString());
-    this.loadEstudianteData(rut);
+    this.loadPersonaData(rut,idtiporol);
   }
 
   // Método para establecer los datos de las asignaturas
@@ -44,22 +45,32 @@ export class SharedService {
   clearLoginData(): void {
     this.removeFromSessionStorage(SharedService.RUT_KEY);
     this.removeFromSessionStorage(SharedService.ROLE_KEY);
-    this.estudianteSubject.next(null);
+    this.personaSubject.next(null);
     this.datosCargados = false;
   }
 
   // Método privado para cargar los datos del estudiante
-  private loadEstudianteData(rut: string): void {
+
+  // Método privado para cargar los datos del estudiante o profesor
+  private loadPersonaData(rut: string, idtiporol: number): void {
     if (!this.datosCargados) {
-      this.estudiantesService.getDatosEstudiante(rut).pipe(
+      let serviceCall;
+
+      if (idtiporol === 3) { // Suponiendo que 3 es el idtiporol para estudiantes
+        serviceCall = this.estudiantesService.getDatosEstudiante(rut);
+      } else { // Suponiendo cualquier otro valor para profesores
+        serviceCall = this.profesoresService.getDatosProfesor(rut);
+      }
+
+      serviceCall.pipe(
         tap(data => {
           if (data && data.length > 0) {
-            this.estudianteSubject.next(data[0]);
+            this.personaSubject.next(data[0]);
             this.datosCargados = true;
           }
         }),
         catchError(error => {
-          console.error('Error al obtener datos del estudiante:', error);
+          console.error(`Error al obtener datos de la persona con rol ${idtiporol}:`, error);
           return of(null);
         })
       ).subscribe();
@@ -70,9 +81,17 @@ export class SharedService {
   getEstudianteData(): Observable<any> {
     const loginData = this.getLoginData();
     if (loginData.rut && !this.datosCargados) {
-      this.loadEstudianteData(loginData.rut);
+      this.loadPersonaData(loginData.rut,3);
     }
-    return this.estudianteSubject.asObservable();
+    return this.personaSubject.asObservable();
+  }
+
+  getProfesorData(): Observable<any> {
+    const loginData = this.getLoginData();
+    if (loginData.rut && !this.datosCargados) {
+      this.loadPersonaData(loginData.rut,2);
+    }
+    return this.personaSubject.asObservable();
   }
 
   // Método para obtener los datos de las asignaturas
@@ -101,10 +120,10 @@ export class SharedService {
     return this.http.post<any>(endpoint, { rut_str: rut, idTipoRol_int: idtiporol });
   }
 
-  actualizarClave(rut: string, clave: string): Observable<any> {
+  actualizarClave(rut: string, clave: string, rol: number): Observable<any> {
     const endpoint = `https://centro-educa-back.azurewebsites.net/login/actualizarClave`;
     console.log('sharedService.actualizarClave - updating password for RUT:', rut, 'and new password:', clave);
-    return this.http.put<any>(endpoint, { rut_str: rut, contrasena_str: clave });
+    return this.http.put<any>(endpoint, { rut_str: rut, contrasena_str: clave, idTipoRol_int: rol});
   }
 
 

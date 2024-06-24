@@ -1,0 +1,153 @@
+/* Estilos para el botón "Volver al tablero" */
+.back-to-dashboard {
+  position: fixed;
+  top: 685px; /* Altura del toolbar */
+  right: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 7px;
+  border-radius: 40%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.3s ease;
+  z-index: 1000;
+}
+
+.back-to-dashboard a:hover {
+  color: #ff0000;
+}
+
+/* Estilos para las tarjetas */
+.card {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: #fff;
+  scrollbar-width: none; /* Oculta el scrollbar en Firefox */
+
+}
+
+.card:hover {
+  box-shadow: 0 4px 10px #51a5ff;
+}
+
+.card-header {
+  padding: 1rem;
+  background-color: #007bff;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  color: #fff;
+  text-align: center;
+  flex: 0 0 auto; /* No crecer ni encoger */
+
+}
+
+
+.custom-divider b {
+  font-size: 36px; /* Tamaño de la letra */
+  font-weight: bold; /* Negrita */
+  color: #333; /* Color del texto */
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3); /* Sombra de texto */
+}
+
+.custom-divider::before {
+  content: ""; /* Agregamos un contenido vacío para el pseudo-elemento */
+  display: block;
+  margin-top: -30px; /* Movemos la línea hacia arriba */
+}
+
+
+
+/*Estilo para las tablas*/
+.custom-table {
+  background-color: #ffffff; /* Cambiamos el color de fondo a blanco */
+  color: #000000; /* Cambiamos el color del texto a negro */
+  border-radius: 10px; /* Bordes redondeados */
+  text-align: center; /* Centramos el contenido de la tabla */
+  max-width: 80%; /* Ancho máximo */
+  overflow-x: auto; /* Agregamos desplazamiento horizontal cuando sea necesario */
+  height: fit-content;
+
+}
+
+.custom-table th, .custom-table td {
+  padding: 8px 12px; /* Ajustamos el relleno de las celdas */
+}
+
+.custom-table th {
+  font-size: 1.3rem; /* Tamaño de fuente de los títulos de columna */
+}
+
+.custom-table .header-cell {
+  background-color: #007bff; /* Color de fondo de los encabezados */
+  color: #fff; /* Color del texto de los encabezados */
+  font-weight: bold; /* Hacemos los títulos de columna negrita */
+}
+
+.custom-table td {
+  vertical-align: middle; /* Centramos verticalmente el contenido de las celdas */
+  font-size: 1.2rem; /* Tamaño de fuente de las celdas */
+}
+
+
+/* Estilos para la grilla y media query para movil */
+
+.card-header .card-title {
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+
+.grid-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: -20px; /* Ajusta este valor según sea necesario */
+}
+
+.grid-item {
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+/* Pantallas grandes */
+@media (min-width: 850px) {
+  .detalle-asignatura {
+    flex: 0 0 35%;
+  }
+
+  .promedios {
+    flex: 0 0 15%;
+  }
+
+  .registros {
+    flex: 0 0 50%;
+  }
+
+  .graficos {
+    flex: 0 0 100%;
+  }
+
+  .alumnos {
+    flex: 0 0 100%;
+  }
+}
+
+/* Pantallas pequeñas */
+@media (max-width: 850px) {
+  .detalle-asignatura {
+    flex: 0 0 70%;
+  }
+
+  .promedios {
+    flex: 0 0 30%;
+  }
+
+  .registros,
+  .graficos,
+  .alumnos {
+    flex: 0 0 100%;
+  }
+}

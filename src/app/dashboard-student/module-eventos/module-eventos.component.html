@@ -8,81 +8,90 @@
 <!-- Utiliza appendTo="'body'" en lugar de [appendTo]="'body'" -->
 <p-confirmDialog header="Confirmación" icon="pi pi-exclamation-triangle" [closable]="false" appendTo="body"></p-confirmDialog>
 
-  <!-- Mis Eventos -->
-  <div class="event-cards-container" *ngIf="misEventos.length > 0">
-    <p-divider align="right" class="custom-divider">
-      <b>Mis Eventos</b>
-    </p-divider>
-    <p-carousel [value]="misEventos" [circular]="true" [numVisible]="4" [responsiveOptions]="responsiveOptions">
-      <ng-template pTemplate="item" let-evento>
-        <div class="card event-card">
-          <img src="../../../assets/img/moduleeventos/{{evento.Id_Evento}}.png" alt="Imagen del Evento" class="card-image">
-          <div class="card-content">
+<!-- Mis Eventos -->
+<div class="event-cards-container" *ngIf="misEventos.length > 0">
+  <p-divider align="right" class="custom-divider">
+    <b>Mis Eventos</b>
+  </p-divider>
+  <p-carousel [value]="misEventos" [circular]="true" [numVisible]="4" [responsiveOptions]="responsiveOptions">
+    <ng-template pTemplate="item" let-evento>
+      <div class="card event-card">
+        <img src="../../../assets/img/moduleeventos/{{evento.Id_Evento}}.png" alt="Imagen del Evento" class="card-image">
+        <div class="card-content">
+          <div class="card-title-container">
             <p class="card-title">{{ evento.Nombre_Asignatura }}</p>
-            <p class="card-text">{{ evento.Tipo }}</p>
-            <p class="card-text">{{ evento.Id_Evento }}</p>
-            <div class="card-body">
-              <button pButton type="button" label="Ver Detalles" class="p-button-text" (click)="verDetalles(evento)"></button>
-            </div>
+            <p-tag *ngIf="esHoy(evento.Fecha)" icon="pi pi-info-circle" severity="warning" value="Hoy!!" class="hoy" />
+          </div>
+          <p class="card-text">{{ evento.Tipo }}</p>
+          <p class="card-text">{{ evento.Id_Evento }}</p>
+          <div class="card-body">
+            <button pButton type="button" label="Ver Detalles" class="p-button-text" (click)="verDetalles(evento)"></button>
           </div>
         </div>
-      </ng-template>
-    </p-carousel>
-  </div>
-  <br>
-  <!-- Próximos Eventos -->
-  <div class="event-cards-container" *ngIf="proximosEventos.length > 0">
-    <p-divider align="center" class="custom-divider">
-      <b>Próximos Eventos</b>
-    </p-divider>
-    <p-carousel [value]="proximosEventos" [circular]="true" [numVisible]="4" [responsiveOptions]="responsiveOptions">
-      <ng-template pTemplate="item" let-evento>
-        <div class="card event-card">
-          <img src="../../../assets/img/moduleeventos/{{evento.Id_Evento}}.png" alt="Imagen del Evento" class="card-image">
-          <div class="card-content">
+      </div>
+    </ng-template>
+  </p-carousel>
+</div>
+<br>
+<!-- Próximos Eventos -->
+<div class="event-cards-container" *ngIf="proximosEventos.length > 0">
+  <p-divider align="center" class="custom-divider">
+    <b>Próximos Eventos</b>
+  </p-divider>
+  <p-carousel [value]="proximosEventos" [circular]="true" [numVisible]="4" [responsiveOptions]="responsiveOptions">
+    <ng-template pTemplate="item" let-evento>
+      <div class="card event-card">
+        <img src="../../../assets/img/moduleeventos/{{evento.Id_Evento}}.png" alt="Imagen del Evento" class="card-image">
+        <div class="card-content">
+          <div class="card-title-container">
             <p class="card-title">{{ evento.Nombre_Asignatura }}</p>
-            <p class="card-text">{{ evento.Tipo }}</p>
-            <p class="card-text">{{ evento.Id_Evento }}</p>
-            <div class="card-body">
-              <button pButton type="button" label="Ver Detalles" class="p-button-text" (click)="verDetalles(evento)"></button>
-              <button pButton type="button" label="Inscribirse" (click)="confirmarInscripcion(evento)"></button>
-            </div>
+            <p-tag *ngIf="esHoy(evento.Fecha)" icon="pi pi-info-circle" severity="warning" value="Hoy!!" class="hoy" />
+          </div>
+          <p class="card-text">{{ evento.Tipo }}</p>
+          <p class="card-text">{{ evento.Id_Evento }}</p>
+          <div class="card-body">
+            <button pButton type="button" label="Ver Detalles" class="p-button-text" (click)="verDetalles(evento)"></button>
+            <button pButton type="button" label="Inscribirse" (click)="confirmarInscripcion(evento)"></button>
           </div>
         </div>
-      </ng-template>
-    </p-carousel>
-  </div>
-  <br>
-  <!-- Eventos Pasados -->
-  <div class="event-cards-container" *ngIf="eventosPasados.length > 0">
-    <p-divider align="left" class="custom-divider">
-      <b>Eventos Pasados</b>
-    </p-divider>
-    <p-carousel [value]="eventosPasados" [circular]="true" [numVisible]="4" [responsiveOptions]="responsiveOptions">
-      <ng-template pTemplate="item" let-evento>
-        <div class="card event-card">
-          <img src="../../../assets/img/moduleeventos/{{evento.Id_Evento}}.png" alt="Imagen del Evento" class="card-image">
-          <div class="card-content">
+      </div>
+    </ng-template>
+  </p-carousel>
+</div>
+<br>
+<!-- Eventos Pasados -->
+<div class="event-cards-container" *ngIf="eventosPasados.length > 0">
+  <p-divider align="left" class="custom-divider">
+    <b>Eventos Pasados</b>
+  </p-divider>
+  <p-carousel [value]="eventosPasados" [circular]="true" [numVisible]="4" [responsiveOptions]="responsiveOptions">
+    <ng-template pTemplate="item" let-evento>
+      <div class="card event-card">
+        <img src="../../../assets/img/moduleeventos/{{evento.Id_Evento}}.png" alt="Imagen del Evento" class="card-image">
+        <div class="card-content">
+          <div class="card-title-container">
             <p class="card-title">{{ evento.Nombre_Asignatura }}</p>
-            <p class="card-text">{{ evento.Tipo }}</p>
-            <p class="card-text">{{ evento.Id_Evento }}</p>
-            <div class="card-body">
-              <button pButton type="button" label="Ver Detalles" class="p-button-text" (click)="verDetalles(evento)"></button>
-            </div>
+            <button *ngIf="esHoy(evento.Fecha)" pButton type="button" label="Hoy" class="p-button-warning"></button>
+          </div>
+          <p class="card-text">{{ evento.Tipo }}</p>
+          <p class="card-text">{{ evento.Id_Evento }}</p>
+          <div class="card-body">
+            <button pButton type="button" label="Ver Detalles" class="p-button-text" (click)="verDetalles(evento)"></button>
           </div>
         </div>
-      </ng-template>
-    </p-carousel>
-  </div>
-  <br>
+      </div>
+    </ng-template>
+  </p-carousel>
+</div>
+<br>
 
 <!-- Diálogo de Detalles del Evento -->
-<p-dialog *ngIf="mostrarDetalles" header="Detalles del Evento" [(visible)]="mostrarDetalles" [modal]="true" [style]="{width: '50vw'}">
+<p-dialog *ngIf="mostrarDetalles" header="Detalles del Evento" [(visible)]="mostrarDetalles" [modal]="true" [style]="{width: '20vw'}">
   <div *ngIf="eventoSeleccionado">
     <p><strong>Nombre:</strong> {{ eventoSeleccionado?.Nombre_Asignatura }}</p>
     <p><strong>Tipo:</strong> {{ eventoSeleccionado?.Tipo }}</p>
     <p><strong>Lugar:</strong> {{ eventoSeleccionado?.Lugar }}</p>
-    <p><strong>Fecha:</strong> {{ eventoSeleccionado?.Fecha | date:'fullDate' }}</p>
+    <p><strong>Fecha:</strong> {{ eventoSeleccionado?.Fecha | date:'EEEE, d \'de\' MMMM, yyyy':'es' }}</p>
     <p><strong>Descripción:</strong> {{ eventoSeleccionado?.Descripcion }}</p>
   </div>
 </p-dialog>

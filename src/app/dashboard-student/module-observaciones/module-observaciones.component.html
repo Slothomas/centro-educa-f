@@ -16,7 +16,7 @@
       </div>
       <div class="clear-filter">
         <button pButton type="button" class="p-button-danger" (click)="limpiarFiltros()">
-          <i class="pi pi-times"><strong>X</strong></i> <!-- Icono X -->
+          <i class="pi pi-times"><strong></strong></i> <!-- Icono X -->
         </button>
       </div>
     </div>
@@ -28,16 +28,16 @@
     </div>
   </div>
 
-  <p-scrollPanel [style]="{ 'height.px': '300', 'width.%': '100' }">
+  <p-scrollPanel [style]="{ 'height.px': '475', 'width.%': '100' }">
     <p-tabView>
       <p-tabPanel *ngFor="let asignatura of asignaturas" [header]="asignatura">
-        <p-table [value]="filtrarObservaciones(asignatura)" [paginator]="true" [rows]="10" [rowsPerPageOptions]="[10, 25, 50]" [globalFilterFields]="['Descripcion_Observacion', 'Nombre_Profesor']">
+        <p-table [value]="filtrarObservaciones(asignatura)" [paginator]="true" [rows]="10"  [globalFilterFields]="['Descripcion_Observacion', 'Nombre_Profesor']" class="custom-table">
           <ng-template pTemplate="header">
             <tr>
-              <th pSortableColumn="Tipo_Observacion">Tipo Observación <p-sortIcon field="Tipo_Observacion"></p-sortIcon></th>
-              <th pSortableColumn="Descripcion_Observacion">Descripción <p-sortIcon field="Descripcion_Observacion"></p-sortIcon></th>
-              <th pSortableColumn="Fecha_Registro">Fecha <p-sortIcon field="Fecha_Registro"></p-sortIcon></th>
-              <th pSortableColumn="Nombre_Profesor">Profesor <p-sortIcon field="Nombre_Profesor"></p-sortIcon></th>
+              <th class="header-cell" pSortableColumn="Tipo_Observacion">Tipo Observación <p-sortIcon field="Tipo_Observacion"></p-sortIcon></th>
+              <th class="header-cell" pSortableColumn="Descripcion_Observacion">Descripción <p-sortIcon field="Descripcion_Observacion"></p-sortIcon></th>
+              <th class="header-cell" pSortableColumn="Fecha_Registro">Fecha <p-sortIcon field="Fecha_Registro"></p-sortIcon></th>
+              <th class="header-cell" pSortableColumn="Nombre_Profesor">Profesor <p-sortIcon field="Nombre_Profesor"></p-sortIcon></th>
             </tr>
           </ng-template>
           <ng-template pTemplate="body" let-observacion>

@@ -1,0 +1,20 @@
+/* Estilos para el componente de gráficos */
+.graphic-grid-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: -20px; /* Ajuste opcional */
+}
+
+/* Tarjetas de gráfico */
+.graphic-grid-item {
+  flex: 1 1 100%; /* Cada gráfico ocupa el 100% del ancho disponible */
+  margin-bottom: 20px; /* Espacio entre tarjetas */
+}
+
+/* Media query para pantallas grandes */
+@media (min-width: 800px) {
+  .graphic-grid-item {
+    flex: 0 0 49%; /* Cada gráfico ocupa el 49% del ancho en pantallas grandes */
+  }
+}

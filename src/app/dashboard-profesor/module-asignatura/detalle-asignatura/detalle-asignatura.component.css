@@ -1,0 +1,22 @@
+
+.card-content {
+  padding: 1rem;
+}
+
+.card-content p {
+  margin-bottom: 0.5rem; /* Espaciado inferior */
+  font-size: 1.2rem; /* Tamaño del texto */
+  line-height: 1.5; /* Altura de línea */
+  color: #000000; /* Color del texto */
+}
+
+.card-content p strong {
+  color: #007bff; /* Color del texto fuerte */
+}
+
+.card {
+  height: 360px;
+  margin-top: -20px; /* Ajusta este valor según sea necesario */
+  margin-bottom: 20px;
+
+}

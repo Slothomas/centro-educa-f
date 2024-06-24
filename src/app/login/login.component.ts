@@ -43,8 +43,13 @@ export class LoginComponent {
         if (response) {
           console.log('LoginComponent.login - success, response:', response);
           this.sharedService.setLoginData(this.rut_str, idtiporol_int);
-          this.router.navigate(['/dashboardstudents']);
-        }
+
+          // Redirigir basado en el rol del usuario
+          if (idtiporol_int === 2) {
+            this.router.navigate(['/dashboardteachers']);
+          } else if (idtiporol_int === 3) {
+            this.router.navigate(['/dashboardstudents']);
+          } }
       });
   }
 }

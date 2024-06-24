@@ -1,0 +1,17 @@
+<div class="card">
+  <div class="card-body">
+    <h2 class="card-title">Resumen de tus notas</h2>
+    <hr class="card-divider">
+    <label for="curso" class="card-text">Selecciona un Curso:</label>
+    <select id="curso" [(ngModel)]="selectedCurso" (change)="updateChart()" class="form-control">
+      <option *ngFor="let curso of cursos" [value]="curso.id">
+        {{ curso.nombre }}
+      </option>
+    </select>
+
+    <div id="chart" class="card-chart">
+      <p-chart type="bar" [data]="data" [options]="options"></p-chart>
+      <p>La asistencia se muestra escalada. Multiplica por 10 para obtener el valor real.</p>
+    </div>
+  </div>
+</div>

@@ -115,7 +115,7 @@
 }
 
 /* Pantallas grandes */
-@media (min-width: 768px) {
+@media (min-width: 800px) {
   .detalle-asignatura {
     flex: 0 0 35%;
   }
@@ -138,7 +138,7 @@
 }
 
 /* Pantallas pequeñas */
-@media (max-width: 767px) {
+@media (max-width: 800px) {
   .detalle-asignatura {
     flex: 0 0 70%;
   }

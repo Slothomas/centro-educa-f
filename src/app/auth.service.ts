@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { BehaviorSubject, Observable, tap, catchError} from 'rxjs';
 import { SharedService } from './shared.service';
 
 @Injectable({
@@ -13,17 +13,26 @@ export class AuthService {
   private router = inject(Router);
   private http = inject(HttpClient);
   private sharedService = inject(SharedService);
-  //'http://127.0.0.1:8000/login/'
 
   login(user: { rut_str: string; contrasena_str: string; idtiporol_int: number }): Observable<any> {
     console.log('AuthService.login - user:', user);
     return this.http.post('https://centro-educa-back.azurewebsites.net/login/', user).pipe(
       tap((response: any) => {
         console.log('AuthService.login - response:', response);
-        this.doLoginUser(response.access_token, user.rut_str, user.idtiporol_int);
+        if (response && response.access_token) {
+          this.doLoginUser(response.access_token, user.rut_str, user.idtiporol_int);
+        } else {
+          console.error('AuthService.login - Invalid login response');
+          throw new Error('Invalid login response');
+        }
+      }),
+      catchError(error => {
+        console.error('AuthService.login - Error:', error);
+        throw error; // Propagate the error to the caller
       })
     );
   }
+
 
   private doLoginUser(token: string, rut: string, idtiporol: number) {
     console.log('AuthService.doLoginUser - token:', token, 'rut:', rut, 'idtiporol:', idtiporol);

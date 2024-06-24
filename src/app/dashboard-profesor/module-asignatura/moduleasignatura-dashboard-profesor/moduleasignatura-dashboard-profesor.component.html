@@ -1,0 +1,64 @@
+<div class="back-to-dashboard">
+  <a routerLink="/dashboardteachers">
+    <mat-icon mat-list-icon>home</mat-icon>
+  </a>
+</div>
+
+<p-divider align="right" class="custom-divider">
+  <b>Mi Asignatura</b>
+</p-divider>
+<br>
+<br>
+<br>
+
+<div class="grid-container">
+  <!-- Primera línea: Detalle, Promedios, Registros -->
+  <div class="grid-item detalle-asignatura">
+    <app-detalle-asignatura
+      [rutProfesor]="rutProfesor"
+      [idCurso]="idCurso"
+      [idAsignatura]="idAsignatura">
+    </app-detalle-asignatura>
+  </div>
+
+  <div class="grid-item promedios">
+    <app-promedios-asignatura
+      [rutProfesor]="rutProfesor"
+      [idCurso]="idCurso"
+      [idAsignatura]="idAsignatura">
+    </app-promedios-asignatura>
+  </div>
+
+
+  <div class="grid-item registros">
+    <app-botones-asignatura
+      [rutProfesor]="rutProfesor"
+      [idCurso]="idCurso"
+      [idAsignatura]="idAsignatura">
+    </app-botones-asignatura>
+  </div>
+
+
+
+
+  <div class="grid-item graficos">
+    <app-graficos-asignatura
+      [rutProfesor]="rutProfesor"
+      [idCurso]="idCurso"
+      [idAsignatura]="idAsignatura">
+    </app-graficos-asignatura>
+  </div>
+
+
+
+
+  <div class="grid-item alumnos">
+    <app-alumnos-asignatura
+      [rutProfesor]="rutProfesor"
+      [idCurso]="idCurso"
+      [idAsignatura]="idAsignatura">
+    </app-alumnos-asignatura>
+  </div>
+</div>
+
+

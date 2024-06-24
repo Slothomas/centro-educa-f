@@ -155,7 +155,7 @@ export class PerfilDashboardComponent implements OnInit {
       return;
     }
 
-    this.sharedService.actualizarClave(this.rutEstudiante, this.nuevaContrasena).subscribe(
+    this.sharedService.actualizarClave(this.rutEstudiante, this.nuevaContrasena, this.idtiporol).subscribe(
       response => {
         this.messageService.add({ severity: 'success', summary: 'Éxito', detail: 'Contraseña actualizada correctamente' });
         // Espera 5 segundos antes de recargar la página
@@ -170,5 +170,10 @@ export class PerfilDashboardComponent implements OnInit {
         console.error('Error al actualizar la contraseña', error);
       }
     );
+  }
+
+  // Función para obtener el enlace del dashboard según el idtiporol
+  getDashboardLink(): string {
+    return this.idtiporol === 2 ? '/dashboardteachers' : '/dashboardstudents';
   }
 }

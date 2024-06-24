@@ -1,0 +1,48 @@
+<div class="card">
+  <div class="card-header">
+    <span class="card-title">Registro de Asistencia</span>
+  </div>
+
+  <div class="p-field">
+    <!-- Mensaje y dropdown en la misma línea -->
+    <span style="display: inline-block; margin-right: 15px;">Seleccionar Fecha:</span>
+    <p-dropdown
+      [options]="fechasDisponibles"
+      [(ngModel)]="fechaSeleccionada"
+      placeholder="Seleccionar Fecha"
+      (onChange)="onFechaSeleccionadaChange($event)"
+    ></p-dropdown>
+  </div>
+  <div class="custom-table-container">
+    <!-- Tabla de estudiantes -->
+    <p-table [value]="estudiantesUnicos" [scrollable]="true" scrollHeight="300px" class="custom-table">
+      <ng-template pTemplate="header">
+        <tr>
+          <th class="header-cell">Nombre del Estudiante</th>
+          <th class="header-cell">Registro</th> <!-- Espacio para el checkbox -->
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-dato>
+        <tr>
+          <td>{{ dato.Nombre_Estudiante }}</td>
+          <td>
+            <p-checkbox
+              [binary]="true"
+              [(ngModel)]="dato.asistencia"
+              [disabled]="!esCheckboxHabilitado()"
+              [trueValue]="5"
+              [falseValue]="6"
+            ></p-checkbox>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+
+  </div>
+  <div class="p-field2">
+    <button pButton type="button" label="Enviar Asistencia" icon="pi pi-check" class="p-button-success"
+      (click)="enviarAsistencia()" [disabled]="!esCheckboxHabilitado()"></button>
+  </div>
+</div>
+
+<p-toast></p-toast>

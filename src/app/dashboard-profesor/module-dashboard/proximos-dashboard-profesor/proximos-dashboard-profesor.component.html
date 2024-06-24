@@ -1,0 +1,18 @@
+<div class="card">
+  <div class="card-body">
+    <h2 class="card-title">Mantente actualizado</h2> <!-- Título adicional -->
+    <hr class="card-divider"> <!-- Línea divisoria -->
+    <!-- Contenido del componente de próximos eventos -->
+    <p-timeline [value]="eventos" align="alternate" class="customized-timeline">
+      <ng-template pTemplate="content" let-event>
+        <h5 class="card-title">{{ event.Categoria_Evento }}</h5>
+        <p class="card-text">{{ event.Descripcion }}</p>
+        <p class="card-text">{{ event.Nombre_Asignatura }} - {{ event.Lugar }}</p>
+        <p class="card-text">{{ event.Curso }}</p>
+        <p class="card-text">{{ event.Fecha | date }}</p>
+      </ng-template>
+    </p-timeline>
+  </div>
+</div>
+
+

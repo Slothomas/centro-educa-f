@@ -1,0 +1,37 @@
+.card-container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px; /* Espacio entre las tarjetas */
+}
+
+.card {
+  margin: 0 auto;
+  width: 100%; /* Reducir el ancho */
+  max-width: 225px; /* Ancho máximo */
+  height: 170px; /* Altura fija */
+  display: flex; /* Usar flexbox para centrar verticalmente */
+  flex-direction: column; /* Alinear contenido en columnas */
+  margin-top: -20px; /* Ajusta este valor según sea necesario */
+
+
+}
+
+.card-content {
+  flex: 1; /* Ocupa el espacio restante */
+  display: flex; /* Usar flexbox para centrar verticalmente */
+  justify-content: center; /* Centrar contenido horizontalmente */
+  align-items: center; /* Centrar contenido verticalmente */
+}
+
+.card-content p {
+  margin: 0; /* Eliminar el margen por defecto del párrafo */
+  font-size: 6rem; /* Tamaño de fuente del número */
+  color: #007bff; /* Color del número */
+  font-weight: bold; /* Texto del número en negrita */
+}
+
+.percent-symbol {
+  font-size: 3rem; /* Tamaño del símbolo % */
+  font-weight: normal; /* Texto del símbolo % sin negrita */
+  color: #007bff; /* Color del símbolo % */
+}

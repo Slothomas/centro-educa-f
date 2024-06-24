@@ -1,0 +1,89 @@
+/* Estilos para el botón "Volver al tablero" */
+.back-to-dashboard {
+  position: fixed;
+  top: 685px; /* Altura del toolbar */
+  right: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 7px;
+  border-radius: 40%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.3s ease;
+  z-index: 1000;
+}
+
+.back-to-dashboard a:hover {
+  color: #ff0000;
+}
+
+
+/* Estilos para el botón "Crear Observación" */
+.floating-button {
+  position: fixed;
+  top: 630px; /* Altura del toolbar */
+  right: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 7px;
+  border-radius: 40%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.3s ease;
+  z-index: 1000;
+}
+
+.floating-button:hover {
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+.floating-button mat-icon {
+  font-size: 24px;
+  color: #000;
+}
+
+.floating-button mat-icon:hover {
+  color: #ff0000;
+}
+
+/*Estilo para las tablas*/
+.custom-table {
+  background-color: #ffffff; /* Cambiamos el color de fondo a blanco */
+  color: #000000; /* Cambiamos el color del texto a negro */
+  border-radius: 10px; /* Bordes redondeados */
+  text-align: center; /* Centramos el contenido de la tabla */
+  width: fit-content; /* Ajustar ancho al contenido */
+  max-width: 100%; /* Ancho máximo */
+  overflow-x: auto; /* Agregamos desplazamiento horizontal cuando sea necesario */
+  height: fit-content;
+
+}
+
+.custom-table th, .custom-table td {
+  padding: 8px 12px; /* Ajustamos el relleno de las celdas */
+}
+
+.custom-table th {
+  font-size: 1.3rem; /* Tamaño de fuente de los títulos de columna */
+}
+
+.custom-table .header-cell {
+  background-color: #007bff; /* Color de fondo de los encabezados */
+  color: #fff; /* Color del texto de los encabezados */
+  font-weight: bold; /* Hacemos los títulos de columna negrita */
+}
+
+.custom-table td {
+  vertical-align: middle; /* Centramos verticalmente el contenido de las celdas */
+  font-size: 1.2rem; /* Tamaño de fuente de las celdas */
+}
+
+
+.custom-divider b {
+  font-size: 36px; /* Tamaño de la letra */
+  font-weight: bold; /* Negrita */
+  color: #333; /* Color del texto */
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3); /* Sombra de texto */
+}
+
+.custom-divider::before {
+  content: ""; /* Agregamos un contenido vacío para el pseudo-elemento */
+  display: block;
+  margin-top: -30px; /* Movemos la línea hacia arriba */
+}

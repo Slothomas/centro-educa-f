@@ -1,0 +1,75 @@
+.custom-table .presente {
+  color: green; /* Color verde para el estado presente */
+}
+
+.custom-table .ausente {
+  color: red; /* Color rojo para el estado ausente */
+}
+
+.custom-table .proxima {
+  color: lightgrey; /* Color gris para el estado próxima */
+}
+
+.custom-table .nota-roja {
+  color: red; /* Color rojo para notas menores a 4 */
+}
+
+.custom-table .nota-azul {
+  color: rgb(0, 26, 255); /* Color azul para notas mayores o iguales a 4 */
+}
+
+/* Alinear los labels con los inputs */
+.p-dialog .p-field {
+  margin-bottom: 1rem;
+}
+
+.p-dialog .p-field label {
+  display: block;
+  width: 100%;
+  text-align: left;
+}
+
+.p-dialog .p-field input,
+.p-dialog .p-field textarea {
+  width: 100%;
+  margin-top: 0.5rem; /* Espacio entre el input y el pequeño texto */
+}
+
+.p-dialog .p-field small {
+  display: block;
+  font-size: 0.75rem; /* Tamaño de fuente más pequeño */
+  color: #6c757d; /* Color de texto más tenue */
+  margin-top: 0.25rem; /* Espacio entre el input y el pequeño texto */
+}
+
+/* Ajustar el tamaño de la ventana modal */
+.p-dialog {
+  max-width: 600px !important; /* Ancho máximo del popup */
+}
+
+/* Estilos para el footer del popup */
+.p-dialog-footer {
+  text-align: right;
+  padding-top: 20px;
+}
+
+/* Ocultar scrollbars mientras se mantiene la capacidad de desplazamiento */
+.custom-table-container {
+  overflow-x: hidden; /* Oculta la barra de desplazamiento horizontal */
+  overflow-y: hidden; /* Oculta la barra de desplazamiento vertical */
+}
+
+/* Pantallas pequeñas */
+@media (max-width: 768px) {
+  .card {
+    margin-top: -20px;
+    height: auto; /* Ajustar la altura automáticamente */
+    margin: auto;
+    width: 100%; /* Asegura que la tarjeta ocupe el 100% del ancho disponible */
+    overflow: visible; /* Permite que el contenido sea visible y no recortado */
+  }
+}
+
+.table-container {
+  width: 100%; /* Asegura que el contenedor de la tabla ocupe el 100% del ancho */
+}

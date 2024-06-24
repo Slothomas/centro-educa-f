@@ -85,3 +85,20 @@
   display: block;
   margin-top: -30px; /* Movemos la línea hacia arriba */
 }
+
+
+
+
+.card-title-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hoy {
+  margin-right: 5px;
+  margin-top: -15px;
+}
+
+
+

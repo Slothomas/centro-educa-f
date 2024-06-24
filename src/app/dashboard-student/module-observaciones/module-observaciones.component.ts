@@ -27,7 +27,7 @@ import { DividerModule } from 'primeng/divider';
     ButtonModule,
     CardModule,
     TabViewModule,
-    FormsModule,  // <-- Asegúrate de importar FormsModule
+    FormsModule,
     ScrollPanelModule,
     RouterLink,
     DividerModule

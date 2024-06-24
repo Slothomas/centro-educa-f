@@ -1,0 +1,57 @@
+.card {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+  color: #333;
+  font-family: Arial, sans-serif;
+  margin-bottom: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+  height: auto; /* Altura automática para ajustarse al contenido */
+  max-height: 600px; /* Altura máxima */
+  overflow-y: auto; /* Agregar scroll vertical si es necesario */
+}
+
+/* Ocultar el scrollbar */
+.card::-webkit-scrollbar {
+  width: 0; /* Oculta el scrollbar en Chrome, Safari, y Edge */
+}
+
+.card {
+  scrollbar-width: none; /* Oculta el scrollbar en Firefox */
+}
+
+
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.card-title {
+  font-size: 2rem; /* Tamaño de fuente del título */
+  font-weight: bold;
+  text-align: center; /* Centra el texto */
+  margin-bottom: 5px; /* Margen inferior más pequeño */
+}
+
+.card-text {
+  font-size: 1.2rem; /* Tamaño de fuente del contenido */
+  margin-bottom: 5px;
+}
+
+.card-text:last-child {
+  font-size: 1rem;
+  color: #666;
+}
+
+.card-divider {
+  height: 2px; /* Altura de la línea divisoria */
+  width: 90%; /* Anchura de la línea divisoria */
+  background: linear-gradient(to right, transparent 0%, #333 50%, transparent 100%); /* Degradado */
+  margin: 5px auto 20px; /* Margen superior más pequeño para acercarla al título y margen inferior */
+}

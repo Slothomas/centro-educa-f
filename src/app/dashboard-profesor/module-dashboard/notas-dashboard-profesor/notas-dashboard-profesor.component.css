@@ -1,0 +1,67 @@
+.card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  flex: 1;
+  height: 600px;
+}
+
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card:first-child {
+  margin-left: 10px;
+}
+
+.card:last-child {
+  margin-right: 10px;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.card-text {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.card-chart {
+  max-width: 800px; /* Aumenta el ancho máximo del contenedor del gráfico */
+  margin: 35px auto;
+}
+
+.card-divider {
+  height: 2px;
+  width: 90%;
+  background: linear-gradient(to right, transparent 0%, #333 50%, transparent 100%);
+  margin: 5px auto 20px;
+}
+
+.card-title {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.card-chart {
+  max-width: 100%; /* Cambia el ancho máximo a 100% */
+  height: auto; /* Elimina la altura fija para que se ajuste automáticamente al contenido */
+  margin: 35px auto;
+}
+
+#chart {
+  width: 100%;
+  max-width: none; /* Elimina el ancho máximo del gráfico para que se expanda según el contenedor */
+}

@@ -1,0 +1,111 @@
+/* Estilos para el botón "Volver al tablero" */
+.back-to-dashboard {
+  position: fixed;
+  top: 685px; /* Altura del toolbar */
+  right: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 7px;
+  border-radius: 40%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.3s ease;
+  z-index: 1000;
+}
+
+.back-to-dashboard a:hover {
+  color: #ff0000;
+}
+
+/* Estilos para el botón "Crear Evento" */
+.floating-button {
+  position: fixed;
+  top: 630px; /* Altura del toolbar */
+  right: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 7px;
+  border-radius: 40%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.3s ease;
+  z-index: 1000;
+}
+
+.floating-button:hover {
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+.floating-button mat-icon {
+  font-size: 24px;
+  color: #000;
+}
+
+.floating-button mat-icon:hover {
+  color: #ff0000;
+}
+
+.card {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+  max-width: 325px; /* Ancho máximo de las tarjetas */
+  width: calc(100% - 20px); /* Ancho calculado para mantener margen lateral */
+  height: 470px; /* Altura fija para las tarjetas */
+  margin: 20px auto; /* Centramos las tarjetas y agregamos espacio arriba */
+  overflow: hidden; /* Oculta el contenido que exceda la altura */
+  display: flex; /* Utilizamos flexbox para alinear el contenido */
+  flex-direction: column; /* Disposición en columna */
+}
+
+.card:hover {
+  box-shadow: 0 4px 12px lightgray;
+}
+
+.card-image {
+  width: 100%; /* Ancho completo */
+  height: 65%; /* 60% de la tarjeta */
+  object-fit: cover; /* Ajusta la imagen para cubrir el contenedor */
+  border-top-left-radius: 10px; /* Añadimos bordes redondeados a la esquina superior izquierda */
+  border-top-right-radius: 10px; /* Añadimos bordes redondeados a la esquina superior derecha */
+}
+
+.card-content {
+  padding: 1rem; /* Añadimos relleno */
+  height: 35%; /* 40% de la tarjeta */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Espacio entre los elementos */
+}
+
+.card-title {
+  font-size: 1.5rem; /* Tamaño de fuente del título */
+  font-weight: bold;
+  margin-bottom: 0.5rem; /* Espacio inferior */
+  overflow: hidden; /* Oculta el texto que exceda la altura */
+  text-overflow: ellipsis; /* Muestra puntos suspensivos (...) para indicar que el texto fue recortado */
+  white-space: nowrap; /* Evita el salto de línea */
+}
+
+.card-text {
+  font-size: 1.2rem; /* Tamaño de fuente del contenido */
+  overflow: hidden; /* Oculta el texto que exceda la altura */
+  text-overflow: ellipsis; /* Muestra puntos suspensivos (...) para indicar que el texto fue recortado */
+  white-space: nowrap; /* Evita el salto de línea */
+}
+
+.card-body {
+  display: flex; /* Utilizamos flexbox para alinear el contenido */
+  justify-content: space-between; /* Espacio entre elementos */
+  align-items: flex-end; /* Alinea los elementos al final del contenedor */
+}
+
+.custom-divider b {
+  font-size: 36px; /* Tamaño de la letra */
+  font-weight: bold; /* Negrita */
+  color: #333; /* Color del texto */
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3); /* Sombra de texto */
+}
+
+.custom-divider::before {
+  content: ""; /* Agregamos un contenido vacío para el pseudo-elemento */
+  display: block;
+  margin-top: -30px; /* Movemos la línea hacia arriba */
+}

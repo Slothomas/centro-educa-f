@@ -1,0 +1,26 @@
+<!-- Componente de los gráficos -->
+<div class="graphic-grid-container">
+  <!-- Card para el primer gráfico -->
+  <div class="graphic-grid-item">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">Comparativo Promedios Por Alumnos (Notas)</div>
+      </div>
+      <div class="card-content">
+        <p-chart type="bar" [data]="barChartData" [options]="barChartOptions"></p-chart>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card para el segundo gráfico -->
+  <div class="graphic-grid-item">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">Comparativo Promedio Asistencias Por Alumnos</div>
+      </div>
+      <div class="card-content">
+        <p-chart type="line" [data]="lineChartData" [options]="lineChartOptions"></p-chart>
+      </div>
+    </div>
+  </div>
+</div>

@@ -55,3 +55,40 @@
   display: block;
   margin-top: -30px; /* Movemos la línea hacia arriba */
 }
+
+
+
+/*Estilo para las tablas*/
+.custom-table {
+  background-color: #ffffff; /* Cambiamos el color de fondo a blanco */
+  color: #000000; /* Cambiamos el color del texto a negro */
+  border-radius: 10px; /* Bordes redondeados */
+  text-align: center; /* Centramos el contenido de la tabla */
+  width: fit-content; /* Ajustar ancho al contenido */
+  max-width: 100%; /* Ancho máximo */
+  overflow-x: auto; /* Agregamos desplazamiento horizontal cuando sea necesario */
+  height: fit-content;
+
+}
+
+.custom-table th, .custom-table td {
+  padding: 8px 12px; /* Ajustamos el relleno de las celdas */
+  font-size: small;
+}
+
+.custom-table th {
+  font-size: 1.1rem; /* Tamaño de fuente de los títulos de columna */
+}
+
+
+
+.custom-table .header-cell {
+  background-color: #007bff; /* Color de fondo de los encabezados */
+  color: #fff; /* Color del texto de los encabezados */
+  font-weight: bold; /* Hacemos los títulos de columna negrita */
+}
+
+.custom-table td {
+  vertical-align: middle; /* Centramos verticalmente el contenido de las celdas */
+  font-size: 1.2rem; /* Tamaño de fuente de las celdas */
+}
