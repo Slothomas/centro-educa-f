@@ -115,20 +115,20 @@ export class SharedService {
   }
 
   obtenerPerfil(rut: string, idtiporol: any): Observable<any[]> {
-    const endpoint = `https://centro-educa-back.azurewebsites.net/login/perfil`;
+    const endpoint = `http://127.0.0.1:8000/login/perfil`;
     console.log('sharedService.obtenerPerfil - fetching details for RUT:', rut, 'and Role ID:', idtiporol);
     return this.http.post<any>(endpoint, { rut_str: rut, idTipoRol_int: idtiporol });
   }
 
   actualizarClave(rut: string, clave: string, rol: number): Observable<any> {
-    const endpoint = `https://centro-educa-back.azurewebsites.net/login/actualizarClave`;
+    const endpoint = `http://127.0.0.1:8000/login/actualizarClave`;
     console.log('sharedService.actualizarClave - updating password for RUT:', rut, 'and new password:', clave);
     return this.http.put<any>(endpoint, { rut_str: rut, contrasena_str: clave, idTipoRol_int: rol});
   }
 
 
   actualizarDatos(rut: string, idtiporol: number, nuevoCorreo: string, nuevoTelefono: string): Observable<any> {
-    const endpoint = `https://centro-educa-back.azurewebsites.net/login/actualizarDatos`;
+    const endpoint = `http://127.0.0.1:8000/login/actualizarDatos`;
     console.log('sharedService.actualizarDatos - updating details for RUT:', rut, 'and Role ID:', idtiporol, 'with new email:', nuevoCorreo, 'and new phone:', nuevoTelefono);
     return this.http.put<any>(endpoint, { rut_str: rut, idTipoRol_int: idtiporol, nuevo_correo: nuevoCorreo, nuevo_telefono: nuevoTelefono });
   }

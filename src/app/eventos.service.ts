@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class EventosService {
 
-  private apiUrl = 'https://centro-educa-back.azurewebsites.net/comunes';
+  private apiUrl = 'http://127.0.0.1:8000/comunes';
 
   constructor(private http: HttpClient) { }
 
