@@ -1,0 +1,93 @@
+.container-custom {
+  background-image: url('../../assets/img/login/fondo.png'); /* Ruta a tu imagen de fondo */
+  background-size: cover; /* Ajustar el tamaño de la imagen al contenedor */
+  background-position: center center; /* Centrar la imagen */
+  background-repeat: no-repeat; /* No repetir la imagen */
+  height: 100vh; /* Altura del contenedor igual al alto de la ventana */
+
+}
+
+.custom-card {
+  background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco con 90% de opacidad */
+  border-radius: 10px; /* Redondear esquinas */
+  padding: 20px; /* Ajustar el relleno según sea necesario */
+  transition: box-shadow 0.3s ease-in-out; /* Transición suave para la sombra */
+}
+
+.custom-card:hover {
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3); /* Sombra al pasar el mouse */
+}
+
+.logo {
+  width: 225px; /* Tamaño de la imagen del logo */
+  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5)); /* Sombra suave solo en el contorno */
+}
+
+
+
+.form-group {
+  margin-bottom: 10px; /* Separación entre elementos del formulario */
+}
+
+.btn {
+  margin-top: 20px;
+  margin-right: 3px; /* Separación entre botones */
+  background-color: #003366; /* Color de fondo del botón */
+  border-color: #003366; /* Color del borde del botón */
+  color: #fff; /* Color del texto del botón */
+  margin-top: 5px; /* Espacio superior */
+}
+
+.btn-sm {
+  padding: 15px 20px; /* Tamaño más pequeño para los botones */
+  background-color: #003366; /* Color de fondo del botón */
+  border-color: #003366; /* Color del borde del botón */
+  color: #fff; /* Color del texto del botón */
+  margin-top: 5px; /* Espacio superior */
+}
+
+.form-control {
+  width: 100%; /* Ajusta el ancho según sea necesario */
+  padding: 0.4rem 1rem; /* Ajusta el relleno según sea necesario */
+  font-size: 1.5rem; /* Tamaño de fuente */
+  line-height: 2.5; /* Altura de línea */
+  color: #495057; /* Color de texto */
+  background-color: #fff; /* Color de fondo */
+  background-clip: padding-box;
+  border: 2px solid #ced4da; /* Borde */
+  border-radius: 0.25rem; /* Radio de borde */
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; /* Transiciones */
+}
+
+.btn,
+.btn:hover {
+  background-color: #003366;
+  border-color: #003366;
+  color: #fff;
+  margin-top: 5px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Ajusta la sombra del texto */
+}
+
+.btn:hover {
+  background-color: #B8860B;
+  border-color: #B8860B;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.container-custom {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1;
+}
+
+footer {
+  margin-top: auto;
+}

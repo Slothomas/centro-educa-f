@@ -2,14 +2,16 @@
   <div class="row me-row content-ct speaker" id="personas">
     <h2 class="row-title">Conoce a nuestros docentes</h2>
     <div *ngFor="let profesor of profesores | slice:0:6" class="col-md-4 col-sm-6 feature home-feature">
-      <img src="../assets/img/speaker-1.png" class="speaker-img"> <!-- Usa una imagen por defecto o una propiedad de la API -->
-      <h2>{{ profesor.nombres_str }} {{ profesor.apellidos_str }}</h2>
-      <p>{{ profesor.descripcion_str }}</p>
-      <ul class="speaker-social">
-        <li><a href="#"><span class="ti-facebook"></span></a></li>
-        <li><a href="#"><span class="ti-twitter-alt"></span></a></li>
-        <li><a href="#"><span class="ti-linkedin"></span></a></li>
-      </ul>
+      <div class="custom-card"> <!-- Aplicamos la clase custom-card aquí -->
+        <img src="../../assets/img/profesores/{{profesor.rut_str}}.jpg" class="speaker-img"> <!-- Usa una imagen por defecto o una propiedad de la API -->
+        <h3>{{ profesor.nombres_str }} {{ profesor.apellidos_str }}</h3>
+        <p>{{ profesor.descripcion_str }}</p>
+        <ul class="speaker-social">
+          <li><a href="#"><span class="ti-facebook"></span></a></li>
+          <li><a href="#"><span class="ti-twitter-alt"></span></a></li>
+          <li><a href="#"><span class="ti-linkedin"></span></a></li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>

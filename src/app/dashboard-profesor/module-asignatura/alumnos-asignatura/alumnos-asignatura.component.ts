@@ -9,10 +9,14 @@ import { CommonModule } from '@angular/common';
 import { ProfesoresService } from 'src/app/profesores.service';
 import { AccordionModule } from 'primeng/accordion';
 import { DialogModule } from 'primeng/dialog';
-import { DynamicDialogRef } from 'primeng/dynamicdialog'; // Importa la referencia al dialog dinámico
-import { DialogService } from 'primeng/dynamicdialog'; // Importa el servicio para manejar el dialog dinámico
+import { DynamicDialogRef } from 'primeng/dynamicdialog';
+import { DialogService } from 'primeng/dynamicdialog';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { FormsModule } from '@angular/forms';
+import { NotaService } from 'src/app/nota.service';
+import { CalendarModule } from 'primeng/calendar';
+import { DropdownModule } from 'primeng/dropdown';
+import { MatIconModule } from '@angular/material/icon';
 
 interface Dato {
   ID_Asignatura: number;
@@ -22,6 +26,20 @@ interface Dato {
   Fecha_Registro: string;
   Registro: number;
   Tipo: string;
+}
+
+interface TipoEvaluacion {
+  idTipoNota_int: number;
+  nombre_str: string;
+}
+interface Formulario {
+  idCurso: number;
+  idAsignatura: number;
+  tipoCalificacion: TipoEvaluacion;
+  fechaEvaluacion: Date;
+  ponderacion: number;
+  nombre: string;
+  usuarioModificacion: string;
 }
 
 @Component({
@@ -37,7 +55,10 @@ interface Dato {
     AccordionModule,
     DialogModule,
     ConfirmDialogModule,
-    FormsModule
+    FormsModule,
+    CalendarModule,
+    DropdownModule,
+    MatIconModule
   ],
   templateUrl: './alumnos-asignatura.component.html',
   styleUrls: ['../moduleasignatura-dashboard-profesor/moduleasignatura-dashboard-profesor.component.css', './alumnos-asignatura.component.css'],
@@ -58,19 +79,43 @@ export class AlumnosAsignaturaComponent implements OnInit, OnChanges {
 
   today: string;
 
+  mostrarPopupCrearEvaluacion: boolean = false;
+  tiposEvaluacion: TipoEvaluacion[] = [
+    { idTipoNota_int: 1, nombre_str: 'Evaluación' },
+    { idTipoNota_int: 2, nombre_str: 'Informe' },
+    { idTipoNota_int: 3, nombre_str: 'Presentación Oral' },
+    { idTipoNota_int: 4, nombre_str: 'Otro' }
+  ];
+
+  formulario: Formulario = {
+    idCurso: 0,
+    idAsignatura: 0,
+    tipoCalificacion: this.tiposEvaluacion[0],
+    fechaEvaluacion: new Date(),
+    ponderacion: 0,
+    nombre: '',
+    usuarioModificacion: ''
+  };
+
+
   constructor(
     private profesoresService: ProfesoresService,
     private messageService: MessageService,
+    private notaService: NotaService
   ) {
-    this.today = new Date().toISOString().split('T')[0]; // Fecha actual en formato 'YYYY-MM-DD'
+    this.today = new Date().toISOString().split('T')[0];
   }
 
   ngOnInit() {
-    // Inicialmente, obtén los datos cuando el componente se inicie
     this.obtenerDatos();
+
+    // Suscripción al evento de nota actualizada
+    this.notaService.notaActualizada$.subscribe(() => {
+      this.obtenerDatos();
+        });
   }
+
   ngOnChanges(changes: SimpleChanges): void {
-    // Detecta cambios en las entradas (rutProfesor, idCurso, idAsignatura) y vuelve a cargar los datos
     if (changes['rutProfesor'] || changes['idCurso'] || changes['idAsignatura']) {
       this.obtenerDatos();
     }
@@ -129,12 +174,14 @@ export class AlumnosAsignaturaComponent implements OnInit, OnChanges {
   abrirPopupEditar(dato: Dato) {
     this.datoSeleccionado = dato;
     this.displayEditarNota = true;
-    this.nuevoValor = dato.Registro; // Cargar el valor actual de la nota para editar
-    this.motivo = ''; // Limpiar el motivo
+    this.nuevoValor = dato.Registro;
+    this.motivo = '';
   }
 
   cerrarPopupEditar() {
     this.displayEditarNota = false;
+    this.resetFormulario();
+
   }
 
   editarNota() {
@@ -144,21 +191,17 @@ export class AlumnosAsignaturaComponent implements OnInit, OnChanges {
     }
 
     const dato = this.datoSeleccionado;
-
-    // Validar formato y rango de la nuevo valor
-    const regexNota = /^[1-7](\.[0-9])?$/; // Formato '1' o '1.5' hasta '7'
-    if (!regexNota.test(this.nuevoValor.toString())) { // Convertir this.nuevoValor a string para la validación
+    const regexNota = /^[1-7](\.[0-9])?$/;
+    if (!regexNota.test(this.nuevoValor.toString())) {
       this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Ingrese una nota válida (Ej: 5 o 5.5). Recuerde que la nota debe ser entre 1.0 a 7.0.' });
       return;
     }
 
-    // Validar longitud del motivo
     if (this.motivo.length > 100) {
       this.messageService.add({ severity: 'error', summary: 'Error', detail: 'El motivo no puede exceder los 100 caracteres.' });
       return;
     }
 
-    // Imprimir los datos antes de enviarlos al servicio
     console.log('Datos a enviar:', {
       rutProfesor: this.rutProfesor,
       fecha: dato.Fecha_Registro,
@@ -170,29 +213,83 @@ export class AlumnosAsignaturaComponent implements OnInit, OnChanges {
       idAsignatura: this.idAsignatura
     });
 
-    // Llama al servicio para actualizar la nota
     this.profesoresService.actualizarNota(
       this.rutProfesor,
       dato.Fecha_Registro,
       dato.Tipo,
       dato.Rut_Estudiante,
-      this.nuevoValor, // Convertir this.nuevoValor a string para la llamada al servicio
+      this.nuevoValor,
       this.motivo,
       this.idCurso,
       this.idAsignatura
     ).subscribe(response => {
       console.log('Datos actualizados:', response);
-      this.displayEditarNota = false; // Cerrar popup de edición de nota
+      this.displayEditarNota = false;
       this.messageService.add({ severity: 'success', summary: 'Éxito', detail: 'Nota actualizada correctamente.' });
-      this.obtenerDatos(); // Recargar datos después de actualizar la nota
+      this.obtenerDatos();
+      this.notaService.emitirNotaActualizada(); // Emitir evento cuando se actualice la nota
     }, error => {
       console.error('Error al actualizar datos:', error);
       this.messageService.add({ severity: 'error', summary: 'Error', detail: 'No se pudo actualizar la nota.' });
     });
   }
 
+  abrirPopupCrearEvaluacion(): void {
+    this.mostrarPopupCrearEvaluacion = true;
+  }
 
+  cerrarPopupCrearEvaluacion(): void {
+    this.mostrarPopupCrearEvaluacion = false;
+    this.resetFormulario();
+
+  }
+
+  crearEvaluacion(): void {
+    const fechaformularioFormatted = this.formatDate(this.formulario.fechaEvaluacion);
+
+    const formData = new FormData();
+    formData.append('idAsignatura', this.idAsignatura.toString());
+    formData.append('idCurso', this.idCurso.toString());
+    formData.append('tipoCalificacion', this.formulario.tipoCalificacion.idTipoNota_int.toString()); // Aquí se envía solo el idTipoNota_int
+    formData.append('fechaEvaluacion', fechaformularioFormatted);
+    formData.append('ponderacion', this.formulario.ponderacion.toString());
+    formData.append('nombre', this.formulario.nombre);
+    formData.append('usuarioModificacion', this.rutProfesor);
+
+    // Aquí debes continuar con la lógica para enviar formData al backend
+
+      this.profesoresService.crearEvaluacion(formData).subscribe(
+        (data) => {
+          console.log('Evaluación creada:', data);
+          this.messageService.add({ severity: 'success', summary: 'Éxito', detail: 'Evaluación creada correctamente.' });
+          this.cerrarPopupCrearEvaluacion();
+          this.obtenerDatos();
+          this.notaService.emitirNotaActualizada(); // Emitir evento cuando se actualice la nota
+        },
+        (error) => {
+          console.error('Error al crear la evaluación:', error);
+          this.messageService.add({ severity: 'error', summary: 'Error', detail: 'No se pudo crear la evaluación.' });
+        }
+      );
+  }
+
+
+
+formatDate(date: Date): string {
+  const year = date.getFullYear();
+  const month = ('0' + (date.getMonth() + 1)).slice(-2);
+  const day = ('0' + date.getDate()).slice(-2);
+  return `${year}-${month}-${day}`;
 }
 
+resetFormulario(): void {
+  this.idCurso = this.idCurso;
+  this.idAsignatura = this.idAsignatura;
+  this.formulario.tipoCalificacion = this.tiposEvaluacion[0];
+  this.formulario.fechaEvaluacion = new Date;
+  this.formulario.ponderacion = 0;
+  this.formulario.nombre = '';
+  this.formulario.usuarioModificacion = '';
+}
 
-
+}

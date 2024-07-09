@@ -1,0 +1,33 @@
+
+h2 {
+  font-size: 4rem; /* Tamaño de la fuente */
+  font-weight: bold; /* Fuente en negrita */
+  color: #003366; /* Color de texto */
+}
+
+h5,h4 {
+  font-size: 1.8rem; /* Tamaño de la fuente */
+  color: #003366; /* Color de texto */
+}
+
+p {
+  font-size: 1.5rem; /* Tamaño de la fuente */
+  color: #003366; /* Color de texto */
+}
+
+
+.media-object {
+  width: 150px; /* Ancho de la imagen */
+  height: 150px; /* Alto de la imagen */
+  border-radius: 10%; /* Borde redondeado */
+  border: 4px solid #003366;
+
+}
+
+.tab-content > .tab-pane {
+  display: none;
+}
+
+.tab-content > .active {
+  display: block;
+}

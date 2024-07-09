@@ -1,0 +1,82 @@
+<div class="row footer-credit">
+  <div class="col-md-6 col-sm-6">
+  </div>
+  <div class="col-md-6 col-sm-6">
+    <ul class="footer-menu">
+      <li><a (click)="showDialog('Acerca de Nosotros')">Acerca de Nosotros</a></li>
+      <li><a (click)="showDialog('Política de Privacidad')">Política de Privacidad</a></li>
+      <li><a (click)="showDialog('Términos y Condiciones')">Términos y Condiciones</a></li>
+    </ul>
+  </div>
+</div>
+<p-toast></p-toast>
+<p-dialog [header]="dialogHeader" [(visible)]="display" [modal]="true" [closable]="true" [dismissableMask]="true" [style]="{ width: '40rem' }" class="custom-dialog">
+  <div class="p-dialog-content">
+    <ng-container *ngIf="selectedSection === 'Acerca de Nosotros'">
+      <p>Bienvenidos a Educa Center, un centro educacional fundado en 2020 en Santiago, Chile. Nos dedicamos a proporcionar una educación de calidad a nuestros estudiantes, apoyando su desarrollo académico y personal a través de una gestión eficiente y moderna de los datos educativos. Nuestra misión es empoderar a las instituciones educativas con herramientas tecnológicas que faciliten la administración y el seguimiento del rendimiento estudiantil, promoviendo así el éxito académico.</p>
+
+      <h3>Nuestra Misión</h3>
+      <p>Proporcionar una educación de calidad a través de la innovación tecnológica, facilitando el aprendizaje y el crecimiento personal de cada estudiante.</p>
+
+      <h3>Nuestra Visión</h3>
+      <p>Ser el líder en soluciones educativas tecnológicas, transformando la educación y empoderando a las instituciones académicas para alcanzar su máximo potencial.</p>
+
+      <h3>Nuestro Equipo</h3>
+      <p>En Educa Center, contamos con un equipo multidisciplinario que incluye directores, inspectores, profesores, asistentes sociales, psicólogos, especialistas en TI, y estudiantes, todos trabajando en conjunto para crear un ambiente educativo óptimo. Nuestra cultura se basa en la colaboración, la innovación y el compromiso con la excelencia educativa.</p>
+    </ng-container>
+
+    <ng-container *ngIf="selectedSection === 'Política de Privacidad'">
+      <p>En Educa Center, estamos comprometidos a proteger tu privacidad. Esta política de privacidad explica cómo recopilamos, utilizamos y protegemos la información personal que nos proporcionas.</p>
+
+      <h3>Recopilación de Información</h3>
+      <p>Recopilamos información personal cuando te registras en nuestro sitio, utilizas nuestros servicios o te comunicas con nosotros. La información puede incluir tu nombre, dirección de correo electrónico, dirección postal, número de teléfono y datos académicos relevantes.</p>
+
+      <h3>Uso de la Información</h3>
+      <h5>La información recopilada se utiliza para:</h5>
+      <ul>
+        <li>> Proveer y gestionar nuestros servicios.</li>
+        <li>> Comunicarnos contigo.</li>
+        <li>> Personalizar tu experiencia en nuestro sitio web.</li>
+        <li>> Mejorar nuestros servicios y el sitio web.</li>
+        <li>> Cumplir con obligaciones legales.</li>
+      </ul>
+      <br>
+      <h3>Compartición de la Información</h3>
+      <p>No compartimos tu información personal con terceros, excepto cuando es necesario para proporcionar nuestros servicios, cumplir con la ley o proteger nuestros derechos.</p>
+
+      <h3>Seguridad de la Información</h3>
+      <p>Implementamos medidas de seguridad para proteger tu información personal contra acceso no autorizado, alteración, divulgación o destrucción.</p>
+
+      <h3>Tus Derechos</h3>
+      <p>Tienes derecho a acceder, rectificar y eliminar tu información personal almacenada por nosotros. Para ejercer estos derechos, por favor contáctanos a través de los canales proporcionados.</p>
+
+      <h3>Política de Cookies</h3>
+      <p>Utilizamos cookies para mejorar tu experiencia en nuestro sitio web. Las cookies son pequeños archivos de datos que se almacenan en tu dispositivo. Puedes configurar tu navegador para rechazar cookies, pero esto puede afectar tu uso de algunas funcionalidades del sitio.</p>
+
+      <h3>Contacto</h3>
+      <p>Para cualquier pregunta sobre esta política de privacidad, puedes contactarnos a través de liceomunicipalcerronavia@hotmail.com o acercarte a nuestro establecimiento ubicado en Las lomas 1426, Cerro Navia.</p>
+    </ng-container>
+
+    <ng-container *ngIf="selectedSection === 'Términos y Condiciones'">
+      <p>Bienvenido a Educa Center. Al utilizar nuestro sitio web y nuestros servicios, aceptas estar sujeto a los siguientes términos y condiciones. Estos términos, junto con nuestra política de privacidad, rigen la relación entre Educa Center y tú en relación con este sitio web.</p>
+
+      <h3>Uso del Sitio Web</h3>
+      <p>El contenido de las páginas de este sitio web es para tu información general y uso personal únicamente. Está sujeto a cambios sin previo aviso. No se permite la reproducción de contenido sin el permiso expreso de Educa Center.</p>
+
+      <h3>Propiedad Intelectual</h3>
+      <p>Todo el material presente en este sitio web, incluyendo pero no limitado a, diseño, gráficos y textos, es propiedad de Educa Center. Cualquier uso no autorizado de este material puede dar lugar a reclamaciones por daños y perjuicios.</p>
+
+      <h3>Responsabilidades del Usuario</h3>
+      <p>Como usuario de este sitio web, aceptas utilizarlo de manera responsable y cumplir con todas las leyes y regulaciones aplicables. No debes utilizar este sitio web para fines ilícitos, fraudulentos o que puedan dañar a Educa Center o a terceros.</p>
+
+      <h3>Limitación de Responsabilidad</h3>
+      <p>Educa Center no será responsable de ningún daño directo, indirecto, incidental, consecuente o especial que resulte del uso o la imposibilidad de uso de nuestro sitio web, incluso si Educa Center ha sido informado de la posibilidad de tales daños.</p>
+
+      <h3>Enlaces a Otros Sitios Web</h3>
+      <p>Nuestro sitio web puede contener enlaces a otros sitios web de interés. Sin embargo, una vez que hayas utilizado estos enlaces para salir de nuestro sitio, debes tener en cuenta que no tenemos control sobre esos otros sitios web. Por lo tanto, no podemos ser responsables de la protección y privacidad de la información que proporciones mientras visitas dichos sitios.</p>
+
+      <h3>Leyes Aplicables y Jurisdicción</h3>
+      <p>Estos términos y condiciones se regirán e interpretarán de acuerdo con las leyes de Chile, y cualquier disputa que surja de estos términos y condiciones estará sujeta a la jurisdicción exclusiva de los tribunales de Chile.</p>
+    </ng-container>
+  </div>
+</p-dialog>

@@ -1,0 +1,43 @@
+.hero-header {
+  position: relative;
+  color: #fff; /* Color del texto sobre fondo oscuro */
+  text-shadow: 5px 5px 8px rgba(0, 0, 0, 0.6); /* Sombra de texto para resaltar sobre la imagen de fondo */
+  background-image: url('../../assets/img/home.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-header::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 25px; /* Altura del borde curvo */
+  background: white;
+  clip-path: ellipse(50% 100% at 50% 100%); /* Ajusta la forma de la luna creciente */
+}
+
+.logo {
+  width: 250px; /* Tamaño de la imagen del logo */
+  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5)); /* Sombra suave solo en el contorno */
+}
+
+h1, h3, h4 {
+  font-family: 'Roboto', sans-serif; /* Fuente del texto */
+  font-weight: bold; /* Peso de la fuente */
+  color: #fff; /* Color del texto */
+  margin-top: 5px; /* Espacio superior */
+}
+
+.btn-red {
+  background-color: #003366; /* Color de fondo del botón */
+  border-color: #003366; /* Color del borde del botón */
+  color: #fff; /* Color del texto del botón */
+  margin-top: 5px; /* Espacio superior */
+}
+
+.btn-red:hover {
+  background-color: #B8860B; /* Color de fondo del botón al pasar el mouse */
+  border-color: #B8860B; /* Color del borde del botón al pasar el mouse */
+}

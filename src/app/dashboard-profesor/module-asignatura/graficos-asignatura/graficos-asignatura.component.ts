@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { ChartModule } from 'primeng/chart';
 import { ProfesoresService } from 'src/app/profesores.service';
+import { NotaService } from 'src/app/nota.service';
 
 @Component({
   selector: 'app-graficos-asignatura',
@@ -23,10 +24,16 @@ export class GraficosAsignaturaComponent implements OnChanges {
   lineChartData: any;
   lineChartOptions: any;
 
-  constructor(private profesoresService: ProfesoresService) {}
+  constructor(private profesoresService: ProfesoresService,
+              private notaService: NotaService
+  ) {}
 
   ngOnInit(): void {
     this.obtenerDatosGraficos();
+
+    this.notaService.notaActualizada$.subscribe(() => {
+      this.obtenerDatosGraficos();
+    });
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -34,6 +41,7 @@ export class GraficosAsignaturaComponent implements OnChanges {
       this.obtenerDatosGraficos();
     }
   }
+
 
   obtenerDatosGraficos(): void {
     if (this.rutProfesor && this.idCurso && this.idAsignatura) {

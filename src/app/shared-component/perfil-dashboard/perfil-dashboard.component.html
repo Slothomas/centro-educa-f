@@ -29,7 +29,7 @@
               <label for="correo">Correo</label>
               <input id="correo" pInputText [(ngModel)]="datos.Correo" placeholder="correo@correo.com" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" required (input)="checkFormChanges()" #correo="ngModel">
               <div *ngIf="correo.invalid && (correo.dirty || correo.touched)" class="error-message">
-                Por favor ingrese un correo válido.
+                Por favor ingrese un correo válido (correo@correo.com).
               </div>
             </div>
           </div>
@@ -38,7 +38,7 @@
               <label for="telefono">Teléfono</label>
               <input id="telefono" pInputText [(ngModel)]="datos.Telefono" placeholder="+56912345678" pattern="^\+569\d{4}\d{4}$" required (input)="checkFormChanges()" #telefono="ngModel">
               <div *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)" class="error-message">
-                Por favor ingrese un teléfono válido.
+                Por favor ingrese un teléfono válido (+56912345678).
               </div>
             </div>
             <div class="perfil-col">

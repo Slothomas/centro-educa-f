@@ -5,7 +5,12 @@
     <span class="example-logout-button" *ngIf="username">
       <button mat-icon-button (click)="logout()"><mat-icon>exit_to_app</mat-icon></button>
     </span>
+    <span class="example-toolbar-spacer"></span> <!-- Espaciador para separar los elementos -->
+    <span class="example-logo">
+      <img src="../../../../assets/img/logos/logo2.png" class="logo-img">
+    </span>
   </mat-toolbar>
+
 
   <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
     <div class="sidenav-overlay" *ngIf="snav.opened && mobileQuery.matches" (click)="snav.close()"></div>

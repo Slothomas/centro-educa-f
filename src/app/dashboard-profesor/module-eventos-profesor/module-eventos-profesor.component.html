@@ -18,7 +18,7 @@
   <p-carousel [value]="misEventos" [circular]="true" [numVisible]="4" [responsiveOptions]="responsiveOptions">
     <ng-template pTemplate="item" let-evento>
       <div class="card event-card">
-        <img src="../../../assets/img/moduleeventos/{{evento.Id_Evento}}.png" alt="Imagen del Evento" class="card-image">
+        <img src="/src/assets/img/moduleeventos/{{evento.Id_Evento.png}}" alt="Imagen del Evento" class="card-image">
         <div class="card-content">
           <p class="card-title">{{ evento.Nombre_Asignatura }}</p>
           <p class="card-text">{{ evento.Tipo }}</p>
@@ -40,7 +40,7 @@
   <p-carousel [value]="proximosEventos" [circular]="true" [numVisible]="4" [responsiveOptions]="responsiveOptions">
     <ng-template pTemplate="item" let-evento>
       <div class="card event-card">
-        <img src="../../../assets/img/moduleeventos/{{evento.Id_Evento}}.png" alt="Imagen del Evento" class="card-image">
+        <img src="/src/assets/img/moduleeventos/{{evento.Id_Evento.png}}" alt="Imagen del Evento" class="card-image">
         <div class="card-content">
           <p class="card-title">{{ evento.Nombre_Asignatura }}</p>
           <p class="card-text">{{ evento.Tipo }}</p>
@@ -62,7 +62,7 @@
   <p-carousel [value]="eventosPasados" [circular]="true" [numVisible]="4" [responsiveOptions]="responsiveOptions">
     <ng-template pTemplate="item" let-evento>
       <div class="card event-card">
-        <img src="../../../assets/img/moduleeventos/{{evento.Id_Evento}}.png" alt="Imagen del Evento" class="card-image">
+        <img src="/src/assets/img/moduleeventos/{{evento.Id_Evento.png}}" alt="Imagen del Evento" class="card-image">
         <div class="card-content">
           <p class="card-title">{{ evento.Nombre_Asignatura }}</p>
           <p class="card-text">{{ evento.Tipo }}</p>
@@ -89,8 +89,13 @@
 </p-dialog>
 
 <!-- Diálogo de Creación de Evento -->
-<p-dialog header="Crear Evento" [(visible)]="mostrarPopupCrearEvento" [modal]="true" [style]="{ width: '50vw' }">
+<p-dialog header="Crear Evento" [(visible)]="mostrarPopupCrearEvento" [modal]="true" [style]="{width: '300px'}">
   <div class="p-fluid">
+    <div class="p-field">
+      <label for="fechaEvento">Fecha del Evento</label>
+      <p-calendar [(ngModel)]="evento.fechaEvento" dateFormat="dd/mm/yy" [showIcon]="true" placeholder="Selecciona la fecha"></p-calendar>
+      <br>
+    </div>
     <div class="p-field">
       <label for="tipoEvento">Tipo de Evento</label>
       <p-dropdown [options]="tiposEventos" [(ngModel)]="evento.tipoEvento" optionLabel="nombre" placeholder="Selecciona el tipo de evento"></p-dropdown>
@@ -104,26 +109,26 @@
     <div class="p-field">
       <label for="descripcion">Descripción</label>
       <br>
-      <textarea id="descripcion" pInputTextarea [(ngModel)]="evento.descripcion" maxlength="500"></textarea>
-      <br>
-    </div>
-    <div class="p-field">
-      <label for="fechaEvento">Fecha del Evento</label>
-      <p-calendar [(ngModel)]="evento.fechaEvento" dateFormat="yy-mm-dd" placeholder="Selecciona la fecha"></p-calendar>
+      <textarea id="descripcion" pInputTextarea [(ngModel)]="evento.descripcion" maxlength="500" [style]="{width: '270px'}"></textarea>
       <br>
     </div>
     <div class="p-field">
       <label for="lugarEvento">Lugar del Evento</label>
       <br>
-      <input id="lugarEvento" type="text" pInputText [(ngModel)]="evento.lugarEvento" maxlength="50"/>
+      <input id="lugarEvento" type="text" pInputText [(ngModel)]="evento.lugarEvento" maxlength="50" [style]="{width: '270px'}" />
       <br>
     </div>
+    <br>
     <div class="p-field">
+
       <label for="imagenEvento">Imagen del Evento</label>
+      <br>
       <input type="file" (change)="onFileChange($event)" />
+      <br>
     </div>
   </div>
   <div class="p-dialog-footer">
+    <br>
     <button pButton type="button" label="Cancelar" icon="pi pi-times" class="p-button-text" (click)="cerrarPopupCrearEvento()"></button>
     <button pButton type="button" label="Crear" icon="pi pi-check" class="p-button-success" (click)="crearEvento()"></button>
   </div>

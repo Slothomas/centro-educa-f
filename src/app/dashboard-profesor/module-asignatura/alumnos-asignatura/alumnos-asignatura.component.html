@@ -1,3 +1,39 @@
+<div class="floating-button" (click)="abrirPopupCrearEvaluacion()">
+  <mat-icon mat-list-icon>add</mat-icon>
+</div>
+
+<p-dialog header="Crear Evaluación" [(visible)]="mostrarPopupCrearEvaluacion" [modal]="true" [responsive]="true" [style]="{width: '300px'}">
+  <form (ngSubmit)="crearEvaluacion()">
+    <div class="p-fluid">
+      <div class="p-field">
+        <label for="fechaEvaluacion">Fecha de Evaluación</label>
+        <br>
+        <p-calendar id="fechaEvaluacion" name="fechaEvaluacion" [(ngModel)]="formulario.fechaEvaluacion" dateFormat="dd/mm/yy" [showIcon]="true"  [required]="true"></p-calendar>
+      </div>
+      <div class="p-field">
+        <label for="tipoCalificacion">Tipo de Calificación</label>
+        <br>
+        <p-dropdown id="tipoCalificacion" name="tipoCalificacion" [(ngModel)]="formulario.tipoCalificacion" [options]="tiposEvaluacion" optionLabel="nombre_str"  [required]="true"></p-dropdown>
+      </div>
+      <div class="p-field">
+        <label for="ponderacion">Ponderación</label>
+        <br>
+        <input id="ponderacion" type="number" name="ponderacion" [(ngModel)]="formulario.ponderacion" class="p-inputtext"  [required]="true">
+      </div>
+      <div class="p-field">
+        <label for="nombre">Nombre de la Evaluación</label>
+        <br>
+        <input id="nombre" type="text" name="nombre" [(ngModel)]="formulario.nombre" class="p-inputtext" maxlength="10"  [required]="true">
+      </div>
+      <div class="p-dialog-footer">
+        <button type="button" pButton label="Cancelar" icon="pi pi-times" class="p-button-text" (click)="cerrarPopupCrearEvaluacion()" class="p-button-secondary"></button>
+        <button type="submit" pButton label="Crear Evaluación" icon="pi pi-check" class="p-button-success"></button>
+      </div>
+    </div>
+  </form>
+</p-dialog>
+
+
 <div class="card">
   <div class="custom-table-container"> <!-- Contenedor personalizado -->
 

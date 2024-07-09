@@ -5,13 +5,14 @@ import { NewsComponent } from '../news/news.component';
 import { PersonasComponent } from '../personas/personas.component';
 import { EstablecimientoComponent } from '../establecimiento/establecimiento.component';
 import { HeaderComponent } from '../header/header.component';
+import { FooterComponent } from '../footer/footer.component';
 
 
 @Component({
   selector: 'app-menu',
   standalone: true,
   imports: [
-    AboutHomeComponent, EventosComponent, NewsComponent,PersonasComponent, EstablecimientoComponent, HeaderComponent ],
+    AboutHomeComponent, EventosComponent, NewsComponent,PersonasComponent, EstablecimientoComponent, HeaderComponent, FooterComponent],
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.css']
 })

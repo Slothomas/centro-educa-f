@@ -11,6 +11,8 @@ import { MenuDashboardProfesorComponent } from './dashboard-profesor/module-dash
 import { ModuleasignaturaDashboardProfesorComponent } from './dashboard-profesor/module-asignatura/moduleasignatura-dashboard-profesor/moduleasignatura-dashboard-profesor.component';
 import { ModuleEventosProfesorComponent } from './dashboard-profesor/module-eventos-profesor/module-eventos-profesor.component';
 import { ModuleObservacionesProfesorComponent } from './dashboard-profesor/module-observaciones-profesor/module-observaciones-profesor.component';
+import { ModuleDashboardAdminComponent } from  './dashboard-admin/module-dashboard/module-dashboard/module-dashboard.component';
+
 
 export const routes: Routes = [
   { title: 'Colegio | Home', path: 'home', component: MenuComponent },
@@ -39,5 +41,12 @@ export const routes: Routes = [
       { path: 'observaciones', component: ModuleObservacionesProfesorComponent}
     ]
   },
+  {
+    title: 'Colegio | Dashboard Admin',
+    path: 'dashboardadmin',
+    component: ModuleDashboardAdminComponent,
+    canActivate: [authGuard], // Aplica el guardia de autenticación aquí
+  },
   { title: 'Colegio | Home', path: '**', component: MenuComponent }
+
 ];

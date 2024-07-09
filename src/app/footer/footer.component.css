@@ -1,0 +1,46 @@
+.footer-credit {
+  background-color: #003365; /* Color de fondo del botón */
+  padding: 10px 20px; /* Ajusta estos valores para cambiar el tamaño del área de fondo */
+}
+
+.footer-menu {
+  padding: 0; /* Elimina el padding predeterminado */
+  margin: 0; /* Elimina el margen predeterminado */
+  list-style: none; /* Elimina los puntos de la lista */
+  display: flex;
+  justify-content: flex-end; /* Ajusta según tus necesidades */
+}
+
+.footer-menu li {
+  font-size: 1.5rem; /* Tamaño de la fuente */
+  font-weight: bold; /* Fuente en negrita */
+  line-height: 40px; /* Ajusta esto para centrar verticalmente el texto dentro de cada li */
+  height: 40px; /* Ajusta esto según sea necesario */
+  margin-left: 20px; /* Espacio entre elementos de la lista */
+}
+
+.footer-menu li a {
+  cursor: pointer; /* Cambia el cursor a una mano al pasar el mouse */
+}
+
+.footer-menu li a:hover {
+  color: #ffffff; /* Color del texto al pasar el mouse */
+}
+
+
+
+.p-dialog-content h1, .p-dialog-content h2, .p-dialog-content h3, .p-dialog-content h5 {
+  color: #003366; /* Color del texto de los títulos y subtítulos */
+  font-weight: bold; /* Negrita */
+}
+
+.p-dialog-content p {
+  color: #003366; /* Color del texto del contenido */
+  font-size: 13px;;
+  text-align: justify;
+}
+
+.p-dialog-content ul,li{
+  color: #003366; /* Color del texto de las listas */
+  font-size: 11px;
+}

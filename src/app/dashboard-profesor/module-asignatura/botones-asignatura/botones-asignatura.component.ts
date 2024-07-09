@@ -8,6 +8,7 @@ import { TableModule } from 'primeng/table';
 import { DropdownModule } from 'primeng/dropdown';
 import { ButtonModule } from 'primeng/button';
 import { ToastModule } from 'primeng/toast';
+import { NotaService } from 'src/app/nota.service';
 
 interface Dato {
   Fecha_Registro: string;
@@ -47,7 +48,7 @@ export class BotonesAsignaturaComponent implements OnInit, OnChanges {
   fechaSeleccionada: string = '';
   today : string = '';
 
-  constructor(private profesoresService: ProfesoresService, private messageService: MessageService) {
+  constructor(private profesoresService: ProfesoresService, private messageService: MessageService, private notaService: NotaService) {
     this.today = this.obtenerFechaActual(); // Obtener la fecha actual en formato 'YYYY-MM-DD'
   }
 
@@ -121,6 +122,7 @@ export class BotonesAsignaturaComponent implements OnInit, OnChanges {
       response => {
         this.messageService.add({ severity: 'success', summary: 'Éxito', detail: 'Asistencia enviada correctamente' });
         console.log('BotonesAsignaturaComponent.enviarAsistencia - response:', response);
+        this.notaService.emitirNotaActualizada(); // Emitir evento cuando se actualice la nota
       },
       error => {
         this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Error al enviar asistencia' });

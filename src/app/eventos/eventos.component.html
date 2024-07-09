@@ -1,194 +1,31 @@
+<div class="container">
+  <div class="row me-row schedule" id="eventos">
+    <h2 class="row-title content-ct">Calendario de Eventos</h2>
+    <div class="col-md-12">
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs" role="tablist">
+        <li *ngFor="let mes of meses; let i = index" role="presentation" [ngClass]="{'active': i === 0}">
+          <a [id]="'tab-' + mes.nombre" [href]="'#' + mes.nombre" aria-controls="home" role="tab" data-toggle="tab">
+            {{ mes.nombre }}
+          </a>
+        </li>
+      </ul>
 
-    <div class="container">
-      <div class="row me-row schedule" id="eventos">
-        <h2 class="row-title content-ct">Calendario de Eventos</h2>
-        <div class="col-md-12">
-          <!-- Nav tabs -->
-          <ul class="nav nav-tabs" role="tablist">
-            <li role="presentation" class="active"><a href="#day-1" aria-controls="home" role="tab" data-toggle="tab">Day 01 <small class="hidden-xs">(20<sup>th</sup>, October)</small></a></li>
-            <li role="presentation"><a href="#day-2" aria-controls="profile" role="tab" data-toggle="tab">Day 02 <small class="hidden-xs">(21<sup>st</sup>, October)</small></a></li>
-            <li role="presentation"><a href="#day-3" aria-controls="messages" role="tab" data-toggle="tab">Day 03 <small class="hidden-xs">(22<sup>nd</sup>, October)</small></a></li>
-          </ul>
-
-          <!-- Tab panes -->
-          <div class="tab-content">
-            <div role="tabpanel" class="tab-pane fade in active" id="lunes">
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="media">
-                    <div class="media-left">
-                      <a href="#">
-                        <img class="media-object" src="../assets/img/speaker-1.png" alt="...">
-                      </a>
-                    </div>
-                    <div class="media-body">
-                      <h4 class="media-heading">10am to 10:30am</h4>
-                      <h5>THE DESIGNER’S GUIDE TO BEING ESSENTIAL</h5>
-                      <p>Simon is designer and partner at Fictivekin and has worked in a variety of situations for bands, record labels, governments, polar explorers, and most other things. </p>
-                    </div>
-                  </div>
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div *ngFor="let mes of meses; let i = index" role="tabpanel" [id]="mes.nombre" class="tab-pane fade" [ngClass]="{'active in': i === 0}">
+          <div class="row">
+            <div class="col-md-6" *ngFor="let detalle of eventos">
+              <div *ngIf="detalle.MES === mes.nombre" class="media">
+                <div class="media-left">
+                  <a>
+                    <img class="media-object" src="../../assets/img/moduleeventos/{{detalle.ID_EVENTO}}.png" alt="...">
+                  </a>
                 </div>
-                <div class="col-md-6">
-                  <div class="media">
-                    <div class="media-left">
-                      <a href="#">
-                        <img class="media-object" src="../assets/img/speaker-2.png" alt="...">
-                      </a>
-                    </div>
-                    <div class="media-body">
-                      <h4 class="media-heading">10:45am to 11:30am</h4>
-                      <h5>MODULAR DESIGN AT WORK</h5>
-                      <p>Simon is designer and partner at Fictivekin and has worked in a variety of situations for bands, record labels, governments, polar explorers, and most other things. </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="media">
-                    <div class="media-left">
-                      <a href="#">
-                        <img class="media-object" src="../assets/img/speaker-3.png" alt="...">
-                      </a>
-                    </div>
-                    <div class="media-body">
-                      <h4 class="media-heading">12:00pm to 01:30pm</h4>
-                      <h5>AN INTRODUCTION TO TOUCH AND POINTER EVENTS</h5>
-                      <p>Simon is designer and partner at Fictivekin and has worked in a variety of situations for bands, record labels, governments, polar explorers, and most other things. </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="media">
-                    <div class="media-left">
-                      <a href="#">
-                        <img class="media-object" src="../assets/img/speaker-4.png" alt="...">
-                      </a>
-                    </div>
-                    <div class="media-body">
-                      <h4 class="media-heading">02:00pm to 03.30pm</h4>
-                      <h5>WEB FONTS PERFORMANCE</h5>
-                      <p>Simon is designer and partner at Fictivekin and has worked in a variety of situations for bands, record labels, governments, polar explorers, and most other things. </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div role="tabpanel" class="tab-pane fade" id="martes">
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="media">
-                    <div class="media-left">
-                      <a href="#">
-                        <img class="media-object" src="../assets/img/speaker-4.png" alt="...">
-                      </a>
-                    </div>
-                    <div class="media-body">
-                      <h4 class="media-heading">10am to 10:30am</h4>
-                      <h5>MAKING DOG FOOD PART OF A BALANCED DIET</h5>
-                      <p>Simon is designer and partner at Fictivekin and has worked in a variety of situations for bands, record labels, governments, polar explorers, and most other things. </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="media">
-                    <div class="media-left">
-                      <a href="#">
-                        <img class="media-object" src="../assets/img/speaker-3.png" alt="...">
-                      </a>
-                    </div>
-                    <div class="media-body">
-                      <h4 class="media-heading">10:45am to 11:30am</h4>
-                      <h5>HANDS-ON WEB AUDIO</h5>
-                      <p>Simon is designer and partner at Fictivekin and has worked in a variety of situations for bands, record labels, governments, polar explorers, and most other things. </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="media">
-                    <div class="media-left">
-                      <a href="#">
-                        <img class="media-object" src="../assets/img/speaker-2.png" alt="...">
-                      </a>
-                    </div>
-                    <div class="media-body">
-                      <h4 class="media-heading">12:00pm to 01:30pm</h4>
-                      <h5>CONVERSION RATE OPTIMIZATION TECHNIQUES IN ECOMMERCE</h5>
-                      <p>Simon is designer and partner at Fictivekin and has worked in a variety of situations for bands, record labels, governments, polar explorers, and most other things. </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="media">
-                    <div class="media-left">
-                      <a href="#">
-                        <img class="media-object" src="../assets/img/speaker-1.png" alt="...">
-                      </a>
-                    </div>
-                    <div class="media-body">
-                      <h4 class="media-heading">02:00pm to 03.30pm</h4>
-                      <h5>PAPER PROTOTYPING APPLICATIONS</h5>
-                      <p>Simon is designer and partner at Fictivekin and has worked in a variety of situations for bands, record labels, governments, polar explorers, and most other things. </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div role="tabpanel" class="tab-pane fade" id="miercoles">
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="media">
-                    <div class="media-left">
-                      <a href="#">
-                        <img class="media-object" src="../assets/img/speaker-6.png" alt="...">
-                      </a>
-                    </div>
-                    <div class="media-body">
-                      <h4 class="media-heading">10am to 10:30am</h4>
-                      <h5>THE DESIGNER’S GUIDE TO BEING ESSENTIAL</h5>
-                      <p>Simon is designer and partner at Fictivekin and has worked in a variety of situations for bands, record labels, governments, polar explorers, and most other things. </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="media">
-                    <div class="media-left">
-                      <a href="#">
-                        <img class="media-object" src="../assets/img/speaker-5.png" alt="...">
-                      </a>
-                    </div>
-                    <div class="media-body">
-                      <h4 class="media-heading">10:45am to 11:30am</h4>
-                      <h5>THE DESIGNER’S GUIDE TO BEING ESSENTIAL</h5>
-                      <p>Simon is designer and partner at Fictivekin and has worked in a variety of situations for bands, record labels, governments, polar explorers, and most other things. </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="media">
-                    <div class="media-left">
-                      <a href="#">
-                        <img class="media-object" src="../assets/img/speaker-3.png" alt="...">
-                      </a>
-                    </div>
-                    <div class="media-body">
-                      <h4 class="media-heading">12:00pm to 01:30pm</h4>
-                      <h5>THE DESIGNER’S GUIDE TO BEING ESSENTIAL</h5>
-                      <p>Simon is designer and partner at Fictivekin and has worked in a variety of situations for bands, record labels, governments, polar explorers, and most other things. </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="media">
-                    <div class="media-left">
-                      <a href="#">
-                        <img class="media-object" src="../assets/img/speaker-4.png" alt="...">
-                      </a>
-                    </div>
-                    <div class="media-body">
-                      <h4 class="media-heading">02:00pm to 03.30pm</h4>
-                      <h5>THE DESIGNER’S GUIDE TO BEING ESSENTIAL</h5>
-                      <p>Simon is designer and partner at Fictivekin and has worked in a variety of situations for bands, record labels, governments, polar explorers, and most other things. </p>
-                    </div>
-                  </div>
+                <div class="media-body">
+                  <h4 class="media-heading">{{ detalle.FECHA_EVENTO }} {{detalle.MES}}</h4>
+                  <h5>{{ detalle.NOMBRE_ASIGNATURA }}</h5>
+                  <p>{{ detalle.DESCRIPCION }}</p>
                 </div>
               </div>
             </div>
@@ -196,3 +33,5 @@
         </div>
       </div>
     </div>
+  </div>
+</div>

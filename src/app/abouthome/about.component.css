@@ -1,0 +1,10 @@
+.btn-yellow {
+  background-color: #003366;
+  color: #ffffff;
+  opacity: 0.8;
+}
+
+h3 {
+  font-size: 2.5rem; /* Tamaño de la fuente */
+  font-weight: bold; /* Fuente en negrita */
+}

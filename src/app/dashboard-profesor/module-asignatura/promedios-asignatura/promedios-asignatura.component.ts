@@ -1,14 +1,15 @@
-import { Component, OnInit,Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { ProfesoresService } from 'src/app/profesores.service';
 import { CommonModule } from '@angular/common';
 import { CardModule } from 'primeng/card';
+import { NotaService } from 'src/app/nota.service'; // Importa el servicio de notas
 
 @Component({
   selector: 'app-promedios-asignatura',
-  standalone  : true,
+  standalone: true,
   imports: [CommonModule, CardModule],
   templateUrl: './promedios-asignatura.component.html',
-  styleUrls: ['../moduleasignatura-dashboard-profesor/moduleasignatura-dashboard-profesor.component.css','./promedios-asignatura.component.css']
+  styleUrls: ['../moduleasignatura-dashboard-profesor/moduleasignatura-dashboard-profesor.component.css', './promedios-asignatura.component.css']
 })
 export class PromediosAsignaturaComponent implements OnInit, OnChanges {
 
@@ -18,10 +19,18 @@ export class PromediosAsignaturaComponent implements OnInit, OnChanges {
 
   datos: any[] = []; // Datos de la asignatura, inicializado como array vacío
 
-  constructor(private profesoresService: ProfesoresService) { }
+  constructor(
+    private profesoresService: ProfesoresService,
+    private notaService: NotaService // Inyecta el servicio de notas
+  ) { }
 
   ngOnInit(): void {
     this.obtenerDetallePromedioNotaAsistencia();
+
+    // Suscripción al evento de nota actualizada
+    this.notaService.notaActualizada$.subscribe(() => {
+      this.obtenerDetallePromedioNotaAsistencia();
+    });
   }
 
   ngOnChanges(changes: SimpleChanges): void {

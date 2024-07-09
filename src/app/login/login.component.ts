@@ -1,16 +1,19 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../auth.service';
 import { SharedService } from '../shared.service';
 import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
+import { RouterLink } from '@angular/router';
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterLink,
+    RouterOutlet, FooterComponent],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
@@ -49,7 +52,10 @@ export class LoginComponent {
             this.router.navigate(['/dashboardteachers']);
           } else if (idtiporol_int === 3) {
             this.router.navigate(['/dashboardstudents']);
-          } }
+          } else if (idtiporol_int === 1) {
+            this.router.navigate(['/dashboardadmin'])
+          }
+         }
       });
   }
 }

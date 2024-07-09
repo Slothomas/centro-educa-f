@@ -1,0 +1,31 @@
+.custom-card{
+  height: 300px;
+}
+
+
+h2 {
+  font-size: 4rem; /* Tamaño de la fuente */
+  font-weight: bold; /* Fuente en negrita */
+  color: #003366; /* Color de texto */
+}
+
+
+h3 {
+  font-size: 2.5rem; /* Tamaño de la fuente */
+  font-weight: bold; /* Fuente en negrita */
+  color: #003366; /* Color de texto */
+  margin-top: 5px;
+
+}
+
+p {
+  font-size: 1.5rem; /* Tamaño de la fuente */
+  color: #003366; /* Color de texto */
+
+}
+
+
+.speaker-img{
+  width: 180px;
+  height: 125px;
+}

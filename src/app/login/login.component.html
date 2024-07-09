@@ -1,31 +1,32 @@
-<div class="container">
-  <div class="row me-row content-ct speaker" id="personas" style="display: flex; justify-content: center; align-items: center;">
-    <div class="col-md-4 col-sm-6 feature">
-      <h2 class="row-title content-ct">Inicie Sesión</h2>
-      <img src="../assets/img/speaker-1.png" class="speaker-img">
-      <br>
-      <form (submit)="login($event)">
-        <div class="form-group">
-          <br>
-          <input type="text" class="form-control" name="rut_str" placeholder="Ingrese su Rut" [(ngModel)]="rut_str">
-        </div>
-        <div class="form-group">
-          <input type="contrasena_str" class="form-control" name="contrasena_str" placeholder="Contraseña" [(ngModel)]="contrasena_str">
-        </div>
-        <div class="form-group">
-          <select name="idtiporol_int" [(ngModel)]="idtiporol_int">
-            <option value=1>Administrador</option>
-            <option value=2>Profesor</option>
-            <option value=3>Estudiante</option>
-            <option value=4>Apoderado</option>
-          </select>
-        </div>
-        <button type="submit" class="btn btn-lg btn-red">Ingresar</button>
-        <a routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page" class="btn btn-lg btn-red">Home</a>
-      </form>
-      <br>
-      <br>
-
+<div class="container-custom">
+  <div class="content">
+    <div class="row me-row content-ct speaker" id="personas" style="display: flex; justify-content: center; align-items: center;">
+      <div class="custom-card"> <!-- Aplicamos la clase custom-card aquí -->
+        <h2 class="row-title content-ct">Inicie Sesión</h2>
+        <img src="../../assets/img/logos/logo4.png" class="logo">
+        <br>
+        <form (submit)="login($event)">
+          <div class="form-group">
+            <br>
+            <input type="text" class="form-control" name="rut_str" placeholder="Ingrese su Rut" [(ngModel)]="rut_str">
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control" name="contrasena_str" placeholder="Contraseña" [(ngModel)]="contrasena_str">
+          </div>
+          <div class="form-group">
+            <select name="idtiporol_int" class="form-control" placeholder="Ingrese su rol" [(ngModel)]="idtiporol_int">
+              <!--<option value="1">Administrador</option>-->
+              <option value="2">Profesor</option>
+              <option value="3">Estudiante</option>
+              <!--<option value="4">Apoderado</option>-->
+            </select>
+          </div>
+          <button type="submit" class="btn btn-lg btn-red">Ingresar</button>
+          <a routerLink="/home" routerLinkActive="active" ariaCurrentWhenActive="page" class="btn btn-lg btn-red">Home<span></span></a>
+        </form>
+        <br>
+      </div>
     </div>
   </div>
+  <app-footer></app-footer>
 </div>

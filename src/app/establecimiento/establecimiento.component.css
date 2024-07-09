@@ -1,0 +1,36 @@
+h2 {
+  font-size: 4rem; /* Tamaño de la fuente */
+  font-weight: bold; /* Fuente en negrita */
+  color: #003366; /* Color de texto */
+
+}
+
+h3 {
+  font-size: 2.5rem; /* Tamaño de la fuente */
+  font-weight: bold; /* Fuente en negrita */
+  color: #003366; /* Color de texto */
+
+
+}
+
+p {
+  font-size: 1.5rem; /* Tamaño de la fuente */
+  color: #003366; /* Color de texto */
+
+}
+
+
+.image {
+  width: 250px; /* Ancho de la imagen */
+  height: 250px; /* Altura de la imagen */
+  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5)); /* Sombra suave solo en el contorno */
+
+}
+
+.image2 {
+  width: 250px; /* Ancho de la imagen */
+  height: 300px; /* Altura de la imagen */
+  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5)); /* Sombra suave solo en el contorno */
+  margin-bottom: -50px;
+
+}

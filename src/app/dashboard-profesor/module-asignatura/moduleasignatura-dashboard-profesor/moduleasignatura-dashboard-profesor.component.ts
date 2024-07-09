@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
 import { AlumnosAsignaturaComponent } from '../alumnos-asignatura/alumnos-asignatura.component';
 import { GraficosAsignaturaComponent } from '../graficos-asignatura/graficos-asignatura.component';
 import { PromediosAsignaturaComponent } from '../promedios-asignatura/promedios-asignatura.component';
@@ -10,14 +11,23 @@ import { CommonModule } from '@angular/common';
 import { DetalleAsignaturaComponent } from '../detalle-asignatura/detalle-asignatura.component';
 import { BotonesAsignaturaComponent } from '../botones-asignatura/botones-asignatura.component';
 
+
+
 @Component({
   selector: 'app-moduleasignatura-dashboard-profesor',
   standalone  : true,
-  imports: [AlumnosAsignaturaComponent, DetalleAsignaturaComponent, GraficosAsignaturaComponent, PromediosAsignaturaComponent, BotonesAsignaturaComponent,
+  imports: [
     DividerModule,
     RouterLink,
     MatIconModule,
     CommonModule,
+    MatIconModule,
+    RouterLink,
+    AlumnosAsignaturaComponent,
+    DetalleAsignaturaComponent,
+    GraficosAsignaturaComponent,
+    PromediosAsignaturaComponent,
+    BotonesAsignaturaComponent,
 
   ],
   templateUrl: './moduleasignatura-dashboard-profesor.component.html',
@@ -37,19 +47,19 @@ export class ModuleasignaturaDashboardProfesorComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.idCurso = +params['idCurso']; // Convertir a número si es necesario
       this.idAsignatura = +params['idAsignatura']; // Convertir a número si es necesario
-      this.obtenerDatosProfesor();});
-
+      this.obtenerDatosProfesor();
+    });
   }
 
   obtenerDatosProfesor(): void {
-    // Obtener los datos del estudiante del servicio compartido
+    // Obtener los datos del profesor del servicio compartido
     this.sharedService.getProfesorData().subscribe(profesor => {
       if (profesor) {
-        // Asignar los datos del estudiante
         this.rutProfesor = profesor.rut_str;
       } else {
-        console.error('El rut del estudiante no está disponible.');
+        console.error('El rut del profesor no está disponible.');
       }
     });
-}
+  }
+
 }

@@ -101,6 +101,12 @@ export class ProfesoresService {
       return this.http.put<any>(endpoint, body);
     }
 
+    crearEvaluacion(formData: FormData): Observable<any> {
+      const endpoint = `${this.apiUrl}/crearEvaluacion`;
+      console.log('ProfesoresSerivce.crearEvaluacion - sending data:', formData);
+      return this.http.post<any>(endpoint, formData);
+    }
+
 
     //PARA EL MODULO DE EVENTOS
     obtenerDetalleEventos(rut: string): Observable<any> {

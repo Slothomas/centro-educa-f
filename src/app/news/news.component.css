@@ -1,0 +1,27 @@
+/* Asegura que los thumbnails tengan la misma altura que la imagen grande */
+.grid.grid-nogutter.justify-content-center {
+  width: 200px; /* Ajusta según el diseño deseado */
+}
+
+h2 {
+  font-size: 4rem; /* Tamaño de la fuente */
+  font-weight: bold; /* Fuente en negrita */
+  color: #ffffff; /* Color de texto */
+}
+
+/* Estilos para asegurar la curva al final del componente */
+.container-fluid.tickets {
+  position: relative;
+  padding-bottom: 25px; /* Ajusta según el tamaño deseado del borde curvo */
+}
+
+.tickets::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 25px; /* Altura del borde curvo */
+  background: white;
+  clip-path: ellipse(50% 100% at 50% 100%); /* Forma del borde curvo */
+}

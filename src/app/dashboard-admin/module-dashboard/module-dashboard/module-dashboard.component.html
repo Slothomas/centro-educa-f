@@ -1,0 +1,41 @@
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+  <mat-toolbar class="example-toolbar">
+    <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+    <span class="example-app-name">Bienvenido {{ username }}</span>
+    <span class="example-logout-button" *ngIf="username">
+      <button mat-icon-button (click)="logout()"><mat-icon>exit_to_app</mat-icon></button>
+    </span>
+    <span class="example-toolbar-spacer"></span> <!-- Espaciador para separar los elementos -->
+    <span class="example-logo">
+      <img src="../../../../assets/img/logos/logo2.png" class="logo-img">
+    </span>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    <div class="sidenav-overlay" *ngIf="snav.opened && mobileQuery.matches" (click)="snav.close()"></div>
+
+    <mat-sidenav #snav class="example-sidenav" [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+      <mat-nav-list>
+
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <br>
+      <!-- Usamos una condición para mostrar u ocultar las otras componentes -->
+      <p-card>
+        <p-divider align="right" class="custom-divider">
+          <b>Mi Dashboard</b>
+        </p-divider>
+        <app-funciones-admin></app-funciones-admin>
+
+      <ng-container >
+
+      </ng-container>
+      <br>
+
+      <router-outlet></router-outlet>
+    </p-card>
+    </mat-sidenav-content>
+
+  </mat-sidenav-container>
+</div>

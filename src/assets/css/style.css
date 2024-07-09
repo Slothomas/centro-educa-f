@@ -1,6 +1,6 @@
 body {
   font-family: 'Dosis', sans-serif;
-  color: #404142;
+  color: #003366;
   font-size: 16px;
   letter-spacing: 0.8px;
 }
@@ -36,13 +36,13 @@ a:hover, a:focus, a:active, a:visited {
 }
 
 .btn-red {
-  background-color: #dd5138;
+  background-color: #003366;
   color: #fff;
 }
 
 .btn-yellow {
-  background-color: #fcd93b;
-  color: #2a2a2a;
+  background-color: #003366;
+  color: #ffffff;
   opacity: 0.8;
 }
 
@@ -85,7 +85,7 @@ a:hover, a:focus, a:active, a:visited {
   margin-right: 10px;
   text-transform: uppercase;
   font-size: 12px;
-  background-color: #dd5138;
+  background-color: #003366;
   padding: 3px 10px;
   font-weight: 600;
   border-radius: 3px;
@@ -100,7 +100,7 @@ a:hover, a:focus, a:active, a:visited {
 
 .side-menu ul li a span.dot {
   position: relative;
-  background-color: #dd5138;
+  background-color: #003366;
   border-radius: 2em;
   height: 10px;
   width: 10px;
@@ -115,7 +115,7 @@ a:hover, a:focus, a:active, a:visited {
   Hero Header
 ------------------ */
 .hero-header {
-  background: #016cc7;
+  background: #ffffff;
   min-height: 600px;
   padding: 5em;
   color: #fff;
@@ -149,7 +149,7 @@ a:hover, a:focus, a:active, a:visited {
 }
 
 .row-title {
-  font-weight: 400;
+  font-weight: 800;
 }
 
 .feature {
@@ -159,7 +159,7 @@ a:hover, a:focus, a:active, a:visited {
 
 .feature span {
   font-size: 5em;
-  color: #016cc7;
+  color: #003366;
 }
 
 /* ------------------
@@ -174,13 +174,13 @@ a:hover, a:focus, a:active, a:visited {
 }
 
 .speaker .feature:hover {
-  box-shadow: 3px 3px 10px #ccc;
+  box-shadow: 3px 3px 10px #003366;
   transform: translateY(-10px);
 }
 
 .speaker-img {
   max-width: 40%;
-  border: 4px solid #efefef;
+  border: 4px solid #003366;
   border-radius: 50%;
 }
 
@@ -210,12 +210,12 @@ a span.ti-twitter-alt {
   Tickets
 ------------------ */
 .tickets {
-  background-color: #fcd93b;
+  background-color: #B8860B;
 }
 
 .tickets .price {
   font-size: 4em;
-  color: #dd5138;
+  color: #003366;
   font-weight: 100;
 }
 
@@ -253,9 +253,8 @@ a span.ti-twitter-alt {
   Footer
 ------------------ */
 .footer {
-  background-color: #2a2a2a;
+  background-color: #003366;
   margin-top: 30px;
-  color: #fff;
 }
 
 .footer p {
@@ -276,19 +275,19 @@ ul.footer-menu li {
 
 ul.footer-menu li a {
   font-size: 12px;
-  color: #fcd93b;
+  color: #B8860B;
   padding-right: 20px;
 }
 
 ul.footer-menu li a:hover {
-  color: #dd5138;
+  color: #003366;
 }
 
 /* ------------------
   Contact
 ------------------ */
 .contact {
-  background-color: #3a3a3a;
+  background-color: #B8860B;
   color: #fff;
   padding: 1em;
 }
