@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ProfesoresService {
-  private apiUrl = 'http://172.206.232.198:8000/profesor';
+  private apiUrl = 'https://e2ac-172-206-232-198.ngrok-free.app/profesor';
   //'http://127.0.0.1:8000/profesor/getAllTeachers'; // Cambia esta URL si es necesario
     //
   constructor(private http: HttpClient) {}

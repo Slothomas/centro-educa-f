@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class EventosService {
 
-  private apiUrl = 'https://c697-172-206-232-198.ngrok-free.app/comunes';
+  private apiUrl = 'https://e2ac-172-206-232-198.ngrok-free.app/comunes';
 
   constructor(private http: HttpClient) { }
 
