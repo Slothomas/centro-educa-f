@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class EstudiantesService {
-  private apiUrl = 'http://127.0.0.1:8000/estudiante'; // URL base
+  private apiUrl = 'https://c697-172-206-232-198.ngrok-free.app/estudiante'; // URL base
   //'https://centro-educa-back.azurewebsites.net/estudiante';
   // Inyectamos el HttpClient en el constructor
   constructor(private http: HttpClient) {}

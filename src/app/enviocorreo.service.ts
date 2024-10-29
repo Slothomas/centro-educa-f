@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class EnviocorreoService {
 
-  private apiUrl = 'http://172.206.232.198:8000/comunes'; // Ajusta la URL base según la configuración de tu backend
+  private apiUrl = 'https://c697-172-206-232-198.ngrok-free.app/comunes'; // Ajusta la URL base según la configuración de tu backend
 
   constructor(private http: HttpClient) { }
 
