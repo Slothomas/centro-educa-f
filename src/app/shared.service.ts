@@ -121,14 +121,14 @@ export class SharedService {
   }
 
   actualizarClave(rut: string, clave: string, rol: number): Observable<any> {
-    const endpoint = `https://e2ac-172-206-232-198.ngrok-free.app/login/actualizarClave`;
+    const endpoint = 'https://e2ac-172-206-232-198.ngrok-free.app/login/actualizarClave';
     console.log('sharedService.actualizarClave - updating password for RUT:', rut, 'and new password:', clave);
     return this.http.put<any>(endpoint, { rut_str: rut, contrasena_str: clave, idTipoRol_int: rol});
   }
 
 
   actualizarDatos(rut: string, idtiporol: number, nuevoCorreo: string, nuevoTelefono: string): Observable<any> {
-    const endpoint = `https://e2ac-172-206-232-198.ngrok-free.app/login/actualizarDatos`;
+    const endpoint = 'https://e2ac-172-206-232-198.ngrok-free.app/login/actualizarDatos';
     console.log('sharedService.actualizarDatos - updating details for RUT:', rut, 'and Role ID:', idtiporol, 'with new email:', nuevoCorreo, 'and new phone:', nuevoTelefono);
     return this.http.put<any>(endpoint, { rut_str: rut, idTipoRol_int: idtiporol, nuevo_correo: nuevoCorreo, nuevo_telefono: nuevoTelefono });
   }
