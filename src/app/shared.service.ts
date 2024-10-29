@@ -115,7 +115,7 @@ export class SharedService {
   }
 
   obtenerPerfil(rut: string, idtiporol: any): Observable<any[]> {
-    const endpoint = 'https://e2ac-172-206-232-198.ngrok-free.app/login/perfil`;
+    const endpoint = 'https://e2ac-172-206-232-198.ngrok-free.app/login/perfil';
     console.log('sharedService.obtenerPerfil - fetching details for RUT:', rut, 'and Role ID:', idtiporol);
     return this.http.post<any>(endpoint, { rut_str: rut, idTipoRol_int: idtiporol });
   }
