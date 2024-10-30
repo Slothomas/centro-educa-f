@@ -16,7 +16,7 @@ export class AuthService {
 
   login(user: { rut_str: string; contrasena_str: string; idtiporol_int: number }): Observable<any> {
     console.log('AuthService.login - user:', user);
-    return this.http.post('https://e2ac-172-206-232-198.ngrok-free.app/login/', user).pipe(
+    return this.http.post('http://127.0.0.1:8000/login/', user).pipe(
       tap((response: any) => {
         console.log('AuthService.login - response:', response);
         if (response && response.access_token) {
